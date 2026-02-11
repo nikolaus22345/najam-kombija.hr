@@ -80,9 +80,9 @@ const BookingCheckout = () => {
 
 Please confirm my booking. Thank you!`;
 
-    const whatsappNumber = "385123456789";
+    const whatsappNumber = "385976019558";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    
+
     window.open(whatsappUrl, '_blank');
 
     toast({
@@ -94,7 +94,7 @@ Please confirm my booking. Thank you!`;
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1 pt-20 pb-16">
         {/* Booking Summary & Route */}
         <section className="py-8 bg-gradient-to-br from-primary/10 via-background to-background">
@@ -151,8 +151,8 @@ Please confirm my booking. Thank you!`;
               </div>
 
               {/* Route Map */}
-              <RouteMap 
-                pickup={bookingData.pickup} 
+              <RouteMap
+                pickup={bookingData.pickup}
                 dropoff={bookingData.dropoff}
                 onRouteCalculated={handleRouteCalculated}
               />
@@ -169,24 +169,23 @@ Please confirm my booking. Thank you!`;
 
             <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {vehicles.map((vehicle, index) => (
-                <Card 
-                  key={index} 
-                  className={`hover:shadow-xl transition-all hover:scale-105 relative ${
-                    selectedVehicle === vehicle.type ? 'ring-2 ring-primary' : ''
-                  }`}
+                <Card
+                  key={index}
+                  className={`hover:shadow-xl transition-all hover:scale-105 relative ${selectedVehicle === vehicle.type ? 'ring-2 ring-primary' : ''
+                    }`}
                 >
                   {vehicle.popular && (
                     <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
                       Most Popular
                     </div>
                   )}
-                  
+
                   <CardHeader>
                     <div className="text-center mb-4">
                       <div className="text-6xl mb-2">{vehicle.image}</div>
                       <CardTitle className="text-2xl">{vehicle.type}</CardTitle>
                     </div>
-                    
+
                     <div className="space-y-2 text-center text-muted-foreground">
                       <div className="flex items-center justify-center gap-2">
                         <Users className="w-4 h-4" />
@@ -217,8 +216,8 @@ Please confirm my booking. Thank you!`;
                         <p className="text-sm text-muted-foreground">Total price</p>
                       </div>
 
-                      <Button 
-                        className="w-full" 
+                      <Button
+                        className="w-full"
                         size="lg"
                         onClick={() => handleBookVehicle(vehicle.type, Math.round(basePrice * vehicle.priceMultiplier))}
                       >
@@ -273,7 +272,7 @@ Please confirm my booking. Thank you!`;
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="outline" className="gap-2">
                 <Phone className="w-5 h-5" />
-                +385 123 456 789
+                +385 97 601 9558
               </Button>
               <Button size="lg" variant="outline" className="gap-2">
                 <Mail className="w-5 h-5" />

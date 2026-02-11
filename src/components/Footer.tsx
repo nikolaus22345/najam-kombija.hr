@@ -10,15 +10,15 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <svg 
-                width="40" 
-                height="40" 
-                viewBox="0 0 100 100" 
+              <svg
+                width="40"
+                height="40"
+                viewBox="0 0 100 100"
                 className="h-10 w-10"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <polygon 
-                  points="25,20 85,20 50,52 85,52 15,80 50,48 25,48" 
+                <polygon
+                  points="25,20 85,20 50,52 85,52 15,80 50,48 25,48"
                   fill="#F6C344"
                 />
               </svg>
@@ -99,7 +99,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                +385 1 234 5678
+                +385 97 601 9558
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />

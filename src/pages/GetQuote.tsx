@@ -67,9 +67,9 @@ ${formData.additionalInfo || "None"}
 
 Please send me a detailed quote. Thank you!`;
 
-    const whatsappNumber = "385123456789";
+    const whatsappNumber = "385976019558";
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    
+
     window.open(whatsappUrl, '_blank');
 
     toast({
@@ -81,7 +81,7 @@ Please send me a detailed quote. Thank you!`;
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1 pt-20 pb-16">
         <section className="py-12 bg-gradient-to-br from-primary/10 via-background to-background">
           <div className="container mx-auto px-4">
@@ -129,14 +129,14 @@ Please send me a detailed quote. Thank you!`;
                   {/* Contact Information */}
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Contact Information</h3>
-                    
+
                     <div className="grid md:grid-cols-3 gap-4">
                       <div>
                         <Label htmlFor="name">Full Name *</Label>
                         <Input
                           id="name"
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                           required
                         />
                       </div>
@@ -147,7 +147,7 @@ Please send me a detailed quote. Thank you!`;
                           id="email"
                           type="email"
                           value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           required
                         />
                       </div>
@@ -158,7 +158,7 @@ Please send me a detailed quote. Thank you!`;
                           id="phone"
                           type="tel"
                           value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           required
                         />
                       </div>
@@ -168,14 +168,14 @@ Please send me a detailed quote. Thank you!`;
                   {/* Trip Details */}
                   <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Trip Details</h3>
-                    
+
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <Label htmlFor="pickup">Pickup Location *</Label>
                         <Input
                           id="pickup"
                           value={formData.pickup}
-                          onChange={(e) => setFormData({...formData, pickup: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, pickup: e.target.value })}
                           placeholder="e.g., Zagreb Airport"
                           required
                         />
@@ -186,7 +186,7 @@ Please send me a detailed quote. Thank you!`;
                         <Input
                           id="dropoff"
                           value={formData.dropoff}
-                          onChange={(e) => setFormData({...formData, dropoff: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, dropoff: e.target.value })}
                           placeholder="e.g., Split City Center"
                           required
                         />
@@ -195,9 +195,9 @@ Please send me a detailed quote. Thank you!`;
 
                     <div>
                       <Label className="mb-3 block">Transfer Type *</Label>
-                      <RadioGroup 
-                        value={formData.transferType} 
-                        onValueChange={(value) => setFormData({...formData, transferType: value})}
+                      <RadioGroup
+                        value={formData.transferType}
+                        onValueChange={(value) => setFormData({ ...formData, transferType: value })}
                       >
                         <div className="flex items-center space-x-2">
                           <RadioGroupItem value="one-way" id="oneway" />
@@ -221,7 +221,7 @@ Please send me a detailed quote. Thank you!`;
                           id="date"
                           type="date"
                           value={formData.date}
-                          onChange={(e) => setFormData({...formData, date: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                           min={new Date().toISOString().split('T')[0]}
                           required
                         />
@@ -234,7 +234,7 @@ Please send me a detailed quote. Thank you!`;
                             id="returnDate"
                             type="date"
                             value={formData.returnDate}
-                            onChange={(e) => setFormData({...formData, returnDate: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, returnDate: e.target.value })}
                             min={formData.date || new Date().toISOString().split('T')[0]}
                           />
                         </div>
@@ -250,7 +250,7 @@ Please send me a detailed quote. Thank you!`;
                           min="1"
                           max="50"
                           value={formData.passengers}
-                          onChange={(e) => setFormData({...formData, passengers: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, passengers: e.target.value })}
                           required
                         />
                       </div>
@@ -262,7 +262,7 @@ Please send me a detailed quote. Thank you!`;
                           type="number"
                           min="0"
                           value={formData.luggage}
-                          onChange={(e) => setFormData({...formData, luggage: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, luggage: e.target.value })}
                           placeholder="Optional"
                         />
                       </div>
@@ -272,7 +272,7 @@ Please send me a detailed quote. Thank you!`;
                         <select
                           id="vehicle"
                           value={formData.vehiclePreference}
-                          onChange={(e) => setFormData({...formData, vehiclePreference: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, vehiclePreference: e.target.value })}
                           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground"
                         >
                           <option value="any">Any</option>
@@ -291,7 +291,7 @@ Please send me a detailed quote. Thank you!`;
                     <Textarea
                       id="additionalInfo"
                       value={formData.additionalInfo}
-                      onChange={(e) => setFormData({...formData, additionalInfo: e.target.value})}
+                      onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
                       placeholder="Any special requirements? Child seats, wheelchair access, stops along the way, etc."
                       className="min-h-24"
                     />
@@ -321,7 +321,7 @@ Please send me a detailed quote. Thank you!`;
                       <Phone className="w-5 h-5 text-primary" />
                       <div>
                         <p className="text-sm text-muted-foreground">Call or WhatsApp</p>
-                        <p className="font-semibold">+385 123 456 789</p>
+                        <p className="font-semibold">+385 97 601 9558</p>
                       </div>
                     </div>
 
