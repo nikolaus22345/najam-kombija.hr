@@ -5,29 +5,30 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Clock, Euro, Users, Luggage, CheckCircle, Car, Coffee, Wifi } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Seo from "@/components/Seo";
 
 const ZagrebToSplit = () => {
   const { t } = useLanguage();
   const navigate = useNavigate();
 
   const vehicles = [
-    { 
-      type: "Sedan", 
-      capacity: "1-3 passengers", 
+    {
+      type: "Sedan",
+      capacity: "1-3 passengers",
       luggage: "2-3 suitcases",
       price: "€250",
       features: ["Free WiFi", "Air Conditioning", "Professional Driver", "Water Bottles"]
     },
-    { 
-      type: "Minivan", 
-      capacity: "4-8 passengers", 
+    {
+      type: "Minivan",
+      capacity: "4-8 passengers",
       luggage: "6-8 suitcases",
       price: "€320",
       features: ["Free WiFi", "Air Conditioning", "Professional Driver", "Extra Space", "USB Charging"]
     },
-    { 
-      type: "Minibus", 
-      capacity: "9-16 passengers", 
+    {
+      type: "Minibus",
+      capacity: "9-16 passengers",
       luggage: "12-16 suitcases",
       price: "€420",
       features: ["Free WiFi", "Air Conditioning", "Professional Driver", "Group Travel", "Comfort Seats"]
@@ -36,8 +37,12 @@ const ZagrebToSplit = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
+      <Seo
+        title="Zagreb to Split Transfer | Private Taxi & Bus | Zagreb Transfers"
+        description="Book a private transfer from Zagreb to Split. Enjoy a comfortable ride with professional drivers, free WiFi, and door-to-door service. Best rates guaranteed."
+      />
       <Header />
-      
+
       <main className="flex-1 pt-20">
         {/* Hero Section */}
         <section className="py-12 bg-gradient-to-br from-primary/10 via-background to-background">
@@ -48,7 +53,7 @@ const ZagrebToSplit = () => {
               <span>→</span>
               <span className="font-medium">Split</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Zagreb to Split Transfer
             </h1>
@@ -61,7 +66,7 @@ const ZagrebToSplit = () => {
                   <p className="text-lg font-semibold">4 hours</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3 bg-background/80 backdrop-blur p-4 rounded-lg border border-border">
                 <MapPin className="w-8 h-8 text-primary" />
                 <div>
@@ -69,7 +74,7 @@ const ZagrebToSplit = () => {
                   <p className="text-lg font-semibold">380 km</p>
                 </div>
               </div>
-              
+
               <div className="flex items-center gap-3 bg-background/80 backdrop-blur p-4 rounded-lg border border-border">
                 <Euro className="w-8 h-8 text-primary" />
                 <div>
@@ -80,16 +85,16 @@ const ZagrebToSplit = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="text-lg px-8 py-6"
                 onClick={() => navigate('/reservation?pickup=Zagreb&dropoff=Split&price=250')}
               >
                 Book Transfer Now
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                size="lg"
+                variant="outline"
                 className="text-lg px-8 py-6"
                 onClick={() => navigate('/get-quote')}
               >
@@ -105,7 +110,7 @@ const ZagrebToSplit = () => {
             <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
               Choose Your Vehicle
             </h2>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
               {vehicles.map((vehicle, index) => (
                 <Card key={index} className="hover:shadow-xl transition-all hover:scale-105 relative">
@@ -137,13 +142,13 @@ const ZagrebToSplit = () => {
                         </div>
                       ))}
                     </div>
-                    
+
                     <div className="pt-4 border-t">
                       <div className="text-3xl font-bold text-primary mb-4">
                         {vehicle.price}
                       </div>
-                      <Button 
-                        className="w-full" 
+                      <Button
+                        className="w-full"
                         size="lg"
                         onClick={() => navigate(`/reservation?pickup=Zagreb&dropoff=Split&price=${vehicle.price.replace('€', '')}&vehicle=${vehicle.type}`)}
                       >
@@ -163,17 +168,17 @@ const ZagrebToSplit = () => {
             <h2 className="text-3xl font-bold text-foreground mb-8">
               Zagreb to Split - Premium Transfer Service
             </h2>
-            
+
             <div className="prose prose-lg max-w-none">
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Experience a comfortable and scenic journey from Croatia's capital Zagreb to the beautiful 
-                coastal city of Split. Our professional drivers will take you on the most efficient route, 
+                Experience a comfortable and scenic journey from Croatia's capital Zagreb to the beautiful
+                coastal city of Split. Our professional drivers will take you on the most efficient route,
                 making your 380 km journey smooth and enjoyable.
               </p>
-              
+
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Split, Croatia's second-largest city, is known for its stunning Diocletian's Palace, 
-                beautiful beaches, and vibrant Mediterranean atmosphere. Perfect for starting your 
+                Split, Croatia's second-largest city, is known for its stunning Diocletian's Palace,
+                beautiful beaches, and vibrant Mediterranean atmosphere. Perfect for starting your
                 Dalmatian coast adventure!
               </p>
 
@@ -184,7 +189,7 @@ const ZagrebToSplit = () => {
                     <h3 className="text-xl font-bold">Rest Stop Included</h3>
                   </div>
                   <p className="text-muted-foreground">
-                    Complimentary rest stop at a highway service area. Perfect for 
+                    Complimentary rest stop at a highway service area. Perfect for
                     refreshments and stretching your legs.
                   </p>
                 </div>
@@ -195,7 +200,7 @@ const ZagrebToSplit = () => {
                     <h3 className="text-xl font-bold">Stay Connected</h3>
                   </div>
                   <p className="text-muted-foreground">
-                    Free WiFi throughout your journey. Work, stream, or browse 
+                    Free WiFi throughout your journey. Work, stream, or browse
                     while you travel in comfort.
                   </p>
                 </div>
@@ -221,7 +226,7 @@ const ZagrebToSplit = () => {
                 🏖️ Split Highlights
               </h3>
               <p className="text-muted-foreground mb-3">
-                Your driver can recommend the best beaches, restaurants, and attractions in Split. 
+                Your driver can recommend the best beaches, restaurants, and attractions in Split.
                 Don't miss the historic Diocletian's Palace and the beautiful Riva waterfront promenade!
               </p>
               <Button variant="outline">Ask About Split Recommendations</Button>
@@ -239,8 +244,8 @@ const ZagrebToSplit = () => {
               Safe, comfortable, and reliable. Start your coastal adventure with our premium transfer service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button 
-                size="lg" 
+              <Button
+                size="lg"
                 className="text-lg px-8 py-6"
                 onClick={() => navigate('/reservation?pickup=Zagreb&dropoff=Split&price=250')}
               >
