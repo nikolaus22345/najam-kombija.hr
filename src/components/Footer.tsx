@@ -63,6 +63,16 @@ const Footer = () => {
                   {t.footer.blog}
                 </Link>
               </li>
+              <li>
+                <Link to={getLink('/features/safety-first')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t.features.licensed.title}
+                </Link>
+              </li>
+              <li>
+                <Link to={getLink('/features/fixed-prices')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {t.features.fixedPrices.title}
+                </Link>
+              </li>
             </ul>
           </div>
 

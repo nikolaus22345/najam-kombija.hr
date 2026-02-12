@@ -4,14 +4,14 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const Features = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   const features = [
     {
       icon: CheckCircle2,
       title: t.features.fixedPrices.title,
       description: t.features.fixedPrices.description,
-      link: null,
+      link: "/features/fixed-prices",
     },
     {
       icon: Clock,
@@ -59,19 +59,35 @@ const Features = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div key={index} className="flex gap-4 p-6 rounded-xl hover:bg-card/50 transition-all duration-300">
-              <div className="flex-shrink-0">
-                <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center hover:bg-primary/20 transition-colors">
-                  <feature.icon className="w-7 h-7 text-primary" />
+          {features.map((feature, index) => {
+            const Content = (
+              <div className="flex gap-4 p-6 rounded-xl hover:bg-card/50 transition-all duration-300 h-full">
+                <div className="flex-shrink-0">
+                  <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <feature.icon className="w-7 h-7 text-primary" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">{feature.title}</h3>
+                  <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
                 </div>
               </div>
-              <div>
-                <h3 className="text-xl font-bold text-foreground mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground text-base leading-relaxed">{feature.description}</p>
-              </div>
-            </div>
-          ))}
+            );
+
+            if (feature.link) {
+              return (
+                <Link
+                  key={index}
+                  to={`/${language}${feature.link}`}
+                  className="group block h-full"
+                >
+                  {Content}
+                </Link>
+              );
+            }
+
+            return <div key={index}>{Content}</div>;
+          })}
         </div>
       </div>
     </section>

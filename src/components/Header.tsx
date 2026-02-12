@@ -161,6 +161,38 @@ const Header = () => {
                     </Link>
                   </div>
 
+                  <div className="border-b border-border pb-2 pt-4">
+                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">WHY CHOOSE US</p>
+                    <Link
+                      to={getLink('/features/safety-first')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      onClick={() => setOpen(false)}
+                    >
+                      {t.features.licensed.title}
+                    </Link>
+                    <Link
+                      to={getLink('/features/professional-drivers')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      onClick={() => setOpen(false)}
+                    >
+                      {t.features.drivers.title}
+                    </Link>
+                    <Link
+                      to={getLink('/features/24-7-service')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      onClick={() => setOpen(false)}
+                    >
+                      {t.features.availability.title}
+                    </Link>
+                    <Link
+                      to={getLink('/features/fixed-prices')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      onClick={() => setOpen(false)}
+                    >
+                      {t.features.fixedPrices.title}
+                    </Link>
+                  </div>
+
                   <Link
                     to={getLink('/about')}
                     className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 pt-4 uppercase"
@@ -243,6 +275,29 @@ const Header = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link to={getLink('/transfers/all-destinations')} className="cursor-pointer uppercase">All Destinations</Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1 uppercase">
+                  Why Us
+                  <ChevronDown className="w-4 h-4" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-background border border-border z-[100]">
+                <DropdownMenuItem asChild>
+                  <Link to={getLink('/features/safety-first')} className="cursor-pointer uppercase">{t.features.licensed.title}</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to={getLink('/features/professional-drivers')} className="cursor-pointer uppercase">{t.features.drivers.title}</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to={getLink('/features/24-7-service')} className="cursor-pointer uppercase">{t.features.availability.title}</Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link to={getLink('/features/fixed-prices')} className="cursor-pointer uppercase">{t.features.fixedPrices.title}</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
