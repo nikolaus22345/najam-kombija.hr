@@ -1,6 +1,6 @@
 import { useState } from "react";
 import BookingForm from "./BookingForm";
-import RouteMap from "./RouteMap";
+// Removed RouteMap as requested
 import heroImage from "@/assets/hero-highway.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
@@ -67,10 +67,6 @@ const Hero = () => {
               dropoff={dropoff}
               setDropoff={setDropoff}
             />
-            <div className="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden p-1">
-              {/* Pass empty strings if null to avoid issues, though state is initialized to "" */}
-              <RouteMap pickup={pickup} dropoff={dropoff} />
-            </div>
           </div>
         </div>
       </div>
