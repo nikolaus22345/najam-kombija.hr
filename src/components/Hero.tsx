@@ -3,12 +3,15 @@ import BookingForm from "./BookingForm";
 // Removed RouteMap as requested
 import heroImage from "@/assets/hero-highway.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Hero = () => {
   const { t } = useLanguage();
-  const [pickup, setPickup] = useState("");
-  const [dropoff, setDropoff] = useState("");
+  const location = useLocation();
+  const { pickup: initialPickup, dropoff: initialDropoff } = location.state || {};
+
+  const [pickup, setPickup] = useState(initialPickup || "");
+  const [dropoff, setDropoff] = useState(initialDropoff || "");
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-10">

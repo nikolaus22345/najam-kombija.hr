@@ -3,31 +3,46 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
 const PopularRoutes = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const getTo = (url: string) => url === '/' ? `/${language}/` : `/${language}${url}`;
 
   const routes = [
-    { name: "Split - Trogir", url: "/transfers/split-to-trogir" },
     { name: "Zagreb - Split", url: "/transfers/zagreb-to-split" },
-    { name: "Zadar - Novalja", url: "/transfers/zadar-to-novalja" },
     { name: "Zagreb - Dubrovnik", url: "/transfers/zagreb-to-dubrovnik" },
-    { name: "Split - Dubrovnik", url: "/transfers/split-to-dubrovnik" },
-    { name: "Zadar - Split", url: "/transfers/zadar-to-split" },
+    { name: "Zagreb - Plitvice Lakes", url: "/transfers/zagreb-to-plitvice-lakes" },
     { name: "Zagreb - Zadar", url: "/transfers/zagreb-to-zadar" },
-    { name: "Split - Hvar", url: "/transfers/split-to-hvar" },
-    { name: "Dubrovnik - Mostar", url: "/transfers/dubrovnik-to-mostar" },
-    { name: "Zagreb - Plitvice", url: "/transfers/zagreb-to-plitvice-lakes" },
-    { name: "Split - Makarska", url: "/transfers/split-to-makarska" },
-    { name: "Zadar - Pag", url: "/transfers/zadar-to-pag" },
     { name: "Zagreb - Rijeka", url: "/transfers/zagreb-to-rijeka" },
-    { name: "Split - Bol", url: "/transfers/split-to-bol" },
-    { name: "Dubrovnik - Cavtat", url: "/transfers/dubrovnik-to-cavtat" },
+    { name: "Zagreb - Pula", url: "/transfers/zagreb-to-pula" },
+    { name: "Zagreb - Rovinj", url: "/transfers/zagreb-to-rovinj" },
     { name: "Zagreb - Opatija", url: "/transfers/zagreb-to-opatija" },
-    { name: "Split - Šibenik", url: "/transfers/split-to-sibenik" },
-    { name: "Zadar - Biograd", url: "/transfers/zadar-to-biograd" },
+    { name: "Zagreb - Makarska", url: "/transfers/zagreb-to-makarska" },
+    { name: "Zagreb - Osijek", url: "/transfers/zagreb-to-osijek" },
+    { name: "Zagreb - Slavonski Brod", url: "/transfers/zagreb-to-slavonski-brod" },
+    { name: "Zagreb - Varazdin", url: "/transfers/zagreb-to-varazdin" },
+    { name: "Zagreb - Sisak", url: "/transfers/zagreb-to-sisak" },
     { name: "Zagreb - Karlovac", url: "/transfers/zagreb-to-karlovac" },
-    { name: "Split - Omiš", url: "/transfers/split-to-omis" },
-    { name: "Dubrovnik - Kotor", url: "/transfers/dubrovnik-to-kotor" },
-    { name: "Zagreb - Samobor", url: "/transfers/zagreb-to-samobor" },
+    { name: "Zagreb - Novalja", url: "/transfers/zagreb-to-novalja" },
+    { name: "Zagreb - Tisno", url: "/transfers/zagreb-to-tisno" },
+    { name: "Zagreb - Murter", url: "/transfers/zagreb-to-tisno" }, // Murter is near Tisno
+    { name: "Zagreb - Trogir", url: "/transfers/zagreb-to-trogir" },
+    { name: "Zagreb - Belgrade", url: "/transfers/zagreb-to-belgrade-airport" },
+    { name: "Zagreb - Sarajevo", url: "/transfers/zagreb-to-sarajevo-airport" },
+    { name: "Zagreb - Ljubljana", url: "/", state: { pickup: "Zagreb", dropoff: "Ljubljana" } },
+    { name: "Zagreb - Vienna", url: "/", state: { pickup: "Zagreb", dropoff: "Vienna" } },
+    { name: "Zagreb - Budapest", url: "/transfers/zagreb-to-budapest" },
+    { name: "Zagreb - Venice", url: "/transfers/zagreb-to-venice" },
+    { name: "Zagreb - Trieste", url: "/transfers/zagreb-to-trieste" },
+    { name: "Zagreb - Milan", url: "/transfers/zagreb-to-milan" },
+    { name: "Zagreb - Munich", url: "/", state: { pickup: "Zagreb", dropoff: "Munich" } },
+    { name: "Zagreb - Graz", url: "/", state: { pickup: "Zagreb", dropoff: "Graz" } },
+    { name: "Zagreb - Prague", url: "/transfers/zagreb-to-prague-airport" },
+    { name: "Zagreb - Krakow", url: "/transfers/zagreb-to-krakow" },
+    { name: "Zagreb - Celje", url: "/transfers/zagreb-to-celje" },
+    { name: "Zagreb - Portoroz", url: "/transfers/zagreb-to-portoroz" },
+    { name: "Zagreb - Rome", url: "/transfers/zagreb-to-rome" },
+    { name: "Zagreb - Passau", url: "/transfers/zagreb-to-passau" },
+    { name: "Zagreb - Bihac", url: "/transfers/zagreb-to-bihac" },
   ];
 
   return (
@@ -41,7 +56,8 @@ const PopularRoutes = () => {
           {routes.map((route, index) => (
             <Link
               key={index}
-              to={route.url}
+              to={getTo(route.url)}
+              state={route.state}
               className="px-4 py-2 bg-card border border-border rounded-lg text-sm text-foreground hover:border-primary hover:text-primary transition-colors"
             >
               {route.name}

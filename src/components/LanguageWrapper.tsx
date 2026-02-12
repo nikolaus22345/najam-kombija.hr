@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useParams, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Language } from "@/lib/translations";
+import { translations, Language } from "@/lib/translations";
 
-const VALID_LANGUAGES: Language[] = ["en", "hr", "de", "it"]; // Add others as needed
+const VALID_LANGUAGES = Object.keys(translations) as Language[];
 
 const LanguageWrapper = () => {
     const { lang } = useParams<{ lang: string }>();

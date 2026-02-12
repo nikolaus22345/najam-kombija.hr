@@ -233,6 +233,19 @@ export const translations = {
       messagePlaceholder: "Your Message",
       send: "Send Message",
     },
+    servicesPage: {
+      minibusRental: {
+        title: "Minibus Rental Croatia",
+        subtitle: "Comfortable minibus rentals for small to medium groups across Croatia. Modern vehicles and professional drivers.",
+        getQuote: "Get a Quote",
+        contactUs: "Contact Us",
+        features: {
+          capacity: { title: "8-20 Passengers", desc: "Perfect for medium-sized groups" },
+          service: { title: "Professional Service", desc: "Experienced and reliable drivers" },
+          flexible: { title: "Flexible Options", desc: "Hourly or daily rentals available" },
+        },
+      },
+    },
     footer: {
       description: "Your reliable partner for comfortable and safe transfers across Croatia.",
       quickLinks: "Quick Links",
@@ -510,6 +523,19 @@ export const translations = {
       subjectPlaceholder: "Predmet",
       messagePlaceholder: "Vaša Poruka",
       send: "Pošalji Poruku",
+    },
+    servicesPage: {
+      minibusRental: {
+        title: "Najam Minibusa Hrvatska",
+        subtitle: "Udoban najam minibusa za male i srednje grupe širom Hrvatske. Moderna vozila i profesionalni vozači.",
+        getQuote: "Zatražite Ponudu",
+        contactUs: "Kontaktirajte Nas",
+        features: {
+          capacity: { title: "8-20 Putnika", desc: "Savršeno za srednje grupe" },
+          service: { title: "Profesionalna Usluga", desc: "Iskusni i pouzdani vozači" },
+          flexible: { title: "Fleksibilne Opcije", desc: "Dostupan najam po satu ili danu" },
+        },
+      },
     },
     footer: {
       description: "Vaš pouzdani partner za udobne i sigurne transfere širom Hrvatske.",
@@ -789,6 +815,19 @@ export const translations = {
       messagePlaceholder: "Ihre Nachricht",
       send: "Nachricht Senden",
     },
+    servicesPage: {
+      minibusRental: {
+        title: "Minibus Vermietung Kroatien",
+        subtitle: "Komfortable Minibusvermietung für kleine bis mittlere Gruppen in ganz Kroatien. Moderne Fahrzeuge und professionelle Fahrer.",
+        getQuote: "Angebot Anfordern",
+        contactUs: "Kontaktiere Uns",
+        features: {
+          capacity: { title: "8-20 Passagiere", desc: "Perfekt für mittelgroße Gruppen" },
+          service: { title: "Professioneller Service", desc: "Erfahrene und zuverlässige Fahrer" },
+          flexible: { title: "Flexible Optionen", desc: "Stunden- oder Tagesmiete verfügbar" },
+        },
+      },
+    },
     footer: {
       description: "Ihr zuverlässiger Partner für komfortable und sichere Transfers in ganz Kroatien.",
       quickLinks: "Schnelllinks",
@@ -1067,6 +1106,19 @@ export const translations = {
       messagePlaceholder: "Il Tuo Messaggio",
       send: "Invia Messaggio",
     },
+    servicesPage: {
+      minibusRental: {
+        title: "Noleggio Minibus Croazia",
+        subtitle: "Comfortable minibus rentals for small to medium groups across Croatia. Modern vehicles and professional drivers.",
+        getQuote: "Richiedi Preventivo",
+        contactUs: "Contattaci",
+        features: {
+          capacity: { title: "8-20 Passeggeri", desc: "Perfetto per gruppi medi" },
+          service: { title: "Servizio Professionale", desc: "Autisti esperti e affidabili" },
+          flexible: { title: "Opzioni Flessibili", desc: "Noleggio orario o giornaliero disponibile" },
+        },
+      },
+    },
     footer: {
       description: "Il tuo partner affidabile per transfer confortevoli e sicuri in tutta la Croazia.",
       quickLinks: "Link Rapidi",
@@ -1319,6 +1371,19 @@ export const translations = {
       subjectPlaceholder: "Objet",
       messagePlaceholder: "Votre Message",
       send: "Envoyer le Message",
+    },
+    servicesPage: {
+      minibusRental: {
+        title: "Location de Minibus Croatie",
+        subtitle: "Comfortable minibus rentals for small to medium groups across Croatia. Modern vehicles and professional drivers.",
+        getQuote: "Demander un Devis",
+        contactUs: "Contactez-nous",
+        features: {
+          capacity: { title: "8-20 Passagers", desc: "Parfait pour les groupes de taille moyenne" },
+          service: { title: "Service Professionnel", desc: "Chauffeurs expérimentés et fiables" },
+          flexible: { title: "Options Flexibles", desc: "Location à l'heure ou à la journée disponible" },
+        },
+      },
     },
     footer: {
       description: "Votre partenaire fiable pour des transferts confortables et sûrs à travers la Croatie.",
@@ -1573,6 +1638,19 @@ export const translations = {
       messagePlaceholder: "메시지",
       send: "메시지 보내기",
     },
+    servicesPage: {
+      minibusRental: {
+        title: "Minibus Rental Croatia",
+        subtitle: "Comfortable minibus rentals for small to medium groups across Croatia. Modern vehicles and professional drivers.",
+        getQuote: "Get a Quote",
+        contactUs: "Contact Us",
+        features: {
+          capacity: { title: "8-20 Passengers", desc: "Perfect for medium-sized groups" },
+          service: { title: "Professional Service", desc: "Experienced and reliable drivers" },
+          flexible: { title: "Flexible Options", desc: "Hourly or daily rentals available" },
+        },
+      },
+    },
     footer: {
       description: "크로아티아 전역의 편안하고 안전한 픽업을 위한 믿을 수 있는 파트너.",
       quickLinks: "빠른 링크",
@@ -1826,6 +1904,19 @@ export const translations = {
       messagePlaceholder: "您的留言",
       send: "发送消息",
     },
+    servicesPage: {
+      minibusRental: {
+        title: "Minibus Rental Croatia",
+        subtitle: "Comfortable minibus rentals for small to medium groups across Croatia. Modern vehicles and professional drivers.",
+        getQuote: "Get a Quote",
+        contactUs: "Contact Us",
+        features: {
+          capacity: { title: "8-20 Passengers", desc: "Perfect for medium-sized groups" },
+          service: { title: "Professional Service", desc: "Experienced and reliable drivers" },
+          flexible: { title: "Flexible Options", desc: "Hourly or daily rentals available" },
+        },
+      },
+    },
     footer: {
       description: "您在克罗地亚全境舒适安全接送的可靠合作伙伴。",
       quickLinks: "快速链接",
@@ -2078,6 +2169,19 @@ export const translations = {
       subjectPlaceholder: "件名",
       messagePlaceholder: "メッセージ",
       send: "メッセージを送信",
+    },
+    servicesPage: {
+      minibusRental: {
+        title: "Minibus Rental Croatia",
+        subtitle: "Comfortable minibus rentals for small to medium groups across Croatia. Modern vehicles and professional drivers.",
+        getQuote: "Get a Quote",
+        contactUs: "Contact Us",
+        features: {
+          capacity: { title: "8-20 Passengers", desc: "Perfect for medium-sized groups" },
+          service: { title: "Professional Service", desc: "Experienced and reliable drivers" },
+          flexible: { title: "Flexible Options", desc: "Hourly or daily rentals available" },
+        },
+      },
     },
     footer: {
       description: "クロアチア全土での快適で安全な送迎のための信頼できるパートナー。",

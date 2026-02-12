@@ -33,6 +33,17 @@ import ZagrebToTrieste from "./pages/transfers/routes/ZagrebToTrieste";
 import ZagrebToPrague from "./pages/transfers/routes/ZagrebToPrague";
 import ZagrebToTrogir from "./pages/transfers/routes/ZagrebToTrogir";
 import ZagrebToPassau from "./pages/transfers/routes/ZagrebToPassau";
+import ZagrebToZadar from "./pages/transfers/routes/ZagrebToZadar";
+import ZagrebToRijeka from "./pages/transfers/routes/ZagrebToRijeka";
+import ZagrebToPula from "./pages/transfers/routes/ZagrebToPula";
+import ZagrebToOsijek from "./pages/transfers/routes/ZagrebToOsijek";
+import ZagrebToRovinj from "./pages/transfers/routes/ZagrebToRovinj";
+import ZagrebToOpatija from "./pages/transfers/routes/ZagrebToOpatija";
+import ZagrebToVarazdin from "./pages/transfers/routes/ZagrebToVarazdin";
+import ZagrebToSlavonski from "./pages/transfers/routes/ZagrebToSlavonski";
+import ZagrebToSisak from "./pages/transfers/routes/ZagrebToSisak";
+import ZagrebToKarlovac from "./pages/transfers/routes/ZagrebToKarlovac";
+import ZagrebToNovalja from "./pages/transfers/routes/ZagrebToNovalja";
 import VodiceToZagreb from "./pages/transfers/routes/VodiceToZagreb";
 import BovecToZagreb from "./pages/transfers/routes/BovecToZagreb";
 import KranjToZagreb from "./pages/transfers/routes/KranjToZagreb";
@@ -142,6 +153,28 @@ const App = () => (
               <Route path="zagreb-to-prague" element={<ZagrebToPrague />} />
               <Route path="zagreb-to-trogir" element={<ZagrebToTrogir />} />
               <Route path="zagreb-to-passau" element={<ZagrebToPassau />} />
+              <Route path="transfers/zagreb-to-zadar" element={<ZagrebToZadar />} />
+              <Route path="transfers/zagreb-to-rijeka" element={<ZagrebToRijeka />} />
+              <Route path="transfers/zagreb-to-pula" element={<ZagrebToPula />} />
+              <Route path="transfers/zagreb-to-osijek" element={<ZagrebToOsijek />} />
+              <Route path="transfers/zagreb-to-rovinj" element={<ZagrebToRovinj />} />
+              <Route path="transfers/zagreb-to-opatija" element={<ZagrebToOpatija />} />
+              <Route path="transfers/zagreb-to-varazdin" element={<ZagrebToVarazdin />} />
+              <Route path="transfers/zagreb-to-slavonski-brod" element={<ZagrebToSlavonski />} />
+              <Route path="transfers/zagreb-to-sisak" element={<ZagrebToSisak />} />
+              <Route path="transfers/zagreb-to-karlovac" element={<ZagrebToKarlovac />} />
+              <Route path="transfers/zagreb-to-novalja" element={<ZagrebToNovalja />} />
+              <Route path="zagreb-to-zadar" element={<ZagrebToZadar />} />
+              <Route path="zagreb-to-rijeka" element={<ZagrebToRijeka />} />
+              <Route path="zagreb-to-pula" element={<ZagrebToPula />} />
+              <Route path="zagreb-to-osijek" element={<ZagrebToOsijek />} />
+              <Route path="zagreb-to-rovinj" element={<ZagrebToRovinj />} />
+              <Route path="zagreb-to-opatija" element={<ZagrebToOpatija />} />
+              <Route path="zagreb-to-varazdin" element={<ZagrebToVarazdin />} />
+              <Route path="zagreb-to-slavonski-brod" element={<ZagrebToSlavonski />} />
+              <Route path="zagreb-to-sisak" element={<ZagrebToSisak />} />
+              <Route path="zagreb-to-karlovac" element={<ZagrebToKarlovac />} />
+              <Route path="zagreb-to-novalja" element={<ZagrebToNovalja />} />
 
               {/* To Zagreb routes */}
               <Route path="transfers/vodice-to-zagreb" element={<VodiceToZagreb />} />
