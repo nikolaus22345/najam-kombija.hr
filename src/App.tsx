@@ -2,7 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import LanguageWrapper from "@/components/LanguageWrapper";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ZagrebAirport from "./pages/transfers/ZagrebAirport";
@@ -87,169 +89,177 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/transfers/zagreb-airport" element={<ZagrebAirport />} />
-          <Route path="/transfers/split-airport" element={<SplitAirport />} />
-          <Route path="/transfers/zadar-airport" element={<ZadarAirport />} />
-          <Route path="/transfers/zagreb-city-center" element={<ZagrebCityCenter />} />
-          <Route path="/transfers/all-destinations" element={<AllDestinations />} />
-          <Route path="/transfers/zagreb-to-plitvice-lakes" element={<ZagrebToPlitvice />} />
-          <Route path="/transfers/zagreb-to-split" element={<ZagrebToSplit />} />
-          <Route path="/transfers/split-to-dubrovnik" element={<SplitToDubrovnik />} />
-          <Route path="/transfers/zagreb-to-motovun" element={<ZagrebToMotovun />} />
-          <Route path="/transfers/zagreb-to-belgrade-airport" element={<ZagrebToBelgrade />} />
-          <Route path="/transfers/zagreb-to-milan" element={<ZagrebToMilan />} />
-          <Route path="/transfers/zagreb-to-venice" element={<ZagrebToVenice />} />
-          <Route path="/transfers/zagreb-to-tisno" element={<ZagrebToTisno />} />
-          <Route path="/transfers/zagreb-to-dubrovnik" element={<ZagrebToDubrovnik />} />
-          <Route path="/transfers/zagreb-to-portoroz" element={<ZagrebToPortoroz />} />
-          <Route path="/transfers/zagreb-to-budapest" element={<ZagrebToBudapest />} />
-          <Route path="/transfers/zagreb-to-rome" element={<ZagrebToRome />} />
-          <Route path="/transfers/zagreb-to-makarska" element={<ZagrebToMakarska />} />
-          <Route path="/transfers/zagreb-to-celje" element={<ZagrebToCelje />} />
-          <Route path="/transfers/zagreb-to-krakow" element={<ZagrebToKrakow />} />
-          <Route path="/transfers/zagreb-to-bihac" element={<ZagrebToBihac />} />
-          <Route path="/transfers/zagreb-to-sarajevo-airport" element={<ZagrebToSarajevo />} />
-          <Route path="/transfers/zagreb-to-trieste" element={<ZagrebToTrieste />} />
-          <Route path="/transfers/zagreb-to-prague-airport" element={<ZagrebToPrague />} />
-          <Route path="/transfers/zagreb-to-trogir" element={<ZagrebToTrogir />} />
-          <Route path="/transfers/zagreb-to-passau" element={<ZagrebToPassau />} />
+        <LanguageProvider>
+          <Routes>
+            <Route path="/" element={<Navigate to="/en" replace />} />
+            <Route path="/:lang" element={<LanguageWrapper />}>
+              <Route index element={<Index />} />
+              <Route path="transfers/zagreb-airport" element={<ZagrebAirport />} />
+              <Route path="transfers/split-airport" element={<SplitAirport />} />
+              <Route path="transfers/zadar-airport" element={<ZadarAirport />} />
+              <Route path="transfers/zagreb-city-center" element={<ZagrebCityCenter />} />
+              <Route path="transfers/all-destinations" element={<AllDestinations />} />
+              <Route path="transfers/zagreb-to-plitvice-lakes" element={<ZagrebToPlitvice />} />
+              <Route path="transfers/zagreb-to-split" element={<ZagrebToSplit />} />
+              <Route path="transfers/split-to-dubrovnik" element={<SplitToDubrovnik />} />
+              <Route path="transfers/zagreb-to-motovun" element={<ZagrebToMotovun />} />
+              <Route path="transfers/zagreb-to-belgrade-airport" element={<ZagrebToBelgrade />} />
+              <Route path="transfers/zagreb-to-milan" element={<ZagrebToMilan />} />
+              <Route path="transfers/zagreb-to-venice" element={<ZagrebToVenice />} />
+              <Route path="transfers/zagreb-to-tisno" element={<ZagrebToTisno />} />
+              <Route path="transfers/zagreb-to-dubrovnik" element={<ZagrebToDubrovnik />} />
+              <Route path="transfers/zagreb-to-portoroz" element={<ZagrebToPortoroz />} />
+              <Route path="transfers/zagreb-to-budapest" element={<ZagrebToBudapest />} />
+              <Route path="transfers/zagreb-to-rome" element={<ZagrebToRome />} />
+              <Route path="transfers/zagreb-to-makarska" element={<ZagrebToMakarska />} />
+              <Route path="transfers/zagreb-to-celje" element={<ZagrebToCelje />} />
+              <Route path="transfers/zagreb-to-krakow" element={<ZagrebToKrakow />} />
+              <Route path="transfers/zagreb-to-bihac" element={<ZagrebToBihac />} />
+              <Route path="transfers/zagreb-to-sarajevo-airport" element={<ZagrebToSarajevo />} />
+              <Route path="transfers/zagreb-to-trieste" element={<ZagrebToTrieste />} />
+              <Route path="transfers/zagreb-to-prague-airport" element={<ZagrebToPrague />} />
+              <Route path="transfers/zagreb-to-trogir" element={<ZagrebToTrogir />} />
+              <Route path="transfers/zagreb-to-passau" element={<ZagrebToPassau />} />
 
-          {/* Alternative short routes (SEO) */}
-          <Route path="/zagreb-to-plitvice" element={<ZagrebToPlitvice />} />
-          <Route path="/zagreb-to-split" element={<ZagrebToSplit />} />
-          <Route path="/zagreb-to-dubrovnik" element={<ZagrebToDubrovnik />} />
-          <Route path="/zagreb-to-motovun" element={<ZagrebToMotovun />} />
-          <Route path="/zagreb-to-belgrade" element={<ZagrebToBelgrade />} />
-          <Route path="/zagreb-to-milan" element={<ZagrebToMilan />} />
-          <Route path="/zagreb-to-venice" element={<ZagrebToVenice />} />
-          <Route path="/zagreb-to-tisno" element={<ZagrebToTisno />} />
-          <Route path="/zagreb-to-portoroz" element={<ZagrebToPortoroz />} />
-          <Route path="/zagreb-to-budapest" element={<ZagrebToBudapest />} />
-          <Route path="/zagreb-to-rome" element={<ZagrebToRome />} />
-          <Route path="/zagreb-to-makarska" element={<ZagrebToMakarska />} />
-          <Route path="/zagreb-to-celje" element={<ZagrebToCelje />} />
-          <Route path="/zagreb-to-krakow" element={<ZagrebToKrakow />} />
-          <Route path="/zagreb-to-bihac" element={<ZagrebToBihac />} />
-          <Route path="/zagreb-to-sarajevo" element={<ZagrebToSarajevo />} />
-          <Route path="/zagreb-to-trieste" element={<ZagrebToTrieste />} />
-          <Route path="/zagreb-to-prague" element={<ZagrebToPrague />} />
-          <Route path="/zagreb-to-trogir" element={<ZagrebToTrogir />} />
-          <Route path="/zagreb-to-passau" element={<ZagrebToPassau />} />
+              {/* Alternative short routes (SEO) */}
+              <Route path="zagreb-to-plitvice" element={<ZagrebToPlitvice />} />
+              <Route path="zagreb-to-split" element={<ZagrebToSplit />} />
+              <Route path="zagreb-to-dubrovnik" element={<ZagrebToDubrovnik />} />
+              <Route path="zagreb-to-motovun" element={<ZagrebToMotovun />} />
+              <Route path="zagreb-to-belgrade" element={<ZagrebToBelgrade />} />
+              <Route path="zagreb-to-milan" element={<ZagrebToMilan />} />
+              <Route path="zagreb-to-venice" element={<ZagrebToVenice />} />
+              <Route path="zagreb-to-tisno" element={<ZagrebToTisno />} />
+              <Route path="zagreb-to-portoroz" element={<ZagrebToPortoroz />} />
+              <Route path="zagreb-to-budapest" element={<ZagrebToBudapest />} />
+              <Route path="zagreb-to-rome" element={<ZagrebToRome />} />
+              <Route path="zagreb-to-makarska" element={<ZagrebToMakarska />} />
+              <Route path="zagreb-to-celje" element={<ZagrebToCelje />} />
+              <Route path="zagreb-to-krakow" element={<ZagrebToKrakow />} />
+              <Route path="zagreb-to-bihac" element={<ZagrebToBihac />} />
+              <Route path="zagreb-to-sarajevo" element={<ZagrebToSarajevo />} />
+              <Route path="zagreb-to-trieste" element={<ZagrebToTrieste />} />
+              <Route path="zagreb-to-prague" element={<ZagrebToPrague />} />
+              <Route path="zagreb-to-trogir" element={<ZagrebToTrogir />} />
+              <Route path="zagreb-to-passau" element={<ZagrebToPassau />} />
 
-          {/* To Zagreb routes */}
-          <Route path="/transfers/vodice-to-zagreb" element={<VodiceToZagreb />} />
-          <Route path="/transfers/bovec-to-zagreb" element={<BovecToZagreb />} />
-          <Route path="/transfers/kranj-to-zagreb" element={<KranjToZagreb />} />
-          <Route path="/transfers/pecs-to-zagreb" element={<PecsToZagreb />} />
-          <Route path="/transfers/innsbruck-to-zagreb" element={<InnsbruckToZagreb />} />
-          <Route path="/transfers/umag-to-zagreb" element={<UmagToZagreb />} />
-          <Route path="/transfers/klagenfurt-to-zagreb" element={<KlagenfurtToZagreb />} />
-          <Route path="/transfers/villach-to-zagreb" element={<VillachToZagreb />} />
-          <Route path="/transfers/crikvenica-to-zagreb" element={<CrikvenicaToZagreb />} />
-          <Route path="/transfers/senj-to-zagreb" element={<SenjToZagreb />} />
-          <Route path="/transfers/biograd-to-zagreb" element={<BiogradToZagreb />} />
-          <Route path="/transfers/groznjan-to-zagreb" element={<GroznjanToZagreb />} />
-          <Route path="/transfers/sibenik-to-zagreb" element={<SibenikToZagreb />} />
-          <Route path="/transfers/stuttgart-to-zagreb" element={<StuttgartToZagreb />} />
-          <Route path="/transfers/cesky-krumlov-to-zagreb" element={<CeskyKrumlovToZagreb />} />
-          <Route path="/transfers/belgrade-airport-to-zagreb" element={<BelgradeAirportToZagreb />} />
-          <Route path="/transfers/ferrara-to-zagreb" element={<FerraraToZagreb />} />
-          <Route path="/transfers/milan-linate-to-zagreb" element={<MilanLinateToZagreb />} />
-          <Route path="/transfers/pisa-to-zagreb" element={<PisaToZagreb />} />
-          <Route path="/transfers/balatonfured-to-zagreb" element={<BalatonfuredToZagreb />} />
+              {/* To Zagreb routes */}
+              <Route path="transfers/vodice-to-zagreb" element={<VodiceToZagreb />} />
+              <Route path="transfers/bovec-to-zagreb" element={<BovecToZagreb />} />
+              <Route path="transfers/kranj-to-zagreb" element={<KranjToZagreb />} />
+              <Route path="transfers/pecs-to-zagreb" element={<PecsToZagreb />} />
+              <Route path="transfers/innsbruck-to-zagreb" element={<InnsbruckToZagreb />} />
+              <Route path="transfers/umag-to-zagreb" element={<UmagToZagreb />} />
+              <Route path="transfers/klagenfurt-to-zagreb" element={<KlagenfurtToZagreb />} />
+              <Route path="transfers/villach-to-zagreb" element={<VillachToZagreb />} />
+              <Route path="transfers/crikvenica-to-zagreb" element={<CrikvenicaToZagreb />} />
+              <Route path="transfers/senj-to-zagreb" element={<SenjToZagreb />} />
+              <Route path="transfers/biograd-to-zagreb" element={<BiogradToZagreb />} />
+              <Route path="transfers/groznjan-to-zagreb" element={<GroznjanToZagreb />} />
+              <Route path="transfers/sibenik-to-zagreb" element={<SibenikToZagreb />} />
+              <Route path="transfers/stuttgart-to-zagreb" element={<StuttgartToZagreb />} />
+              <Route path="transfers/cesky-krumlov-to-zagreb" element={<CeskyKrumlovToZagreb />} />
+              <Route path="transfers/belgrade-airport-to-zagreb" element={<BelgradeAirportToZagreb />} />
+              <Route path="transfers/ferrara-to-zagreb" element={<FerraraToZagreb />} />
+              <Route path="transfers/milan-linate-to-zagreb" element={<MilanLinateToZagreb />} />
+              <Route path="transfers/pisa-to-zagreb" element={<PisaToZagreb />} />
+              <Route path="transfers/balatonfured-to-zagreb" element={<BalatonfuredToZagreb />} />
 
-          {/* Short To Zagreb routes (SEO) */}
-          <Route path="/vodice-to-zagreb" element={<VodiceToZagreb />} />
-          <Route path="/bovec-to-zagreb" element={<BovecToZagreb />} />
-          <Route path="/kranj-to-zagreb" element={<KranjToZagreb />} />
-          <Route path="/pecs-to-zagreb" element={<PecsToZagreb />} />
-          <Route path="/innsbruck-to-zagreb" element={<InnsbruckToZagreb />} />
-          <Route path="/umag-to-zagreb" element={<UmagToZagreb />} />
-          <Route path="/klagenfurt-to-zagreb" element={<KlagenfurtToZagreb />} />
-          <Route path="/villach-to-zagreb" element={<VillachToZagreb />} />
-          <Route path="/crikvenica-to-zagreb" element={<CrikvenicaToZagreb />} />
-          <Route path="/senj-to-zagreb" element={<SenjToZagreb />} />
-          <Route path="/biograd-to-zagreb" element={<BiogradToZagreb />} />
-          <Route path="/groznjan-to-zagreb" element={<GroznjanToZagreb />} />
-          <Route path="/sibenik-to-zagreb" element={<SibenikToZagreb />} />
-          <Route path="/stuttgart-to-zagreb" element={<StuttgartToZagreb />} />
-          <Route path="/cesky-krumlov-to-zagreb" element={<CeskyKrumlovToZagreb />} />
-          <Route path="/belgrade-airport-to-zagreb" element={<BelgradeAirportToZagreb />} />
-          <Route path="/ferrara-to-zagreb" element={<FerraraToZagreb />} />
-          <Route path="/milan-linate-to-zagreb" element={<MilanLinateToZagreb />} />
-          <Route path="/pisa-to-zagreb" element={<PisaToZagreb />} />
-          <Route path="/balatonfured-to-zagreb" element={<BalatonfuredToZagreb />} />
+              {/* Short To Zagreb routes (SEO) */}
+              <Route path="vodice-to-zagreb" element={<VodiceToZagreb />} />
+              <Route path="bovec-to-zagreb" element={<BovecToZagreb />} />
+              <Route path="kranj-to-zagreb" element={<KranjToZagreb />} />
+              <Route path="pecs-to-zagreb" element={<PecsToZagreb />} />
+              <Route path="innsbruck-to-zagreb" element={<InnsbruckToZagreb />} />
+              <Route path="umag-to-zagreb" element={<UmagToZagreb />} />
+              <Route path="klagenfurt-to-zagreb" element={<KlagenfurtToZagreb />} />
+              <Route path="villach-to-zagreb" element={<VillachToZagreb />} />
+              <Route path="crikvenica-to-zagreb" element={<CrikvenicaToZagreb />} />
+              <Route path="senj-to-zagreb" element={<SenjToZagreb />} />
+              <Route path="biograd-to-zagreb" element={<BiogradToZagreb />} />
+              <Route path="groznjan-to-zagreb" element={<GroznjanToZagreb />} />
+              <Route path="sibenik-to-zagreb" element={<SibenikToZagreb />} />
+              <Route path="stuttgart-to-zagreb" element={<StuttgartToZagreb />} />
+              <Route path="cesky-krumlov-to-zagreb" element={<CeskyKrumlovToZagreb />} />
+              <Route path="belgrade-airport-to-zagreb" element={<BelgradeAirportToZagreb />} />
+              <Route path="ferrara-to-zagreb" element={<FerraraToZagreb />} />
+              <Route path="milan-linate-to-zagreb" element={<MilanLinateToZagreb />} />
+              <Route path="pisa-to-zagreb" element={<PisaToZagreb />} />
+              <Route path="balatonfured-to-zagreb" element={<BalatonfuredToZagreb />} />
 
-          {/* Service Pages */}
-          <Route path="/services" element={<Services />} />
-          <Route path="/coach-rental" element={<CoachRental />} />
-          <Route path="/minibus-rental" element={<MinibusRental />} />
-          <Route path="/van-rental" element={<VanRental />} />
-          <Route path="/chauffeur-service" element={<ChauffeurService />} />
-          <Route path="/chauffeur-service-zagreb" element={<ChauffeurServiceZagreb />} />
-          <Route path="/chauffeur-service-dubrovnik" element={<ChauffeurServiceDubrovnik />} />
-          <Route path="/limo-service-zagreb" element={<LimoServiceZagreb />} />
-          <Route path="/limo-service-dubrovnik" element={<LimoServiceDubrovnik />} />
-          <Route path="/limo-hire-for-wedding" element={<LimoHireForWedding />} />
+              {/* Service Pages */}
+              <Route path="services" element={<Services />} />
+              <Route path="coach-rental" element={<CoachRental />} />
+              <Route path="minibus-rental" element={<MinibusRental />} />
+              <Route path="van-rental" element={<VanRental />} />
+              <Route path="chauffeur-service" element={<ChauffeurService />} />
+              <Route path="chauffeur-service-zagreb" element={<ChauffeurServiceZagreb />} />
+              <Route path="chauffeur-service-dubrovnik" element={<ChauffeurServiceDubrovnik />} />
+              <Route path="limo-service-zagreb" element={<LimoServiceZagreb />} />
+              <Route path="limo-service-dubrovnik" element={<LimoServiceDubrovnik />} />
+              <Route path="limo-hire-for-wedding" element={<LimoHireForWedding />} />
 
-          {/* Transfer Hub Pages */}
-          <Route path="/transfers/zagreb" element={<ZagrebTransfers />} />
-          <Route path="/transfers/dubrovnik" element={<DubrovnikTransfers />} />
+              {/* Transfer Hub Pages */}
+              <Route path="transfers/zagreb" element={<ZagrebTransfers />} />
+              <Route path="transfers/dubrovnik" element={<DubrovnikTransfers />} />
 
-          {/* Airport Transfers */}
-          <Route path="/airport-transfers/zagreb" element={<ZagrebAirportTransfers />} />
+              {/* Airport Transfers */}
+              <Route path="airport-transfers/zagreb" element={<ZagrebAirportTransfers />} />
 
-          <Route path="/booking" element={<BookingCheckout />} />
-          <Route path="/reservation" element={<Reservation />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/thank-you" element={<ThankYou />} />
-          <Route path="/get-quote" element={<GetQuote />} />
-          <Route path="/features/professional-drivers" element={<ProfessionalDrivers />} />
-          <Route path="/features/safety-first" element={<SafetyFirst />} />
-          <Route path="/features/24-7-service" element={<TwentyFourSeven />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/menu" element={<MobileMenu />} />
+              <Route path="booking" element={<BookingCheckout />} />
+              <Route path="reservation" element={<Reservation />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="thank-you" element={<ThankYou />} />
+              <Route path="get-quote" element={<GetQuote />} />
+              <Route path="features/professional-drivers" element={<ProfessionalDrivers />} />
+              <Route path="features/safety-first" element={<SafetyFirst />} />
+              <Route path="features/24-7-service" element={<TwentyFourSeven />} />
+              <Route path="about" element={<AboutUs />} />
+              <Route path="contact" element={<ContactUs />} />
+              <Route path="blog" element={<Blog />} />
+              <Route path="privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="terms-of-service" element={<TermsOfService />} />
+              <Route path="menu" element={<MobileMenu />} />
 
-          {/* Legacy Routes from zagreb-transfers.hr (SEO) */}
-          <Route path="/zagreb-to-split-transfer" element={<ZagrebToSplit />} />
-          <Route path="/zagreb-to-dubrovnik-transfer" element={<ZagrebToDubrovnik />} />
-          <Route path="/zagreb-to-plitvice-lakes-transfer" element={<ZagrebToPlitvice />} />
-          <Route path="/zagreb-to-motovun-transfer" element={<ZagrebToMotovun />} />
-          <Route path="/zagreb-to-milan-transfer" element={<ZagrebToMilan />} />
-          <Route path="/zagreb-to-sarajevo-transfer" element={<ZagrebToSarajevo />} />
-          <Route path="/zagreb-to-budapest-transfer" element={<ZagrebToBudapest />} />
-          <Route path="/zagreb-to-venice-transfer" element={<ZagrebToVenice />} />
-          <Route path="/zagreb-to-trogir-transfer" element={<ZagrebToTrogir />} />
-          <Route path="/zagreb-to-rome-transfers" element={<ZagrebToRome />} />
-          <Route path="/zagreb-to-makarska-transfer" element={<ZagrebToMakarska />} />
-          <Route path="/zagreb-to-celje-transfer" element={<ZagrebToCelje />} />
-          <Route path="/zagreb-to-trieste-transfer" element={<ZagrebToTrieste />} />
-          <Route path="/zagreb-to-bihac-transfer" element={<ZagrebToBihac />} />
-          <Route path="/zagreb-to-passau-transfer" element={<ZagrebToPassau />} />
-          <Route path="/zagreb-to-klagenfurt-transfer" element={<KlagenfurtToZagreb />} />
-          <Route path="/zagreb-to-crikvenica-transfer" element={<CrikvenicaToZagreb />} />
-          <Route path="/zagreb-to-senj-transfer" element={<SenjToZagreb />} />
-          <Route path="/zagreb-to-biograd-na-moru-transfer" element={<BiogradToZagreb />} />
-          <Route path="/zagreb-to-sibenik-transfer" element={<SibenikToZagreb />} />
-          <Route path="/zagreb-to-stuttgart-transfer" element={<StuttgartToZagreb />} />
-          <Route path="/zagreb-to-umag-transfer" element={<UmagToZagreb />} />
-          <Route path="/zagreb-to-vodice-transfer" element={<VodiceToZagreb />} />
-          <Route path="/bus-rental-croatia" element={<CoachRental />} />
-          <Route path="/minibus-rental-croatia" element={<MinibusRental />} />
-          <Route path="/van-rental-croatia" element={<VanRental />} />
-          <Route path="/chauffeur-service-croatia" element={<ChauffeurService />} />
-          <Route path="/limo-hire-for-wedding" element={<LimoHireForWedding />} />
-          <Route path="/zagreb-airport-transfers" element={<ZagrebAirportTransfers />} />
-          <Route path="/all-transfer-destinations" element={<AllDestinations />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+              {/* Legacy Routes from zagreb-transfers.hr (SEO) */}
+              <Route path="zagreb-to-split-transfer" element={<ZagrebToSplit />} />
+              <Route path="zagreb-to-dubrovnik-transfer" element={<ZagrebToDubrovnik />} />
+              <Route path="zagreb-to-plitvice-lakes-transfer" element={<ZagrebToPlitvice />} />
+              <Route path="zagreb-to-motovun-transfer" element={<ZagrebToMotovun />} />
+              <Route path="zagreb-to-milan-transfer" element={<ZagrebToMilan />} />
+              <Route path="zagreb-to-sarajevo-transfer" element={<ZagrebToSarajevo />} />
+              <Route path="zagreb-to-budapest-transfer" element={<ZagrebToBudapest />} />
+              <Route path="zagreb-to-venice-transfer" element={<ZagrebToVenice />} />
+              <Route path="zagreb-to-trogir-transfer" element={<ZagrebToTrogir />} />
+              <Route path="zagreb-to-rome-transfers" element={<ZagrebToRome />} />
+              <Route path="zagreb-to-makarska-transfer" element={<ZagrebToMakarska />} />
+              <Route path="zagreb-to-celje-transfer" element={<ZagrebToCelje />} />
+              <Route path="zagreb-to-trieste-transfer" element={<ZagrebToTrieste />} />
+              <Route path="zagreb-to-bihac-transfer" element={<ZagrebToBihac />} />
+              <Route path="zagreb-to-passau-transfer" element={<ZagrebToPassau />} />
+              <Route path="zagreb-to-klagenfurt-transfer" element={<KlagenfurtToZagreb />} />
+              <Route path="zagreb-to-crikvenica-transfer" element={<CrikvenicaToZagreb />} />
+              <Route path="zagreb-to-senj-transfer" element={<SenjToZagreb />} />
+              <Route path="zagreb-to-biograd-na-moru-transfer" element={<BiogradToZagreb />} />
+              <Route path="zagreb-to-sibenik-transfer" element={<SibenikToZagreb />} />
+              <Route path="zagreb-to-stuttgart-transfer" element={<StuttgartToZagreb />} />
+              <Route path="zagreb-to-umag-transfer" element={<UmagToZagreb />} />
+              <Route path="zagreb-to-vodice-transfer" element={<VodiceToZagreb />} />
+              <Route path="bus-rental-croatia" element={<CoachRental />} />
+              <Route path="minibus-rental-croatia" element={<MinibusRental />} />
+              <Route path="van-rental-croatia" element={<VanRental />} />
+              <Route path="chauffeur-service-croatia" element={<ChauffeurService />} />
+              <Route path="limo-hire-for-wedding" element={<LimoHireForWedding />} />
+              <Route path="zagreb-airport-transfers" element={<ZagrebAirportTransfers />} />
+              <Route path="all-transfer-destinations" element={<AllDestinations />} />
+            </Route>
+            {/* Catch-all redirect to /en/404 or similar, but for now NotFound is inside wrapper? No, NotFound should be global catch all? */}
+            {/* If url is /foo/bar and foo is not a lang, LanguageWrapper redirects to /en/foo/bar. */}
+            {/* If url is /en/non-existent, LanguageWrapper renders Outlet. Inside Outlet, we need a catch-all. */}
+
+            <Route path="*" element={<Navigate to="/en/404" replace />} />
+          </Routes>
+        </LanguageProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
