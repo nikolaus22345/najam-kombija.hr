@@ -26,17 +26,17 @@ const AllDestinations = () => {
     {
       title: "International From Zagreb",
       destinations: [
-        { name: "Zagreb to Ljubljana", distance: "140 km", duration: "1.5h", price: "€100", url: "/", state: { pickup: "Zagreb", dropoff: "Ljubljana" } },
+        { name: "Zagreb to Ljubljana", distance: "140 km", duration: "1.5h", price: "€160", url: "/transfers/zagreb-to-ljubljana" },
         { name: "Zagreb to Belgrade", distance: "390 km", duration: "4h", price: "€280", url: "/transfers/zagreb-to-belgrade-airport" },
-        { name: "Zagreb to Vienna", distance: "380 km", duration: "4h", price: "€280", url: "/", state: { pickup: "Zagreb", dropoff: "Vienna" } },
+        { name: "Zagreb to Vienna", distance: "380 km", duration: "4h", price: "€380", url: "/transfers/zagreb-to-vienna" },
         { name: "Zagreb to Budapest", distance: "350 km", duration: "3.5h", price: "€260", url: "/transfers/zagreb-to-budapest" },
         { name: "Zagreb to Venice", distance: "385 km", duration: "4h", price: "€290", url: "/transfers/zagreb-to-venice" },
         { name: "Zagreb to Trieste", distance: "190 km", duration: "2.5h", price: "€160", url: "/transfers/zagreb-to-trieste" },
         { name: "Zagreb to Milan", distance: "640 km", duration: "6.5h", price: "€550", url: "/transfers/zagreb-to-milan" },
         { name: "Zagreb to Sarajevo", distance: "400 km", duration: "5h", price: "€300", url: "/transfers/zagreb-to-sarajevo-airport" },
         { name: "Zagreb to Prague", distance: "640 km", duration: "7h", price: "€600", url: "/transfers/zagreb-to-prague-airport" },
-        { name: "Zagreb to Graz", distance: "180 km", duration: "2h", price: "€150", url: "/", state: { pickup: "Zagreb", dropoff: "Graz" } },
-        { name: "Zagreb to Munich", distance: "550 km", duration: "6h", price: "€500", url: "/", state: { pickup: "Zagreb", dropoff: "Munich" } },
+        { name: "Zagreb to Graz", distance: "180 km", duration: "2h", price: "€240", url: "/transfers/zagreb-to-graz" },
+        { name: "Zagreb to Munich", distance: "550 km", duration: "6h", price: "€580", url: "/transfers/zagreb-to-munich" },
       ]
     },
     {

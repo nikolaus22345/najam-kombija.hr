@@ -28,14 +28,14 @@ const PopularRoutes = () => {
     { name: "Zagreb - Trogir", url: "/transfers/zagreb-to-trogir" },
     { name: "Zagreb - Belgrade", url: "/transfers/zagreb-to-belgrade-airport" },
     { name: "Zagreb - Sarajevo", url: "/transfers/zagreb-to-sarajevo-airport" },
-    { name: "Zagreb - Ljubljana", url: "/", state: { pickup: "Zagreb", dropoff: "Ljubljana" } },
-    { name: "Zagreb - Vienna", url: "/", state: { pickup: "Zagreb", dropoff: "Vienna" } },
+    { name: "Zagreb - Ljubljana", url: "/transfers/zagreb-to-ljubljana" },
+    { name: "Zagreb - Vienna", url: "/transfers/zagreb-to-vienna" },
     { name: "Zagreb - Budapest", url: "/transfers/zagreb-to-budapest" },
     { name: "Zagreb - Venice", url: "/transfers/zagreb-to-venice" },
     { name: "Zagreb - Trieste", url: "/transfers/zagreb-to-trieste" },
     { name: "Zagreb - Milan", url: "/transfers/zagreb-to-milan" },
-    { name: "Zagreb - Munich", url: "/", state: { pickup: "Zagreb", dropoff: "Munich" } },
-    { name: "Zagreb - Graz", url: "/", state: { pickup: "Zagreb", dropoff: "Graz" } },
+    { name: "Zagreb - Munich", url: "/transfers/zagreb-to-munich" },
+    { name: "Zagreb - Graz", url: "/transfers/zagreb-to-graz" },
     { name: "Zagreb - Prague", url: "/transfers/zagreb-to-prague-airport" },
     { name: "Zagreb - Krakow", url: "/transfers/zagreb-to-krakow" },
     { name: "Zagreb - Celje", url: "/transfers/zagreb-to-celje" },
@@ -57,7 +57,6 @@ const PopularRoutes = () => {
             <Link
               key={index}
               to={getTo(route.url)}
-              state={route.state}
               className="px-4 py-2 bg-card border border-border rounded-lg text-sm text-foreground hover:border-primary hover:text-primary transition-colors"
             >
               {route.name}

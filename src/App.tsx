@@ -30,6 +30,10 @@ import ZagrebToKrakow from "./pages/transfers/routes/ZagrebToKrakow";
 import ZagrebToBihac from "./pages/transfers/routes/ZagrebToBihac";
 import ZagrebToSarajevo from "./pages/transfers/routes/ZagrebToSarajevo";
 import ZagrebToTrieste from "./pages/transfers/routes/ZagrebToTrieste";
+import ZagrebToLjubljana from "./pages/transfers/routes/ZagrebToLjubljana";
+import ZagrebToVienna from "./pages/transfers/routes/ZagrebToVienna";
+import ZagrebToGraz from "./pages/transfers/routes/ZagrebToGraz";
+import ZagrebToMunich from "./pages/transfers/routes/ZagrebToMunich";
 import ZagrebToPrague from "./pages/transfers/routes/ZagrebToPrague";
 import ZagrebToTrogir from "./pages/transfers/routes/ZagrebToTrogir";
 import ZagrebToPassau from "./pages/transfers/routes/ZagrebToPassau";
@@ -128,6 +132,10 @@ const App = () => (
               <Route path="transfers/zagreb-to-bihac" element={<ZagrebToBihac />} />
               <Route path="transfers/zagreb-to-sarajevo-airport" element={<ZagrebToSarajevo />} />
               <Route path="transfers/zagreb-to-trieste" element={<ZagrebToTrieste />} />
+              <Route path="transfers/zagreb-to-ljubljana" element={<ZagrebToLjubljana />} />
+              <Route path="transfers/zagreb-to-vienna" element={<ZagrebToVienna />} />
+              <Route path="transfers/zagreb-to-graz" element={<ZagrebToGraz />} />
+              <Route path="transfers/zagreb-to-munich" element={<ZagrebToMunich />} />
               <Route path="transfers/zagreb-to-prague-airport" element={<ZagrebToPrague />} />
               <Route path="transfers/zagreb-to-trogir" element={<ZagrebToTrogir />} />
               <Route path="transfers/zagreb-to-passau" element={<ZagrebToPassau />} />
@@ -150,6 +158,10 @@ const App = () => (
               <Route path="zagreb-to-bihac" element={<ZagrebToBihac />} />
               <Route path="zagreb-to-sarajevo" element={<ZagrebToSarajevo />} />
               <Route path="zagreb-to-trieste" element={<ZagrebToTrieste />} />
+              <Route path="zagreb-to-ljubljana" element={<ZagrebToLjubljana />} />
+              <Route path="zagreb-to-vienna" element={<ZagrebToVienna />} />
+              <Route path="zagreb-to-graz" element={<ZagrebToGraz />} />
+              <Route path="zagreb-to-munich" element={<ZagrebToMunich />} />
               <Route path="zagreb-to-prague" element={<ZagrebToPrague />} />
               <Route path="zagreb-to-trogir" element={<ZagrebToTrogir />} />
               <Route path="zagreb-to-passau" element={<ZagrebToPassau />} />
