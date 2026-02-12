@@ -12,26 +12,26 @@ const LanguageWrapper = () => {
     const location = useLocation();
 
     useEffect(() => {
-        if (lang && VALID_LANGUAGES.includes(lang as Language)) {
-            setLanguage(lang as Language);
-        } else {
-            // If language is invalid, redirect to default (en) but keep the path
-            // This might happen if someone manually types a wrong code
-            // However, App.tsx routing usually prevents this from matching if we are strict.
-            // But for "/:lang/*", "foo" matches "foo".
-            const defaultLang = "en";
-            // Construct new path: /en/rest-of-path
-            // But wait, if we are here, 'lang' is the first segment.
-            // So if url is "/foo/bar", lang is "foo". We want "/en/foo/bar" ?
-            // No, if the user visits "/about" (no lang), the router might not match this wrapper if it's strict on "/:lang".
-            // We will handle the root "/" in App.tsx.
+        if (lang) {
+            if (VALID_LANGUAGES.includes(lang as Language)) {
+                setLanguage(lang as Language);
+            } else {
+                // If lang is invalid (e.g. visited /booking directly), default to 'en' and prepend it
+                // We keep the full pathname because if the user visited /booking, 
+                // lang is 'booking', so we want /en/booking.
+                // If user visited /fr/booking (and fr is invalid), we get /en/fr/booking -> 404 inside EN.
+                // We must properly handle the "first segment is not a language" case.
 
-            if (lang && !VALID_LANGUAGES.includes(lang as Language)) {
-                // Fallback for invalid codes to EN
-                navigate(`/en${location.pathname.replace(/^\/[^/]+/, '')}`, { replace: true });
+                const defaultLang = "en";
+                navigate(`/${defaultLang}${location.pathname}`, { replace: true, state: location.state });
             }
         }
     }, [lang, setLanguage, navigate, location]);
+
+    // If lang is missing or invalid, don't render Outlet to avoid matching inner routes with wrong params
+    if (!lang || !VALID_LANGUAGES.includes(lang as Language)) {
+        return null;
+    }
 
     return <Outlet />;
 };

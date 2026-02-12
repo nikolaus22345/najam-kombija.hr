@@ -28,6 +28,8 @@ const Header = () => {
   const { language, setLanguage, t } = useLanguage();
   const [open, setOpen] = useState(false);
 
+  const getLink = (path: string) => `/${language}${path === '/' ? '' : path}`;
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 border-b border-border">
       <div className="container mx-auto px-4 lg:px-8">
@@ -81,7 +83,7 @@ const Header = () => {
                 </SheetHeader>
                 <nav className="flex flex-col gap-4 mt-8">
                   <Link
-                    to="/"
+                    to={getLink('/')}
                     className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 uppercase"
                     onClick={() => setOpen(false)}
                   >
@@ -91,35 +93,35 @@ const Header = () => {
                   <div className="border-b border-border pb-2">
                     <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">SERVICES</p>
                     <Link
-                      to="/coach-rental"
+                      to={getLink('/coach-rental')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
                       Bus Rental
                     </Link>
                     <Link
-                      to="/minibus-rental"
+                      to={getLink('/minibus-rental')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
                       Minibus Rental
                     </Link>
                     <Link
-                      to="/van-rental"
+                      to={getLink('/van-rental')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
                       Van Rental
                     </Link>
                     <Link
-                      to="/chauffeur-service"
+                      to={getLink('/chauffeur-service')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
                       Chauffeur Service
                     </Link>
                     <Link
-                      to="/limo-hire-for-wedding"
+                      to={getLink('/limo-hire-for-wedding')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
@@ -130,28 +132,28 @@ const Header = () => {
                   <div className="border-b border-border pb-2 pt-4">
                     <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">TRANSFERS</p>
                     <Link
-                      to="/transfers/zagreb"
+                      to={getLink('/transfers/zagreb')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
                       Zagreb Transfers
                     </Link>
                     <Link
-                      to="/transfers/dubrovnik"
+                      to={getLink('/transfers/dubrovnik')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
                       Dubrovnik Transfers
                     </Link>
                     <Link
-                      to="/airport-transfers/zagreb"
+                      to={getLink('/airport-transfers/zagreb')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
                       Zagreb Airport
                     </Link>
                     <Link
-                      to="/transfers/all-destinations"
+                      to={getLink('/transfers/all-destinations')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
@@ -160,27 +162,27 @@ const Header = () => {
                   </div>
 
                   <Link
-                    to="/about"
+                    to={getLink('/about')}
                     className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 pt-4 uppercase"
                     onClick={() => setOpen(false)}
                   >
                     {t.header.about}
                   </Link>
                   <Link
-                    to="/blog"
+                    to={getLink('/blog')}
                     className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 uppercase"
                     onClick={() => setOpen(false)}
                   >
                     Blog
                   </Link>
                   <Link
-                    to="/contact"
+                    to={getLink('/contact')}
                     className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 uppercase"
                     onClick={() => setOpen(false)}
                   >
                     {t.header.contact}
                   </Link>
-                  <Link to="/get-quote" onClick={() => setOpen(false)}>
+                  <Link to={getLink('/get-quote')} onClick={() => setOpen(false)}>
                     <Button variant="default" size="sm" className="mt-4 w-full uppercase">
                       {t.header.getQuote}
                     </Button>
@@ -192,7 +194,7 @@ const Header = () => {
 
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
+            <Link to={getLink('/')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
               {t.header.home}
             </Link>
 
@@ -205,19 +207,19 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-background border border-border z-[100]">
                 <DropdownMenuItem asChild>
-                  <Link to="/coach-rental" className="cursor-pointer uppercase">Bus Rental</Link>
+                  <Link to={getLink('/coach-rental')} className="cursor-pointer uppercase">Bus Rental</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/minibus-rental" className="cursor-pointer uppercase">Minibus Rental</Link>
+                  <Link to={getLink('/minibus-rental')} className="cursor-pointer uppercase">Minibus Rental</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/van-rental" className="cursor-pointer uppercase">Van Rental</Link>
+                  <Link to={getLink('/van-rental')} className="cursor-pointer uppercase">Van Rental</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/chauffeur-service" className="cursor-pointer uppercase">Chauffeur Service</Link>
+                  <Link to={getLink('/chauffeur-service')} className="cursor-pointer uppercase">Chauffeur Service</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/limo-hire-for-wedding" className="cursor-pointer uppercase">Wedding Limo</Link>
+                  <Link to={getLink('/limo-hire-for-wedding')} className="cursor-pointer uppercase">Wedding Limo</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -231,30 +233,30 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-background border border-border z-[100]">
                 <DropdownMenuItem asChild>
-                  <Link to="/transfers/zagreb" className="cursor-pointer uppercase">Zagreb Transfers</Link>
+                  <Link to={getLink('/transfers/zagreb')} className="cursor-pointer uppercase">Zagreb Transfers</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/transfers/dubrovnik" className="cursor-pointer uppercase">Dubrovnik Transfers</Link>
+                  <Link to={getLink('/transfers/dubrovnik')} className="cursor-pointer uppercase">Dubrovnik Transfers</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/airport-transfers/zagreb" className="cursor-pointer uppercase">Zagreb Airport</Link>
+                  <Link to={getLink('/airport-transfers/zagreb')} className="cursor-pointer uppercase">Zagreb Airport</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to="/transfers/all-destinations" className="cursor-pointer uppercase">All Destinations</Link>
+                  <Link to={getLink('/transfers/all-destinations')} className="cursor-pointer uppercase">All Destinations</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Link to="/about" className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
+            <Link to={getLink('/about')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
               {t.header.about}
             </Link>
-            <Link to="/blog" className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
+            <Link to={getLink('/blog')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
               Blog
             </Link>
-            <Link to="/contact" className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
+            <Link to={getLink('/contact')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
               {t.header.contact}
             </Link>
-            <Link to="/get-quote">
+            <Link to={getLink('/get-quote')}>
               <Button variant="default" size="sm" className="ml-4 uppercase">
                 {t.header.getQuote}
               </Button>

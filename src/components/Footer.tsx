@@ -3,7 +3,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const getLink = (path: string) => `/${language}${path === '/' ? '' : path}`;
+
   return (
     <footer className="bg-card/50 border-t border-border">
       <div className="container mx-auto px-4 lg:px-8 py-12">
@@ -36,29 +39,29 @@ const Footer = () => {
             <h3 className="text-foreground font-bold mb-4">{t.footer.quickLinks}</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#home" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t.footer.home}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#transfers" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/transfers/all-destinations')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t.footer.transfers}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/about')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t.footer.about}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/contact')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t.footer.contact}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/blog" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/blog')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   {t.footer.blog}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -67,27 +70,27 @@ const Footer = () => {
             <h3 className="text-foreground font-bold mb-4">{t.footer.services}</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/coach-rental" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/coach-rental')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Bus Rental
                 </Link>
               </li>
               <li>
-                <Link to="/minibus-rental" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/minibus-rental')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Minibus Rental
                 </Link>
               </li>
               <li>
-                <Link to="/van-rental" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/van-rental')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Van Rental
                 </Link>
               </li>
               <li>
-                <Link to="/chauffeur-service" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/chauffeur-service')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Chauffeur Service
                 </Link>
               </li>
               <li>
-                <Link to="/limo-hire-for-wedding" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={getLink('/limo-hire-for-wedding')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   Wedding Limo
                 </Link>
               </li>
@@ -119,12 +122,12 @@ const Footer = () => {
               {t.footer.copyright}
             </p>
             <div className="flex gap-6">
-              <a href="/privacy-policy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              <Link to={getLink('/privacy-policy')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {t.footer.privacy}
-              </a>
-              <a href="/terms-of-service" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+              </Link>
+              <Link to={getLink('/terms-of-service')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 {t.footer.terms}
-              </a>
+              </Link>
             </div>
           </div>
         </div>

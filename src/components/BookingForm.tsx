@@ -56,7 +56,7 @@ const BookingForm = ({ pickup, setPickup, dropoff, setDropoff }: BookingFormProp
   const [people, setPeople] = useState("1");
   const [showPickupSuggestions, setShowPickupSuggestions] = useState(false);
   const [showDropoffSuggestions, setShowDropoffSuggestions] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -103,7 +103,7 @@ const BookingForm = ({ pickup, setPickup, dropoff, setDropoff }: BookingFormProp
     }
 
     // Navigacija na checkout stranicu sa podacima
-    navigate('/booking', {
+    navigate(`/${language}/booking`, {
       state: {
         pickup,
         dropoff,
