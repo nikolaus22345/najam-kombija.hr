@@ -1,15 +1,15 @@
 import TransferLandingPage from "../../../components/TransferLandingPage";
 
-const ZagrebToLjubljana = () => {
+const ZagrebToPorec = () => {
     return (
         <TransferLandingPage
             origin="Zagreb"
-            destination="Ljubljana"
-            distanceKm={143}
-            durationMin={105}
+            destination="Poreč"
+            distanceKm={240}
+            durationMin={180}
             price={160}
         />
     );
 };
 
-export default ZagrebToLjubljana;
+export default ZagrebToPorec;

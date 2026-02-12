@@ -68,6 +68,20 @@ import FerraraToZagreb from "./pages/transfers/routes/FerraraToZagreb";
 import MilanLinateToZagreb from "./pages/transfers/routes/MilanLinateToZagreb";
 import PisaToZagreb from "./pages/transfers/routes/PisaToZagreb";
 import BalatonfuredToZagreb from "./pages/transfers/routes/BalatonfuredToZagreb";
+import SplitToHvar from "./pages/transfers/routes/SplitToHvar";
+import SplitToKorcula from "./pages/transfers/routes/SplitToKorcula";
+import SplitToMakarska from "./pages/transfers/routes/SplitToMakarska";
+import SplitToTrogir from "./pages/transfers/routes/SplitToTrogir";
+import SplitToSibenik from "./pages/transfers/routes/SplitToSibenik";
+import SplitToBol from "./pages/transfers/routes/SplitToBol";
+import SplitToOmis from "./pages/transfers/routes/SplitToOmis";
+import SplitToPrimosten from "./pages/transfers/routes/SplitToPrimosten";
+import ZadarToNovalja from "./pages/transfers/routes/ZadarToNovalja";
+import ZadarToPag from "./pages/transfers/routes/ZadarToPag";
+import ZadarToBiograd from "./pages/transfers/routes/ZadarToBiograd";
+import ZadarToNin from "./pages/transfers/routes/ZadarToNin";
+import DubrovnikToCavtat from "./pages/transfers/routes/DubrovnikToCavtat";
+import ZagrebToPorec from "./pages/transfers/routes/ZagrebToPorec";
 import BookingCheckout from "./pages/BookingCheckout";
 import Checkout from "./pages/Checkout";
 import GetQuote from "./pages/GetQuote";
@@ -77,6 +91,11 @@ import TwentyFourSeven from "./pages/features/TwentyFourSeven";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Blog from "./pages/Blog";
+import BeachesInDalmatia from "./pages/blog/BeachesInDalmatia";
+import PlitviceLakesGuide from "./pages/blog/PlitviceLakesGuide";
+import HiddenGemsIstria from "./pages/blog/HiddenGemsIstria";
+import SummerTransferTips from "./pages/blog/SummerTransferTips";
+import CroatianWineRoutes from "./pages/blog/CroatianWineRoutes";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CoachRental from "./pages/services/CoachRental";
@@ -210,6 +229,28 @@ const App = () => (
               <Route path="transfers/pisa-to-zagreb" element={<PisaToZagreb />} />
               <Route path="transfers/balatonfured-to-zagreb" element={<BalatonfuredToZagreb />} />
 
+              {/* Split routes */}
+              <Route path="transfers/split-to-hvar" element={<SplitToHvar />} />
+              <Route path="transfers/split-to-korcula" element={<SplitToKorcula />} />
+              <Route path="transfers/split-to-makarska" element={<SplitToMakarska />} />
+              <Route path="transfers/split-to-trogir" element={<SplitToTrogir />} />
+              <Route path="transfers/split-to-sibenik" element={<SplitToSibenik />} />
+              <Route path="transfers/split-to-bol" element={<SplitToBol />} />
+              <Route path="transfers/split-to-omis" element={<SplitToOmis />} />
+              <Route path="transfers/split-to-primosten" element={<SplitToPrimosten />} />
+
+              {/* Zadar routes */}
+              <Route path="transfers/zadar-to-novalja" element={<ZadarToNovalja />} />
+              <Route path="transfers/zadar-to-pag" element={<ZadarToPag />} />
+              <Route path="transfers/zadar-to-biograd" element={<ZadarToBiograd />} />
+              <Route path="transfers/zadar-to-nin" element={<ZadarToNin />} />
+
+              {/* Dubrovnik routes */}
+              <Route path="transfers/dubrovnik-to-cavtat" element={<DubrovnikToCavtat />} />
+
+              {/* Additional Zagreb routes */}
+              <Route path="transfers/zagreb-to-porec" element={<ZagrebToPorec />} />
+
               {/* Short To Zagreb routes (SEO) */}
               <Route path="vodice-to-zagreb" element={<VodiceToZagreb />} />
               <Route path="bovec-to-zagreb" element={<BovecToZagreb />} />
@@ -262,6 +303,11 @@ const App = () => (
               <Route path="about" element={<AboutUs />} />
               <Route path="contact" element={<ContactUs />} />
               <Route path="blog" element={<Blog />} />
+              <Route path="blog/beaches-in-dalmatia" element={<BeachesInDalmatia />} />
+              <Route path="blog/plitvice-lakes-guide" element={<PlitviceLakesGuide />} />
+              <Route path="blog/hidden-gems-istria" element={<HiddenGemsIstria />} />
+              <Route path="blog/summer-transfer-tips" element={<SummerTransferTips />} />
+              <Route path="blog/croatian-wine-routes" element={<CroatianWineRoutes />} />
               <Route path="privacy-policy" element={<PrivacyPolicy />} />
               <Route path="terms-of-service" element={<TermsOfService />} />
               <Route path="menu" element={<MobileMenu />} />
