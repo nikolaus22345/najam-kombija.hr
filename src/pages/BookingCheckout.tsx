@@ -65,8 +65,11 @@ const BookingCheckout = () => {
     setBasePrice(price);
   };
 
-  const handleBookVehicle = (vehicleType: string, price: number) => {
+  const handleBookVehicle = (vehicleType: string, baseVehiclePrice: number) => {
     setSelectedVehicle(vehicleType);
+
+    // Calculate final price including return trip
+    const finalPrice = bookingData.transferType === "with-return" ? baseVehiclePrice * 2 : baseVehiclePrice;
 
     const message = `Hello! I would like to book a ${vehicleType}:
 
@@ -74,9 +77,9 @@ const BookingCheckout = () => {
 📍 To: ${bookingData.dropoff}
 📅 Date: ${bookingData.date}
 👥 Passengers: ${bookingData.people}
-🔄 Type: ${bookingData.transferType === "one-way" ? "One way" : "With return"}
+🔄 Type: ${bookingData.transferType === "one-way" ? "One way" : "With return (round trip)"}
 🚗 Vehicle: ${vehicleType}
-💰 Price: €${price}
+💰 Price: €${finalPrice}
 
 Please confirm my booking. Thank you!`;
 
@@ -211,9 +214,11 @@ Please confirm my booking. Thank you!`;
                     <div className="pt-4 border-t">
                       <div className="text-center mb-4">
                         <div className="text-3xl font-bold text-primary">
-                          €{Math.round(basePrice * vehicle.priceMultiplier)}
+                          €{Math.round(basePrice * vehicle.priceMultiplier * (bookingData.transferType === "with-return" ? 2 : 1))}
                         </div>
-                        <p className="text-sm text-muted-foreground">Total price</p>
+                        <p className="text-sm text-muted-foreground">
+                          Total price {bookingData.transferType === "with-return" && "(round trip)"}
+                        </p>
                       </div>
 
                       <Button
