@@ -42,10 +42,16 @@ const getLocationIcon = (type: string) => {
   }
 };
 
-const BookingForm = () => {
+interface BookingFormProps {
+  pickup: string;
+  setPickup: (value: string) => void;
+  dropoff: string;
+  setDropoff: (value: string) => void;
+}
+
+const BookingForm = ({ pickup, setPickup, dropoff, setDropoff }: BookingFormProps) => {
   const [transferType, setTransferType] = useState("one-way");
-  const [pickup, setPickup] = useState("");
-  const [dropoff, setDropoff] = useState("");
+  // pickup and dropoff state moved to parent
   const [date, setDate] = useState("");
   const [people, setPeople] = useState("1");
   const [showPickupSuggestions, setShowPickupSuggestions] = useState(false);
@@ -136,7 +142,7 @@ const BookingForm = () => {
             onBlur={() => setTimeout(() => setShowPickupSuggestions(false), 200)}
             required
           />
-          
+
           {showPickupSuggestions && pickupSuggestions.length > 0 && (
             <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
               {pickupSuggestions.map((location, index) => (
@@ -180,7 +186,7 @@ const BookingForm = () => {
             onBlur={() => setTimeout(() => setShowDropoffSuggestions(false), 200)}
             required
           />
-          
+
           {showDropoffSuggestions && dropoffSuggestions.length > 0 && (
             <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
               {dropoffSuggestions.map((location, index) => (

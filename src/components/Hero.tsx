@@ -1,16 +1,20 @@
+import { useState } from "react";
 import BookingForm from "./BookingForm";
+import RouteMap from "./RouteMap";
 import heroImage from "@/assets/hero-highway.jpg";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
   const { t } = useLanguage();
+  const [pickup, setPickup] = useState("");
+  const [dropoff, setDropoff] = useState("");
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20">
+    <section className="relative min-h-screen flex items-center pt-20 pb-10">
       <div className="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-transparent z-0" />
-      
-      <div 
+
+      <div
         className="absolute inset-0 z-[-1]"
         style={{
           backgroundImage: `url(${heroImage})`,
@@ -21,18 +25,18 @@ const Hero = () => {
       />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          <div className="space-y-6 pt-10">
             <div className="inline-block">
               <span className="text-primary text-sm font-bold tracking-wider border-l-4 border-primary pl-3">
                 {t.hero.subtitle}
               </span>
             </div>
-            
+
             <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight">
               {t.hero.title}
             </h1>
-            
+
             <p className="text-xl text-muted-foreground max-w-xl">
               {t.hero.description}
             </p>
@@ -56,8 +60,17 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end">
-            <BookingForm />
+          <div className="flex flex-col gap-6 justify-center lg:justify-end">
+            <BookingForm
+              pickup={pickup}
+              setPickup={setPickup}
+              dropoff={dropoff}
+              setDropoff={setDropoff}
+            />
+            <div className="w-full max-w-md bg-white/90 backdrop-blur-sm rounded-lg shadow-xl overflow-hidden p-1">
+              {/* Pass empty strings if null to avoid issues, though state is initialized to "" */}
+              <RouteMap pickup={pickup} dropoff={dropoff} />
+            </div>
           </div>
         </div>
       </div>
