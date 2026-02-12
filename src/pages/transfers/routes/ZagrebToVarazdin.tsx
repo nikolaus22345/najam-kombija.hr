@@ -1,14 +1,15 @@
 import TransferLandingPage from "@/components/TransferLandingPage";
 
-export default function ZagrebToVarazdin() {
+const ZagrebToVarazdin = () => {
   return (
     <TransferLandingPage
       origin="Zagreb"
       destination="Varaždin"
-      distanceKm={85}
-      durationMin={75}
-      price={110}
-      imageUrl="/assets/hero-highway.jpg"
+      distanceKm={80}
+      durationMin={60}
+      price={80}
     />
   );
-}
+};
+
+export default ZagrebToVarazdin;

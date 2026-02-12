@@ -1,14 +1,15 @@
 import TransferLandingPage from "@/components/TransferLandingPage";
 
-export default function ZagrebToSisak() {
+const ZagrebToSisak = () => {
   return (
     <TransferLandingPage
       origin="Zagreb"
       destination="Sisak"
-      distanceKm={60}
-      durationMin={60}
-      price={90}
-      imageUrl="/assets/hero-highway.jpg"
+      distanceKm={55}
+      durationMin={45}
+      price={70}
     />
   );
-}
+};
+
+export default ZagrebToSisak;

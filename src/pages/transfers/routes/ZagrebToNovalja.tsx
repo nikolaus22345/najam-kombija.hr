@@ -1,14 +1,15 @@
 import TransferLandingPage from "@/components/TransferLandingPage";
 
-export default function ZagrebToNovalja() {
+const ZagrebToNovalja = () => {
   return (
     <TransferLandingPage
       origin="Zagreb"
       destination="Novalja"
-      distanceKm={230}
+      distanceKm={320}
       durationMin={210}
-      price={260}
-      imageUrl="/assets/hero-highway.jpg"
+      price={220}
     />
   );
-}
+};
+
+export default ZagrebToNovalja;

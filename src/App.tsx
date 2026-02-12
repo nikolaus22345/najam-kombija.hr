@@ -45,10 +45,11 @@ import ZagrebToOsijek from "./pages/transfers/routes/ZagrebToOsijek";
 import ZagrebToRovinj from "./pages/transfers/routes/ZagrebToRovinj";
 import ZagrebToOpatija from "./pages/transfers/routes/ZagrebToOpatija";
 import ZagrebToVarazdin from "./pages/transfers/routes/ZagrebToVarazdin";
-import ZagrebToSlavonski from "./pages/transfers/routes/ZagrebToSlavonski";
+import ZagrebToSlavonskiBrod from "./pages/transfers/routes/ZagrebToSlavonskiBrod";
 import ZagrebToSisak from "./pages/transfers/routes/ZagrebToSisak";
 import ZagrebToKarlovac from "./pages/transfers/routes/ZagrebToKarlovac";
 import ZagrebToNovalja from "./pages/transfers/routes/ZagrebToNovalja";
+import ZagrebToMurter from "./pages/transfers/routes/ZagrebToMurter";
 import VodiceToZagreb from "./pages/transfers/routes/VodiceToZagreb";
 import BovecToZagreb from "./pages/transfers/routes/BovecToZagreb";
 import KranjToZagreb from "./pages/transfers/routes/KranjToZagreb";
@@ -193,10 +194,11 @@ const App = () => (
               <Route path="transfers/zagreb-to-rovinj" element={<ZagrebToRovinj />} />
               <Route path="transfers/zagreb-to-opatija" element={<ZagrebToOpatija />} />
               <Route path="transfers/zagreb-to-varazdin" element={<ZagrebToVarazdin />} />
-              <Route path="transfers/zagreb-to-slavonski-brod" element={<ZagrebToSlavonski />} />
+              <Route path="transfers/zagreb-to-slavonski-brod" element={<ZagrebToSlavonskiBrod />} />
               <Route path="transfers/zagreb-to-sisak" element={<ZagrebToSisak />} />
               <Route path="transfers/zagreb-to-karlovac" element={<ZagrebToKarlovac />} />
               <Route path="transfers/zagreb-to-novalja" element={<ZagrebToNovalja />} />
+              <Route path="transfers/zagreb-to-murter" element={<ZagrebToMurter />} />
               <Route path="zagreb-to-zadar" element={<ZagrebToZadar />} />
               <Route path="zagreb-to-rijeka" element={<ZagrebToRijeka />} />
               <Route path="zagreb-to-pula" element={<ZagrebToPula />} />
@@ -204,10 +206,11 @@ const App = () => (
               <Route path="zagreb-to-rovinj" element={<ZagrebToRovinj />} />
               <Route path="zagreb-to-opatija" element={<ZagrebToOpatija />} />
               <Route path="zagreb-to-varazdin" element={<ZagrebToVarazdin />} />
-              <Route path="zagreb-to-slavonski-brod" element={<ZagrebToSlavonski />} />
+              <Route path="zagreb-to-slavonski-brod" element={<ZagrebToSlavonskiBrod />} />
               <Route path="zagreb-to-sisak" element={<ZagrebToSisak />} />
               <Route path="zagreb-to-karlovac" element={<ZagrebToKarlovac />} />
               <Route path="zagreb-to-novalja" element={<ZagrebToNovalja />} />
+              <Route path="zagreb-to-murter" element={<ZagrebToMurter />} />
 
               {/* To Zagreb routes */}
               <Route path="transfers/vodice-to-zagreb" element={<VodiceToZagreb />} />
