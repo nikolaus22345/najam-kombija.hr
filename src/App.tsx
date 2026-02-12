@@ -90,6 +90,7 @@ import GetQuote from "./pages/GetQuote";
 import ProfessionalDrivers from "./pages/features/ProfessionalDrivers";
 import SafetyFirst from "./pages/features/SafetyFirst";
 import TwentyFourSeven from "./pages/features/TwentyFourSeven";
+import FixedPrices from "./pages/features/FixedPrices";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Blog from "./pages/Blog";
@@ -305,6 +306,7 @@ const App = () => (
               <Route path="features/professional-drivers" element={<ProfessionalDrivers />} />
               <Route path="features/safety-first" element={<SafetyFirst />} />
               <Route path="features/24-7-service" element={<TwentyFourSeven />} />
+              <Route path="features/fixed-prices" element={<FixedPrices />} />
               <Route path="about" element={<AboutUs />} />
               <Route path="contact" element={<ContactUs />} />
               <Route path="blog" element={<Blog />} />
