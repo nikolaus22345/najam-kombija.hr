@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import LanguageWrapper from "@/components/LanguageWrapper";
+import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ZagrebAirport from "./pages/transfers/ZagrebAirport";
@@ -123,6 +124,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <LanguageProvider>
           <Routes>
             <Route path="/" element={<Navigate to="/en" replace />} />
