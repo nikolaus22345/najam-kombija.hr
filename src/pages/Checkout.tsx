@@ -8,12 +8,13 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
+import { sendEmail } from "@/lib/email";
 
 const Checkout = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  
+
   const pickup = searchParams.get("pickup") || "";
   const dropoff = searchParams.get("dropoff") || "";
   const price = searchParams.get("price") || "0";
@@ -24,10 +25,10 @@ const Checkout = () => {
   const name = searchParams.get("name") || "";
   const email = searchParams.get("email") || "";
   const phone = searchParams.get("phone") || "";
-  
+
   const totalPrice = parseFloat(price);
   const depositAmount = totalPrice * 0.2;
-  
+
   const [paymentMethod, setPaymentMethod] = useState("full");
   const [cardNumber, setCardNumber] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
@@ -92,14 +93,45 @@ const Checkout = () => {
 
   const handleSubmit = async () => {
     setIsProcessing(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
+    // Send email confirmation
+    const templateParams = {
+      to_email: "info@zagreb-transfers.hr",
+      from_name: name,
+      from_email: email,
+      phone: phone,
+      message: `
+        NEW BOOKING CONFIRMED
+        
+        Route:
+        From: ${pickup}
+        To: ${dropoff}
+        
+        Details:
+        Date: ${date}
+        Time: ${time}
+        Passengers: ${passengers}
+        Vehicle: ${vehicle}
+        Price: €${price}
+        
+        Payment Method: ${paymentMethod}
+        ${paymentMethod === 'deposit' ? `Deposit Amount: €${depositAmount.toFixed(2)}` : ''}
+        
+        Customer Details:
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+      `,
+      reply_to: email,
+    };
+
+    await sendEmail(templateParams);
+
     toast({
       title: "Booking Confirmed! ✓",
       description: "Your transfer has been successfully booked. Check your email for confirmation.",
     });
-    
+
     setIsProcessing(false);
     navigate("/?booking=success");
   };
@@ -112,8 +144,8 @@ const Checkout = () => {
       {/* Header */}
       <div className="bg-card border-b border-border">
         <div className="container mx-auto px-4 py-4">
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             onClick={() => navigate(-1)}
             className="gap-2 text-muted-foreground hover:text-foreground"
           >
@@ -163,11 +195,10 @@ const Checkout = () => {
                   {paymentOptions.map((option) => (
                     <div
                       key={option.id}
-                      className={`relative flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                        paymentMethod === option.id 
-                          ? "border-primary bg-primary/5" 
-                          : "border-border hover:border-primary/50"
-                      }`}
+                      className={`relative flex items-start gap-3 md:gap-4 p-3 md:p-4 rounded-lg border-2 cursor-pointer transition-all ${paymentMethod === option.id
+                        ? "border-primary bg-primary/5"
+                        : "border-border hover:border-primary/50"
+                        }`}
                       onClick={() => setPaymentMethod(option.id)}
                     >
                       <RadioGroupItem value={option.id} className="mt-1" />
@@ -267,7 +298,7 @@ const Checkout = () => {
             {paymentMethod === "paypal" && (
               <Card className="border-border/50">
                 <CardContent className="pt-6">
-                  <Button 
+                  <Button
                     className="w-full h-12 md:h-14 bg-[#0070ba] hover:bg-[#005ea6] text-white font-bold text-base md:text-lg"
                     onClick={handleSubmit}
                     disabled={isProcessing}
@@ -283,7 +314,7 @@ const Checkout = () => {
 
             {/* Confirm Button for other methods */}
             {paymentMethod !== "paypal" && (
-              <Button 
+              <Button
                 className="w-full h-12 md:h-14 text-base md:text-lg font-semibold"
                 onClick={handleSubmit}
                 disabled={isProcessing}

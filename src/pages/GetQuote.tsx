@@ -40,42 +40,53 @@ const GetQuote = () => {
       return;
     }
 
-    // WhatsApp poruka
-    const message = `🚗 QUOTE REQUEST
+    const templateParams = {
+      to_email: "info@zagreb-transfers.hr",
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone,
+      message: `
+        QUOTE REQUEST
+        
+        Route:
+        From: ${formData.pickup}
+        To: ${formData.dropoff}
+        
+        Dates:
+        Departure: ${formData.date}
+        ${formData.transferType === "return" ? `Return: ${formData.returnDate}` : ""}
+        
+        Details:
+        Passengers: ${formData.passengers}
+        Luggage: ${formData.luggage || "Not specified"}
+        Transfer Type: ${formData.transferType}
+        Vehicle Preference: ${formData.vehiclePreference}
+        
+        Additional Info:
+        ${formData.additionalInfo || "None"}
+      `,
+      reply_to: formData.email,
+    };
 
-👤 CONTACT INFO:
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
+    const result = await sendEmail(templateParams);
 
-📍 ROUTE:
-From: ${formData.pickup}
-To: ${formData.dropoff}
-
-📅 DATES:
-Departure: ${formData.date}
-${formData.transferType === "return" ? `Return: ${formData.returnDate}` : ""}
-
-👥 DETAILS:
-Passengers: ${formData.passengers}
-Luggage: ${formData.luggage || "Not specified"}
-Transfer Type: ${formData.transferType === "one-way" ? "One way" : "Round trip"}
-Vehicle Preference: ${formData.vehiclePreference}
-
-💬 ADDITIONAL INFO:
-${formData.additionalInfo || "None"}
-
-Please send me a detailed quote. Thank you!`;
-
-    const whatsappNumber = "385976019558";
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappUrl, '_blank');
-
-    toast({
-      title: "Request Sent!",
-      description: "We'll send you a quote within 24 hours",
-    });
+    if (result.success) {
+      toast({
+        title: "Request Sent!",
+        description: "We'll send you a quote within 24 hours",
+      });
+      setFormData({
+        name: "", email: "", phone: "", pickup: "", dropoff: "", date: "",
+        returnDate: "", passengers: "1", luggage: "", transferType: "one-way",
+        vehiclePreference: "any", additionalInfo: ""
+      });
+    } else {
+      toast({
+        title: "Error",
+        description: "Failed to send quote request. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

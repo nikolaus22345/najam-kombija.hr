@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Calendar, Users, Car, CheckCircle, ArrowRight, Phone, Mail } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
+import BookingModal, { BookingContactData } from "@/components/BookingModal";
+import { sendEmail } from "@/lib/email";
 
 interface BookingData {
   pickup: string;
@@ -20,10 +23,13 @@ const BookingCheckout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { language } = useLanguage();
   const bookingData = location.state as BookingData;
 
   const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
   const [basePrice, setBasePrice] = useState(150);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [bookingPrice, setBookingPrice] = useState(0);
 
   useEffect(() => {
     if (!bookingData) {
@@ -67,31 +73,49 @@ const BookingCheckout = () => {
 
   const handleBookVehicle = (vehicleType: string, baseVehiclePrice: number) => {
     setSelectedVehicle(vehicleType);
-
-    // Calculate final price including return trip
     const finalPrice = bookingData.transferType === "with-return" ? baseVehiclePrice * 2 : baseVehiclePrice;
+    setBookingPrice(finalPrice);
+    setIsModalOpen(true);
+  };
 
-    const message = `Hello! I would like to book a ${vehicleType}:
+  const handleBookingSubmit = async (contactData: BookingContactData) => {
+    if (!selectedVehicle) return;
 
-📍 From: ${bookingData.pickup}
-📍 To: ${bookingData.dropoff}
-📅 Date: ${bookingData.date}
-👥 Passengers: ${bookingData.people}
-🔄 Type: ${bookingData.transferType === "one-way" ? "One way" : "With return (round trip)"}
-🚗 Vehicle: ${vehicleType}
-💰 Price: €${finalPrice}
+    const templateParams = {
+      to_email: "info@zagreb-transfers.hr", // Replace with actual recipient email if dynamic
+      from_name: contactData.name,
+      from_email: contactData.email,
+      phone: contactData.phone,
+      message: `
+        New Booking Request:
+        Vehicle: ${selectedVehicle}
+        Price: €${bookingPrice}
+        Pickup: ${bookingData.pickup}
+        Dropoff: ${bookingData.dropoff}
+        Date: ${bookingData.date}
+        Passengers: ${bookingData.people}
+        Transfer Type: ${bookingData.transferType}
+        Notes: ${contactData.notes}
+      `,
+      reply_to: contactData.email,
+    };
 
-Please confirm my booking. Thank you!`;
+    const result = await sendEmail(templateParams);
 
-    const whatsappNumber = "385976019558";
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-    window.open(whatsappUrl, '_blank');
-
-    toast({
-      title: "Opening WhatsApp",
-      description: "Complete your booking via WhatsApp!",
-    });
+    if (result.success) {
+      toast({
+        title: "Booking Request Sent!",
+        description: "We have received your request and will contact you shortly.",
+      });
+      setIsModalOpen(false);
+      navigate(`/${language}/thank-you`);
+    } else {
+      toast({
+        title: "Error",
+        description: "Failed to send booking request. Please try again or contact us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -289,6 +313,14 @@ Please confirm my booking. Thank you!`;
       </main>
 
       <Footer />
+
+      <BookingModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleBookingSubmit}
+        vehicleTitle={selectedVehicle || ""}
+        price={`€${bookingPrice}`}
+      />
     </div>
   );
 };
