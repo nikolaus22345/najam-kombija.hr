@@ -2,11 +2,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Calendar } from "lucide-react";
+import { Plane, Building2, MapPin, Calendar } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
 import LocationAutocomplete from "@/components/LocationAutocomplete";
+import { Input } from "@/components/ui/input";
 
 // Lista popularnih lokacija
 const locations = [
