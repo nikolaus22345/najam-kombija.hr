@@ -45,21 +45,15 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-4">
-              <Link to="/features/professional-drivers">
-                <div className="bg-card/50 backdrop-blur px-6 py-3 rounded-lg border border-border hover:bg-card hover:border-primary transition-all cursor-pointer">
-                  <p className="text-sm text-muted-foreground hover:text-primary transition-colors">{t.hero.feature1}</p>
-                </div>
-              </Link>
-              <Link to="/features/24-7-service">
-                <div className="bg-card/50 backdrop-blur px-6 py-3 rounded-lg border border-border hover:bg-card hover:border-primary transition-all cursor-pointer">
-                  <p className="text-sm text-muted-foreground hover:text-primary transition-colors">{t.hero.feature2}</p>
-                </div>
-              </Link>
-              <Link to="/features/safety-first">
-                <div className="bg-card/50 backdrop-blur px-6 py-3 rounded-lg border border-border hover:bg-card hover:border-primary transition-all cursor-pointer">
-                  <p className="text-sm text-muted-foreground hover:text-primary transition-colors">{t.hero.feature3}</p>
-                </div>
-              </Link>
+              <div className="bg-card/50 backdrop-blur px-6 py-3 rounded-lg border border-border transition-all">
+                <p className="text-sm text-muted-foreground">{t.hero.feature1}</p>
+              </div>
+              <div className="bg-card/50 backdrop-blur px-6 py-3 rounded-lg border border-border transition-all">
+                <p className="text-sm text-muted-foreground">{t.hero.feature2}</p>
+              </div>
+              <div className="bg-card/50 backdrop-blur px-6 py-3 rounded-lg border border-border transition-all">
+                <p className="text-sm text-muted-foreground">{t.hero.feature3}</p>
+              </div>
             </div>
           </div>
 

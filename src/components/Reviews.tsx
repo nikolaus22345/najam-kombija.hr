@@ -29,6 +29,12 @@ const Reviews = () => {
       text: t.reviews.review4.text,
       date: t.reviews.review4.date,
     },
+    {
+      name: t.reviews.review5.name,
+      rating: 5,
+      text: t.reviews.review5.text,
+      date: t.reviews.review5.date,
+    },
   ];
 
   return (

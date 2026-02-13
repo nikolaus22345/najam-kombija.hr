@@ -6,7 +6,6 @@ import Features from "@/components/Features";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import PopularRoutes from "@/components/PopularRoutes";
-import PopularDestinations from "@/components/PopularDestinations";
 import PopularBlogs from "@/components/PopularBlogs";
 import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
@@ -22,7 +21,6 @@ const Index = () => {
       <About />
       <Contact />
       <PopularRoutes />
-      <PopularDestinations />
       <PopularBlogs />
       <Reviews />
       <Footer />

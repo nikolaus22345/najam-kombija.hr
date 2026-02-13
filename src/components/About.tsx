@@ -31,13 +31,15 @@ const About = () => {
             </div>
           </div>
           <div className="relative">
-            <div className="aspect-square bg-card border border-border rounded-2xl overflow-hidden">
-              <div className="w-full h-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-6xl mb-4">🚗</div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{t.about.fleetTitle}</h3>
-                  <p className="text-muted-foreground">{t.about.fleetDescription}</p>
-                </div>
+            <div className="aspect-square bg-card border border-border rounded-2xl overflow-hidden relative group">
+              <img
+                src="https://zagreb-transfers.hr/wp-content/uploads/2025/12/zagreb-transfers-e1766400235592.webp"
+                alt={t.about.fleetTitle}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+                <h3 className="text-2xl font-bold text-white mb-2">{t.about.fleetTitle}</h3>
+                <p className="text-white/90">{t.about.fleetDescription}</p>
               </div>
             </div>
           </div>
