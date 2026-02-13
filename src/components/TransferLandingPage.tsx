@@ -42,7 +42,8 @@ const TransferLandingPage = ({
     const [dropoff, setDropoff] = useState(destination);
 
     // Helper for placeholder replacement
-    const replace = (text: string) => {
+    const replace = (text: string | undefined) => {
+        if (!text) return "";
         return text.replace("{origin}", origin).replace("{destination}", destination);
     };
 
@@ -79,8 +80,8 @@ const TransferLandingPage = ({
     return (
         <div className="min-h-screen flex flex-col">
             <Helmet>
-                <title>{replace(t.landing.title)} | Zagreb Transfers</title>
-                <meta name="description" content={replace(t.landing.metaDescription)} />
+                <title>{replace(t.landing?.title) || `${origin} to ${destination} Transfer`} | Zagreb Transfers</title>
+                <meta name="description" content={replace(t.landing?.metaDescription)} />
             </Helmet>
 
             <Header />
@@ -110,17 +111,17 @@ const TransferLandingPage = ({
                         <div className="grid lg:grid-cols-2 gap-12 items-center">
                             <div>
                                 <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-                                    {replace(t.landing.title)}
+                                    {replace(t.landing?.title) || `${origin} to ${destination} Transfer`}
                                 </h1>
                                 <p className="text-xl text-muted-foreground mb-8">
-                                    {t.landing.heroSubtitle}
+                                    {t.landing?.heroSubtitle || "Professional and comfortable private transfer service"}
                                 </p>
 
                                 <div className="grid md:grid-cols-3 gap-4 mb-8">
                                     <div className="flex items-center gap-3 bg-background/80 backdrop-blur p-4 rounded-lg border border-border">
                                         <Clock className="w-8 h-8 text-primary" />
                                         <div>
-                                            <p className="text-sm text-muted-foreground">{t.landing.duration}</p>
+                                            <p className="text-sm text-muted-foreground">{t.landing?.duration || "Duration"}</p>
                                             <p className="text-lg font-semibold">{durationString}</p>
                                         </div>
                                     </div>
@@ -128,7 +129,7 @@ const TransferLandingPage = ({
                                     <div className="flex items-center gap-3 bg-background/80 backdrop-blur p-4 rounded-lg border border-border">
                                         <MapPin className="w-8 h-8 text-primary" />
                                         <div>
-                                            <p className="text-sm text-muted-foreground">{t.landing.distance}</p>
+                                            <p className="text-sm text-muted-foreground">{t.landing?.distance || "Distance"}</p>
                                             <p className="text-lg font-semibold">{distanceKm} km</p>
                                         </div>
                                     </div>
@@ -136,7 +137,7 @@ const TransferLandingPage = ({
                                     <div className="flex items-center gap-3 bg-background/80 backdrop-blur p-4 rounded-lg border border-border">
                                         <Euro className="w-8 h-8 text-primary" />
                                         <div>
-                                            <p className="text-sm text-muted-foreground">{t.landing.startingFrom}</p>
+                                            <p className="text-sm text-muted-foreground">{t.landing?.startingFrom || "Starting from"}</p>
                                             <p className="text-lg font-semibold">€{price}</p>
                                         </div>
                                     </div>
@@ -159,7 +160,7 @@ const TransferLandingPage = ({
                 <section className="py-16 bg-muted/30">
                     <div className="container mx-auto px-4">
                         <h2 className="text-3xl font-bold text-foreground mb-8 text-center">
-                            {t.landing.chooseVehicle}
+                            {t.landing?.chooseVehicle || "Choose Your Vehicle"}
                         </h2>
 
                         <div className="grid md:grid-cols-3 gap-6">
@@ -167,7 +168,7 @@ const TransferLandingPage = ({
                                 <Card key={index} className="hover:shadow-xl transition-all hover:scale-105 relative">
                                     {index === 1 && (
                                         <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
-                                            {t.landing.mostPopular}
+                                            {t.landing?.mostPopular || "Best Seller"}
                                         </div>
                                     )}
                                     <CardHeader>
@@ -203,7 +204,7 @@ const TransferLandingPage = ({
                                                 size="lg"
                                                 onClick={() => navigate(`/reservation?pickup=${origin}&dropoff=${destination}&price=${vehicle.price.replace('€', '')}&vehicle=${vehicle.type}`)}
                                             >
-                                                {t.landing.bookNow}
+                                                {t.landing?.bookNow || "Book Now"}
                                             </Button>
                                         </div>
                                     </CardContent>
@@ -217,38 +218,38 @@ const TransferLandingPage = ({
                 <section className="py-16">
                     <div className="container mx-auto px-4 max-w-4xl">
                         <h2 className="text-3xl font-bold text-foreground mb-8">
-                            {replace(t.landing.aboutTitle)}
+                            {replace(t.landing?.aboutTitle) || `Experience ${origin} to ${destination} Transfer`}
                         </h2>
 
                         <div className="prose prose-lg max-w-none">
                             <p className="text-muted-foreground leading-relaxed mb-4">
-                                {replace(t.landing.aboutText)}
+                                {replace(t.landing?.aboutText) || `Enjoy a comfortable and safe journey from ${origin} to ${destination}.`}
                             </p>
 
                             <div className="grid md:grid-cols-2 gap-6 my-8">
                                 <div className="bg-muted/50 p-6 rounded-lg">
                                     <div className="flex items-center gap-3 mb-4">
                                         <Coffee className="w-6 h-6 text-primary" />
-                                        <h3 className="text-xl font-bold">{t.landing.restStop}</h3>
+                                        <h3 className="text-xl font-bold">{t.landing?.restStop || "Rest Stop"}</h3>
                                     </div>
                                     <p className="text-muted-foreground">
-                                        {t.landing.restStopDesc}
+                                        {t.landing?.restStopDesc || "Complimentary rest stop included."}
                                     </p>
                                 </div>
 
                                 <div className="bg-muted/50 p-6 rounded-lg">
                                     <div className="flex items-center gap-3 mb-4">
                                         <Wifi className="w-6 h-6 text-primary" />
-                                        <h3 className="text-xl font-bold">{t.landing.wifi}</h3>
+                                        <h3 className="text-xl font-bold">{t.landing?.wifi || "Free WiFi"}</h3>
                                     </div>
                                     <p className="text-muted-foreground">
-                                        {t.landing.wifiDesc}
+                                        {t.landing?.wifiDesc || "Stay connected during your journey."}
                                     </p>
                                 </div>
                             </div>
 
                             <h3 className="text-2xl font-bold text-foreground mt-8 mb-4">
-                                {t.landing.included}
+                                {t.landing?.included || "What's Included"}
                             </h3>
                             {/* Note: t.landing.includedList is hard to type check if it wasn't strictly typed. 
                   But in translations.ts I added 'included' as string in HR/DE, but as Array in EN?
@@ -268,16 +269,16 @@ const TransferLandingPage = ({
 
                         <div className="mt-8 p-6 bg-primary/10 rounded-lg border-l-4 border-primary">
                             <h3 className="text-xl font-bold text-foreground mb-2">
-                                {replace(t.landing.bookToday)}
+                                {replace(t.landing?.bookToday) || "Book Your Transfer Today"}
                             </h3>
                             <p className="text-muted-foreground mb-3">
-                                {t.landing.safeReliable}
+                                {t.landing?.safeReliable || "Safe and reliable service for your peace of mind."}
                             </p>
                             <Button
                                 variant="default"
                                 onClick={() => navigate(`/reservation?pickup=${origin}&dropoff=${destination}&price=${price}`)}
                             >
-                                {t.landing.bookNow}
+                                {t.landing?.bookNow || "Book Now"}
                             </Button>
                         </div>
                     </div>
