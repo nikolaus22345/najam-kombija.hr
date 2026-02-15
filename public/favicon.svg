@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" fill="#0f172a" rx="100"/>
+  <path d="M120 200h200v-100h-200z M320 200l-140 212l0 -112h-80z" fill="#fbbf24"/>
+  <path d="M220 100 L420 100 L220 412 L220 250 L120 250 L320 50 L320 150 L220 150 Z" fill="#fbbf24" style="display:none;"/>
+  <!-- New attempting to match the logo provided -->
+  <path d="M150 120 h212 v150 h-60 l-60 122 l0 -122 h-92 z" fill="#fbbf24"/>
+</svg>
