@@ -4,5 +4,32 @@
             "source": "/(.*)",
             "destination": "/index.html"
         }
+    ],
+    "redirects": [
+        {
+            "source": "/rezervacija",
+            "destination": "/booking",
+            "permanent": true
+        },
+        {
+            "source": "/kontakt",
+            "destination": "/contact",
+            "permanent": true
+        },
+        {
+            "source": "/o-nama",
+            "destination": "/about",
+            "permanent": true
+        },
+        {
+            "source": "/transfer-zagreb-split",
+            "destination": "/transfers/zagreb-to-split",
+            "permanent": true
+        },
+        {
+            "source": "/transferi/(.*)",
+            "destination": "/transfers/$1",
+            "permanent": true
+        }
     ]
 }
