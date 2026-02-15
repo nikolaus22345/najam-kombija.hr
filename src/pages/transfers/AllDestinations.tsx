@@ -73,7 +73,16 @@ const AllDestinations = () => {
     }
   ];
 
-  const getLinkProps = (dest: any) => {
+  interface Destination {
+    name: string;
+    distance: string;
+    duration: string;
+    price: string;
+    url: string;
+    state?: { pickup: string; dropoff: string };
+  }
+
+  const getLinkProps = (dest: Destination) => {
     if (dest.url === '/') {
       return {
         to: `/${language}/`,
