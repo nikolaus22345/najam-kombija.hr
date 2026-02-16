@@ -4,10 +4,11 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Clock, Euro } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ZagrebCityCenter = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const navigate = useNavigate();
 
   const destinations = [
     { name: "Zagreb Airport", distance: "17 km", duration: "25min", price: "€30" },
@@ -27,7 +28,7 @@ const ZagrebCityCenter = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1 pt-20">
         <section className="py-16 bg-gradient-to-br from-primary/10 via-background to-background">
           <div className="container mx-auto px-4">
@@ -45,7 +46,7 @@ const ZagrebCityCenter = () => {
             <h2 className="text-3xl font-bold text-foreground mb-8">
               {t.transfers.popularDestinations}
             </h2>
-            
+
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {destinations.map((dest, index) => (
                 <Card key={index} className="hover:shadow-lg transition-shadow">
@@ -64,14 +65,19 @@ const ZagrebCityCenter = () => {
                       <Euro className="w-5 h-5" />
                       {dest.price}
                     </div>
-                    <Button className="w-full">{t.transfers.bookNow}</Button>
+                    <Button
+                      className="w-full"
+                      onClick={() => navigate(`/${language}/get-quote?pickup=Zagreb%20City%20Center&dropoff=${encodeURIComponent(dest.name)}`)}
+                    >
+                      {t.transfers.bookNow}
+                    </Button>
                   </CardContent>
                 </Card>
               ))}
             </div>
 
             <div className="mt-12 text-center">
-              <Link to="/transfers/all-destinations">
+              <Link to={`/${language}/transfers/all-destinations`}>
                 <Button variant="outline" size="lg">
                   {t.transfers.seeAllDestinations}
                 </Button>

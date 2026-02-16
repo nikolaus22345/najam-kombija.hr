@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { MapPin, Clock, Euro } from "lucide-react";
 
 const ZagrebTransfers = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
 
   const destinations = [
@@ -28,7 +28,7 @@ const ZagrebTransfers = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <section className="relative py-20 bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
@@ -38,7 +38,7 @@ const ZagrebTransfers = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Private transfer services from Zagreb to popular destinations in Croatia and neighboring countries.
             </p>
-            <Button size="lg" onClick={() => navigate("/get-quote")}>
+            <Button size="lg" onClick={() => navigate(`/${language}/get-quote`)}>
               Get a Quote
             </Button>
           </div>
@@ -50,7 +50,7 @@ const ZagrebTransfers = () => {
           <h2 className="text-3xl font-bold text-center mb-12">Popular Destinations from Zagreb</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((dest, index) => (
-              <Card key={index} className="p-6 hover:border-primary transition-colors cursor-pointer" onClick={() => navigate(dest.url)}>
+              <Card key={index} className="p-6 hover:border-primary transition-colors cursor-pointer" onClick={() => navigate(`/${language}${dest.url}`)}>
                 <div className="flex items-start gap-4">
                   <MapPin className="w-8 h-8 text-primary flex-shrink-0" />
                   <div className="flex-1">

@@ -138,13 +138,7 @@ const Header = () => {
                     >
                       Zagreb Transfers
                     </Link>
-                    <Link
-                      to={getLink('/transfers/dubrovnik')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
-                      onClick={() => setOpen(false)}
-                    >
-                      Dubrovnik Transfers
-                    </Link>
+
                     <Link
                       to={getLink('/airport-transfers/zagreb')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
@@ -267,9 +261,7 @@ const Header = () => {
                 <DropdownMenuItem asChild>
                   <Link to={getLink('/transfers/zagreb')} className="cursor-pointer uppercase">Zagreb Transfers</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to={getLink('/transfers/dubrovnik')} className="cursor-pointer uppercase">Dubrovnik Transfers</Link>
-                </DropdownMenuItem>
+
                 <DropdownMenuItem asChild>
                   <Link to={getLink('/airport-transfers/zagreb')} className="cursor-pointer uppercase">Zagreb Airport</Link>
                 </DropdownMenuItem>

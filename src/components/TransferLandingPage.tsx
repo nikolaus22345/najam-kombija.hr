@@ -36,7 +36,7 @@ const TransferLandingPage = ({
     imageUrl,
     vehicles: customVehicles
 }: TransferLandingPageProps) => {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
     const navigate = useNavigate();
     const [pickup, setPickup] = useState(origin);
     const [dropoff, setDropoff] = useState(destination);
@@ -114,7 +114,7 @@ const TransferLandingPage = ({
                                     {replace(t.landing?.title) || `${origin} to ${destination} Transfer`}
                                 </h1>
                                 <p className="text-xl text-muted-foreground mb-8">
-                                    {t.landing?.heroSubtitle || "Professional and comfortable private transfer service"}
+                                    {t.landing?.subtitle || "Professional and comfortable private transfer service"}
                                 </p>
 
                                 <div className="grid md:grid-cols-3 gap-4 mb-8">
@@ -202,9 +202,9 @@ const TransferLandingPage = ({
                                             <Button
                                                 className="w-full"
                                                 size="lg"
-                                                onClick={() => navigate(`/reservation?pickup=${origin}&dropoff=${destination}&price=${vehicle.price.replace('€', '')}&vehicle=${vehicle.type}`)}
+                                                onClick={() => navigate(`/${language}/get-quote?pickup=${encodeURIComponent(origin)}&dropoff=${encodeURIComponent(destination)}&vehicle=${encodeURIComponent(vehicle.type)}`)}
                                             >
-                                                {t.landing?.bookNow || "Book Now"}
+                                                {t.landing?.getQuote || t.landing?.bookNow || "Get a Quote"}
                                             </Button>
                                         </div>
                                     </CardContent>
@@ -276,13 +276,14 @@ const TransferLandingPage = ({
                             </p>
                             <Button
                                 variant="default"
-                                onClick={() => navigate(`/reservation?pickup=${origin}&dropoff=${destination}&price=${price}`)}
+                                onClick={() => navigate(`/${language}/get-quote?pickup=${encodeURIComponent(origin)}&dropoff=${encodeURIComponent(destination)}`)}
                             >
-                                {t.landing?.bookNow || "Book Now"}
+                                {t.landing?.getQuote || t.landing?.bookNow || "Get a Quote"}
                             </Button>
                         </div>
                     </div>
                 </section>
+
 
             </main>
             <Footer />
