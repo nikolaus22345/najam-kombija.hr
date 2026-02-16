@@ -81,27 +81,27 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link to={getLink('/coach-rental')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Bus Rental
+                  {t.footer.busRental}
                 </Link>
               </li>
               <li>
                 <Link to={getLink('/minibus-rental')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Minibus Rental
+                  {t.footer.minibusRental}
                 </Link>
               </li>
               <li>
                 <Link to={getLink('/van-rental')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Van Rental
+                  {t.footer.vanRental}
                 </Link>
               </li>
               <li>
                 <Link to={getLink('/chauffeur-service')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Chauffeur Service
+                  {t.footer.chauffeurService}
                 </Link>
               </li>
               <li>
                 <Link to={getLink('/limo-hire-for-wedding')} className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                  Wedding Limo
+                  {t.footer.weddingLimo}
                 </Link>
               </li>
             </ul>
