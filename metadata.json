@@ -1,7 +1,0 @@
-{
-  "name": "Copy of auto-osiguranje.hr",
-  "description": "Profesionalna platforma za usporedbu i ugovaranje auto osiguranja online u manje od 60 sekundi.",
-  "requestFramePermissions": [
-    "geolocation"
-  ]
-}
