@@ -146,6 +146,7 @@ const App = () => {
                   <Route path="transfers/split-to-dubrovnik" element={<SplitToDubrovnik />} />
                   <Route path="transfers/zagreb-to-motovun" element={<ZagrebToMotovun />} />
                   <Route path="transfers/zagreb-to-belgrade-airport" element={<ZagrebToBelgrade />} />
+                  <Route path="transfers/zagreb-to-belgrade" element={<ZagrebToBelgrade />} />
                   <Route path="transfers/zagreb-to-milan" element={<ZagrebToMilan />} />
                   <Route path="transfers/zagreb-to-venice" element={<ZagrebToVenice />} />
                   <Route path="transfers/zagreb-to-tisno" element={<ZagrebToTisno />} />
@@ -158,12 +159,14 @@ const App = () => {
                   <Route path="transfers/zagreb-to-krakow" element={<ZagrebToKrakow />} />
                   <Route path="transfers/zagreb-to-bihac" element={<ZagrebToBihac />} />
                   <Route path="transfers/zagreb-to-sarajevo-airport" element={<ZagrebToSarajevo />} />
+                  <Route path="transfers/zagreb-to-sarajevo" element={<ZagrebToSarajevo />} />
                   <Route path="transfers/zagreb-to-trieste" element={<ZagrebToTrieste />} />
                   <Route path="transfers/zagreb-to-ljubljana" element={<ZagrebToLjubljana />} />
                   <Route path="transfers/zagreb-to-vienna" element={<ZagrebToVienna />} />
                   <Route path="transfers/zagreb-to-graz" element={<ZagrebToGraz />} />
                   <Route path="transfers/zagreb-to-munich" element={<ZagrebToMunich />} />
                   <Route path="transfers/zagreb-to-prague-airport" element={<ZagrebToPrague />} />
+                  <Route path="transfers/zagreb-to-prague" element={<ZagrebToPrague />} />
                   <Route path="transfers/zagreb-to-trogir" element={<ZagrebToTrogir />} />
                   <Route path="transfers/zagreb-to-passau" element={<ZagrebToPassau />} />
 
