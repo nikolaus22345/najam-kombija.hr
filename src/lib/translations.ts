@@ -141,6 +141,7 @@ export const translations = {
       stat1: "Monthly Transfers",
       stat2: "Service Available",
       stat3: "Customer Satisfaction",
+      fleetTitle: "Premium Fleet",
       fleetDescription: "Modern, comfortable vehicles for every journey",
     },
     popularRoutes: {
@@ -413,6 +414,7 @@ export const translations = {
       stat1: "Mjesečnih Transfera",
       stat2: "Dostupna Usluga",
       stat3: "Zadovoljstvo Kupaca",
+      fleetTitle: "Premium Flota",
       fleetDescription: "Moderna, udobna vozila za svako putovanje",
     },
     popularRoutes: {
@@ -685,6 +687,7 @@ export const translations = {
       stat1: "Zufriedene Kunden",
       stat2: "Service Verfügbar",
       stat3: "Kundenzufriedenheit",
+      fleetTitle: "Premium Flotte",
       fleetDescription: "Moderne, komfortable Fahrzeuge für jede Reise",
     },
     popularRoutes: {

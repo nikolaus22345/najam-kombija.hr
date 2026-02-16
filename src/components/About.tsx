@@ -1,6 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+import aboutImage from "@/assets/hero-highway.jpg";
+
 const About = () => {
   const { t } = useLanguage();
   return (
@@ -33,7 +35,7 @@ const About = () => {
           <div className="relative">
             <div className="aspect-square bg-card border border-border rounded-2xl overflow-hidden relative group">
               <img
-                src="https://zagreb-transfers.hr/wp-content/uploads/2025/12/zagreb-transfers-e1766400235592.webp"
+                src={aboutImage}
                 alt={t.about.fleetTitle}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
