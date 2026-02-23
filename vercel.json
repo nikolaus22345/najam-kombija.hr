@@ -7,6 +7,16 @@
     ],
     "redirects": [
         {
+            "source": "/en",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/en/:path*",
+            "destination": "/:path*",
+            "permanent": true
+        },
+        {
             "source": "/rezervacija",
             "destination": "/booking",
             "permanent": true
@@ -27,9 +37,20 @@
             "permanent": true
         },
         {
-            "source": "/transferi/(.*)",
-            "destination": "/transfers/$1",
+            "source": "/transferi/:path*",
+            "destination": "/transfers/:path*",
             "permanent": true
+        }
+    ],
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "X-Robots-Tag",
+                    "value": "index, follow"
+                }
+            ]
         }
     ]
 }
