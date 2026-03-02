@@ -423,7 +423,7 @@ export const translations = {
       fleetDescription: "Moderna, udobna vozila za svako putovanje",
     },
     popularRoutes: {
-      title: "Beliebte Routen",
+      title: "Popularne Rute",
     },
     popularBlogs: {
       title: "Popularni Blogovi",

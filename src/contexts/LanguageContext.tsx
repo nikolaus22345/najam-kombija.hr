@@ -34,18 +34,26 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const firstSegment = pathSegments[0];
     const isFirstSegmentLang = VALID_LANGUAGES.includes(firstSegment as Language);
 
+    let newPath = '';
+
     if (lang === DEFAULT_LANGUAGE) {
       if (isFirstSegmentLang) {
-        const newPath = '/' + pathSegments.slice(1).join('/');
-        navigate((newPath || '/') + location.search + location.hash);
+        newPath = '/' + pathSegments.slice(1).join('/');
       }
     } else {
       if (isFirstSegmentLang) {
         pathSegments[0] = lang;
-        navigate('/' + pathSegments.join('/') + location.search + location.hash);
+        newPath = '/' + pathSegments.join('/');
       } else {
-        navigate(`/${lang}/${pathSegments.join('/')}` + location.search + location.hash);
+        newPath = `/${lang}/${pathSegments.join('/')}`;
       }
+    }
+
+    const fullNewPath = (newPath || '/') + location.search + location.hash;
+    const currentPath = location.pathname + location.search + location.hash;
+
+    if (fullNewPath !== currentPath) {
+      navigate(fullNewPath);
     }
   };
 
