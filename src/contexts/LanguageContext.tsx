@@ -34,7 +34,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const firstSegment = pathSegments[0];
     const isFirstSegmentLang = VALID_LANGUAGES.includes(firstSegment as Language);
 
-    let newPath = '';
+    let newPath = location.pathname;
 
     if (lang === DEFAULT_LANGUAGE) {
       if (isFirstSegmentLang) {
