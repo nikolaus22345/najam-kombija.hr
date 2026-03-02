@@ -6,7 +6,7 @@ import { DollarSign, CheckCircle, Shield, Clock, TrendingDown, Calculator } from
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const FixedPrices = () => {
-    const { language } = useLanguage();
+    const { language, getLink } = useLanguage();
 
     const content = {
         en: {
@@ -243,7 +243,7 @@ const FixedPrices = () => {
                             <p className="text-lg md:text-xl text-muted-foreground mb-8">
                                 {t.subtitle}
                             </p>
-                            <Link to={`/${language}/get-quote`}>
+                            <Link to={getLink('/get-quote')}>
                                 <Button size="lg" className="text-lg px-8 py-6">
                                     {t.cta}
                                 </Button>
@@ -343,12 +343,12 @@ const FixedPrices = () => {
                                 {t.ctaSubtitle}
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <Link to={`/${language}/get-quote`}>
+                                <Link to={getLink('/get-quote')}>
                                     <Button size="lg" className="text-lg px-8 py-6 w-full sm:w-auto">
                                         {t.cta}
                                     </Button>
                                 </Link>
-                                <Link to={`/${language}/#contact`}>
+                                <Link to={getLink('/#contact')}>
                                     <Button size="lg" variant="outline" className="text-lg px-8 py-6 w-full sm:w-auto">
                                         {t.contactUs}
                                     </Button>

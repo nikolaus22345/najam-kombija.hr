@@ -6,7 +6,7 @@ import { Clock, Phone, MessageSquare, MapPin, Plane, Moon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const TwentyFourSeven = () => {
-  const { language } = useLanguage();
+  const { language, getLink } = useLanguage();
 
   const content = {
     en: {
@@ -234,7 +234,7 @@ const TwentyFourSeven = () => {
               <p className="text-lg md:text-xl text-muted-foreground mb-8">
                 {t.subtitle}
               </p>
-              <Link to={`/${language}/get-quote`}>
+              <Link to={getLink('/get-quote')}>
                 <Button size="lg" className="text-lg px-8 py-6">
                   {t.cta}
                 </Button>
@@ -335,12 +335,12 @@ const TwentyFourSeven = () => {
                 {t.ctaSubtitle}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <Link to={`/${language}/get-quote`}>
+                <Link to={getLink('/get-quote')}>
                   <Button size="lg" className="text-lg px-8 py-6 w-full sm:w-auto">
                     {t.bookNow}
                   </Button>
                 </Link>
-                <Link to={`/${language}/#contact`}>
+                <Link to={getLink('/#contact')}>
                   <Button size="lg" variant="outline" className="text-lg px-8 py-6 w-full sm:w-auto">
                     {t.contactSupport}
                   </Button>

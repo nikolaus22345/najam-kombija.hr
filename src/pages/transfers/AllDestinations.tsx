@@ -7,7 +7,7 @@ import { MapPin, Clock, Euro } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const AllDestinations = () => {
-  const { t, language } = useLanguage();
+  const { t, getLink } = useLanguage();
 
   const destinationGroups = [
     {
@@ -85,12 +85,12 @@ const AllDestinations = () => {
   const getLinkProps = (dest: Destination) => {
     if (dest.url === '/') {
       return {
-        to: `/${language}/`,
+        to: getLink('/'),
         state: dest.state
       };
     }
     return {
-      to: `/${language}${dest.url}`
+      to: getLink(dest.url)
     };
   };
 

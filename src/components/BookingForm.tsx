@@ -2,46 +2,12 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Plane, Building2, MapPin, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useToast } from "@/hooks/use-toast";
 import { useNavigate } from "react-router-dom";
-import LocationAutocomplete from "@/components/LocationAutocomplete";
 import { Input } from "@/components/ui/input";
-
-// Lista popularnih lokacija
-const locations = [
-  { name: "Franjo Tuđman Airport Zagreb (ZAG)", type: "airport", city: "Zagreb" },
-  { name: "Zagreb Bus Station (Autobusni Kolodvor)", type: "bus", city: "Zagreb" },
-  { name: "Zagreb Central Station (Glavni Kolodvor)", type: "train", city: "Zagreb" },
-  { name: "Zagreb City Center", type: "city", city: "Zagreb" },
-  { name: "Split Airport (SPU)", type: "airport", city: "Split" },
-  { name: "Split City Center", type: "city", city: "Split" },
-  { name: "Zadar Airport (ZAD)", type: "airport", city: "Zadar" },
-  { name: "Zadar City Center", type: "city", city: "Zadar" },
-  { name: "Dubrovnik Airport (DBV)", type: "airport", city: "Dubrovnik" },
-  { name: "Dubrovnik City Center", type: "city", city: "Dubrovnik" },
-  { name: "Pula Airport (PUY)", type: "airport", city: "Pula" },
-  { name: "Pula City Center", type: "city", city: "Pula" },
-  { name: "Rijeka City Center", type: "city", city: "Rijeka" },
-  { name: "Plitvice Lakes National Park", type: "attraction", city: "Plitvice" },
-  { name: "Ljubljana, Slovenia", type: "city", city: "Ljubljana" },
-  { name: "Lake Bled, Slovenia", type: "attraction", city: "Bled" },
-  { name: "Vienna, Austria", type: "city", city: "Vienna" },
-  { name: "Budapest, Hungary", type: "city", city: "Budapest" },
-];
-
-const getLocationIcon = (type: string) => {
-  switch (type) {
-    case "airport":
-      return <Plane className="w-4 h-4 text-primary" />;
-    case "bus":
-    case "train":
-      return <Building2 className="w-4 h-4 text-primary" />;
-    default:
-      return <MapPin className="w-4 h-4 text-primary" />;
-  }
-};
+import LocationAutocomplete from "@/components/LocationAutocomplete";
 
 interface BookingFormProps {
   pickup: string;
@@ -52,30 +18,15 @@ interface BookingFormProps {
 
 const BookingForm = ({ pickup, setPickup, dropoff, setDropoff }: BookingFormProps) => {
   const [transferType, setTransferType] = useState("one-way");
-  // pickup and dropoff state moved to parent
   const [date, setDate] = useState("");
   const [people, setPeople] = useState("1");
-  const [showPickupSuggestions, setShowPickupSuggestions] = useState(false);
-  const [showDropoffSuggestions, setShowDropoffSuggestions] = useState(false);
-  const { t, language } = useLanguage();
+  const { t, getLink } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
-
-  const filterLocations = (input: string) => {
-    if (!input || input.length < 2) return [];
-    return locations.filter(loc =>
-      loc.name.toLowerCase().includes(input.toLowerCase()) ||
-      loc.city.toLowerCase().includes(input.toLowerCase())
-    );
-  };
-
-  const pickupSuggestions = filterLocations(pickup);
-  const dropoffSuggestions = filterLocations(dropoff);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validacija
     if (!pickup.trim()) {
       toast({
         title: "Error",
@@ -103,8 +54,7 @@ const BookingForm = ({ pickup, setPickup, dropoff, setDropoff }: BookingFormProp
       return;
     }
 
-    // Navigacija na checkout stranicu sa podacima
-    navigate(`/${language}/booking`, {
+    navigate(getLink('/booking'), {
       state: {
         pickup,
         dropoff,
@@ -125,93 +75,23 @@ const BookingForm = ({ pickup, setPickup, dropoff, setDropoff }: BookingFormProp
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="relative">
-          <Label htmlFor="pickup" className="text-sm font-medium text-gray-700 mb-2 block">
-            {t.bookingForm.pickup}
-          </Label>
-          <Input
-            id="pickup"
-            type="text"
-            placeholder={t.bookingForm.pickupPlaceholder}
-            className="bg-white border-gray-200 text-gray-900"
-            value={pickup}
-            onChange={(e) => {
-              setPickup(e.target.value);
-              setShowPickupSuggestions(true);
-            }}
-            onFocus={() => setShowPickupSuggestions(true)}
-            onBlur={() => setTimeout(() => setShowPickupSuggestions(false), 200)}
-            required
-          />
+        <LocationAutocomplete
+          id="pickup"
+          label={t.bookingForm.pickup}
+          value={pickup}
+          onChange={setPickup}
+          placeholder={t.bookingForm.pickupPlaceholder}
+          className="bg-white border-gray-200 text-gray-900"
+        />
 
-          {showPickupSuggestions && pickupSuggestions.length > 0 && (
-            <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-              {pickupSuggestions.map((location, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  className="w-full text-left px-4 py-3 hover:bg-gray-50 flex items-start gap-3 border-b border-gray-100 last:border-0"
-                  onClick={() => {
-                    setPickup(location.name);
-                    setShowPickupSuggestions(false);
-                  }}
-                >
-                  <div className="mt-1">
-                    {getLocationIcon(location.type)}
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-900">{location.name}</div>
-                    <div className="text-sm text-gray-500">{location.city}</div>
-                  </div>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <div className="relative">
-          <Label htmlFor="dropoff" className="text-sm font-medium text-gray-700 mb-2 block">
-            {t.bookingForm.dropoff}
-          </Label>
-          <Input
-            id="dropoff"
-            type="text"
-            placeholder={t.bookingForm.dropoffPlaceholder}
-            className="bg-white border-gray-200 text-gray-900"
-            value={dropoff}
-            onChange={(e) => {
-              setDropoff(e.target.value);
-              setShowDropoffSuggestions(true);
-            }}
-            onFocus={() => setShowDropoffSuggestions(true)}
-            onBlur={() => setTimeout(() => setShowDropoffSuggestions(false), 200)}
-            required
-          />
-
-          {showDropoffSuggestions && dropoffSuggestions.length > 0 && (
-            <div className="absolute z-50 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
-              {dropoffSuggestions.map((location, index) => (
-                <button
-                  key={index}
-                  type="button"
-                  className="w-full text-left px-4 py-3 hover:bg-gray-50 flex items-start gap-3 border-b border-gray-100 last:border-0"
-                  onClick={() => {
-                    setDropoff(location.name);
-                    setShowDropoffSuggestions(false);
-                  }}
-                >
-                  <div className="mt-1">
-                    {getLocationIcon(location.type)}
-                  </div>
-                  <div>
-                    <div className="font-medium text-gray-900">{location.name}</div>
-                    <div className="text-sm text-gray-500">{location.city}</div>
-                  </div>
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+        <LocationAutocomplete
+          id="dropoff"
+          label={t.bookingForm.dropoff}
+          value={dropoff}
+          onChange={setDropoff}
+          placeholder={t.bookingForm.dropoffPlaceholder}
+          className="bg-white border-gray-200 text-gray-900"
+        />
 
         <div className="grid grid-cols-2 gap-4">
           <div>

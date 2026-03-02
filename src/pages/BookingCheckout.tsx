@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import RouteMap from "@/components/RouteMap";
@@ -10,6 +10,13 @@ import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import BookingModal, { BookingContactData } from "@/components/BookingModal";
 import { sendEmail } from "@/lib/email";
+
+const POPULAR_LOCATIONS = [
+  "Zagreb Airport", "Zagreb City Center", "Split Airport", "Split City Center",
+  "Zadar Airport", "Zadar City Center", "Dubrovnik Airport", "Dubrovnik City Center",
+  "Plitvice Lakes", "Novalja (Pag)", "Vodice", "Sibenik", "Rijeka", "Pula",
+  "Opatija", "Rovinj", "Porec", "Umag", "Makarska", "Murter", "Tisno", "Nin", "Biograd na Moru"
+];
 
 interface BookingData {
   pickup: string;
@@ -23,7 +30,7 @@ const BookingCheckout = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { language } = useLanguage();
+  const { getLink } = useLanguage();
   const bookingData = location.state as BookingData;
 
   const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
@@ -67,16 +74,25 @@ const BookingCheckout = () => {
     }
   ];
 
-  const handleRouteCalculated = (distance: number, duration: number, price: number) => {
-    setBasePrice(price);
-  };
+  const handleRouteCalculated = useCallback((distance: number, duration: number, price: number) => {
+    // Only update if price is significantly different to prevent loop? 
+    // Actually setBasePrice ensures update only if value changes if React optimizes, 
+    // but better to be safe.
+    setBasePrice(prev => {
+      if (prev !== price) return price;
+      return prev;
+    });
+  }, []);
 
   const handleBookVehicle = (vehicleType: string, baseVehiclePrice: number) => {
     setSelectedVehicle(vehicleType);
-    const finalPrice = bookingData.transferType === "with-return" ? baseVehiclePrice * 2 : baseVehiclePrice;
+    const finalPrice = bookingData.transferType === "return" ? baseVehiclePrice * 2 : baseVehiclePrice;
     setBookingPrice(finalPrice);
     setIsModalOpen(true);
   };
+  // ... (rest of file) ...
+  // Then replace <RouteMap ... /> with <GoogleRouteMap ... />
+
 
   const handleBookingSubmit = async (contactData: BookingContactData) => {
     if (!selectedVehicle) return;
@@ -108,7 +124,7 @@ const BookingCheckout = () => {
         description: "We have received your request and will contact you shortly.",
       });
       setIsModalOpen(false);
-      navigate(`/${language}/thank-you`);
+      navigate(getLink('/thank-you'));
     } else {
       toast({
         title: "Error",
@@ -236,14 +252,12 @@ const BookingCheckout = () => {
                     </div>
 
                     <div className="pt-4 border-t">
-                      <div className="text-center mb-4">
-                        <div className="text-3xl font-bold text-primary">
-                          €{Math.round(basePrice * vehicle.priceMultiplier * (bookingData.transferType === "with-return" ? 2 : 1))}
-                        </div>
-                        <p className="text-sm text-muted-foreground">
-                          Total price {bookingData.transferType === "with-return" && "(round trip)"}
-                        </p>
+                      <div className="text-3xl font-bold text-primary">
+                        €{Math.round(basePrice * vehicle.priceMultiplier * (bookingData.transferType === "return" ? 2 : 1))}
                       </div>
+                      <p className="text-sm text-muted-foreground">
+                        Total price {bookingData.transferType === "return" && "(round trip)"}
+                      </p>
 
                       <Button
                         className="w-full"

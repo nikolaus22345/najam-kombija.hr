@@ -11,6 +11,7 @@ import { CheckCircle, Send, Phone, Mail, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { sendEmail } from "@/lib/email";
 import { useSearchParams } from "react-router-dom";
+import LocationAutocomplete from "@/components/LocationAutocomplete";
 
 const GetQuote = () => {
     const { toast } = useToast();
@@ -199,27 +200,21 @@ const GetQuote = () => {
                                         <h3 className="text-lg font-semibold">Trip Details</h3>
 
                                         <div className="grid md:grid-cols-2 gap-4">
-                                            <div>
-                                                <Label htmlFor="pickup">Pickup Location *</Label>
-                                                <Input
-                                                    id="pickup"
-                                                    value={formData.pickup}
-                                                    onChange={(e) => setFormData({ ...formData, pickup: e.target.value })}
-                                                    placeholder="e.g., Zagreb Airport"
-                                                    required
-                                                />
-                                            </div>
+                                            <LocationAutocomplete
+                                                id="pickup"
+                                                label="Pickup Location *"
+                                                value={formData.pickup}
+                                                onChange={(value) => setFormData({ ...formData, pickup: value })}
+                                                placeholder="e.g., Zagreb Airport"
+                                            />
 
-                                            <div>
-                                                <Label htmlFor="dropoff">Drop-off Location *</Label>
-                                                <Input
-                                                    id="dropoff"
-                                                    value={formData.dropoff}
-                                                    onChange={(e) => setFormData({ ...formData, dropoff: e.target.value })}
-                                                    placeholder="e.g., Split City Center"
-                                                    required
-                                                />
-                                            </div>
+                                            <LocationAutocomplete
+                                                id="dropoff"
+                                                label="Drop-off Location *"
+                                                value={formData.dropoff}
+                                                onChange={(value) => setFormData({ ...formData, dropoff: value })}
+                                                placeholder="e.g., Split City Center"
+                                            />
                                         </div>
 
                                         <div>

@@ -4,10 +4,12 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ThankYou = () => {
   const [searchParams] = useSearchParams();
-  
+  const { getLink } = useLanguage();
+
   const bookingDetails = {
     pickup: searchParams.get("pickup") || "",
     dropoff: searchParams.get("dropoff") || "",
@@ -32,7 +34,7 @@ const ThankYou = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
-      
+
       <main className="flex-1 py-8 md:py-16">
         <div className="container mx-auto px-4 max-w-3xl">
           {/* Success Icon & Message */}
@@ -54,7 +56,7 @@ const ThankYou = () => {
               <h2 className="text-lg md:text-xl font-semibold mb-4 md:mb-6 text-foreground">
                 Booking Summary
               </h2>
-              
+
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary mt-0.5 shrink-0" />
@@ -149,15 +151,15 @@ const ThankYou = () => {
               If you need to modify or cancel your booking, please contact us:
             </p>
             <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-              <a 
-                href="tel:+385991234567" 
+              <a
+                href="tel:+385991234567"
                 className="flex items-center gap-2 text-primary hover:underline text-sm md:text-base"
               >
                 <Phone className="w-4 h-4" />
                 +385 99 123 4567
               </a>
-              <a 
-                href="mailto:info@transferservice.hr" 
+              <a
+                href="mailto:info@transferservice.hr"
                 className="flex items-center gap-2 text-primary hover:underline text-sm md:text-base"
               >
                 <Mail className="w-4 h-4" />
@@ -168,7 +170,7 @@ const ThankYou = () => {
 
           {/* Back to Home */}
           <div className="text-center">
-            <Link to="/">
+            <Link to={getLink('/')}>
               <Button variant="outline" size="lg" className="gap-2">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Home

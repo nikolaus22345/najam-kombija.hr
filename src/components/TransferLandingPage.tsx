@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useRouteData } from "@/hooks/useRouteData";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -36,7 +37,7 @@ const TransferLandingPage = ({
     imageUrl,
     vehicles: customVehicles
 }: TransferLandingPageProps) => {
-    const { t, language } = useLanguage();
+    const { t, getLink } = useLanguage();
     const navigate = useNavigate();
     const [pickup, setPickup] = useState(origin);
     const [dropoff, setDropoff] = useState(destination);
@@ -47,34 +48,40 @@ const TransferLandingPage = ({
         return text.replace("{origin}", origin).replace("{destination}", destination);
     };
 
+    const { price: dynamicPrice, distanceKm: dynamicDistance, durationMin: dynamicDuration, loading } = useRouteData(origin, destination);
+
+    const activePrice = (!loading && dynamicPrice > 0) ? dynamicPrice : price;
+    const activeDistance = (!loading && dynamicDistance > 0) ? dynamicDistance : distanceKm;
+    const activeDuration = (!loading && dynamicDuration > 0) ? dynamicDuration : durationMin;
+
     const defaultVehicles: Vehicle[] = [
         {
             type: "Standard",
             capacity: "1-3",
             luggage: "2-3",
-            price: `€${price}`,
+            price: `€${activePrice}`,
             features: ["Free WiFi", "Air Conditioning", "Professional Driver"]
         },
         {
             type: "Minivan",
             capacity: "4-8",
             luggage: "6-8",
-            price: `€${Math.round(price * 1.3)}`, // Approx multiplier
+            price: `€${Math.round(activePrice * 1.3)}`, // Approx multiplier
             features: ["Free WiFi", "Air Conditioning", "Professional Driver", "Extra Space"]
         },
         {
             type: "Minibus",
             capacity: "9-16",
             luggage: "12-16",
-            price: `€${Math.round(price * 1.8)}`,
+            price: `€${Math.round(activePrice * 1.8)}`,
             features: ["Free WiFi", "Air Conditioning", "Professional Driver", "Group Travel"]
         }
     ];
 
     const vehicles = customVehicles || defaultVehicles;
 
-    const durationHours = Math.floor(durationMin / 60);
-    const durationMinutes = durationMin % 60;
+    const durationHours = Math.floor(activeDuration / 60);
+    const durationMinutes = activeDuration % 60;
     const durationString = `${durationHours}h ${durationMinutes > 0 ? `${durationMinutes}m` : ''}`;
 
     return (
@@ -130,7 +137,7 @@ const TransferLandingPage = ({
                                         <MapPin className="w-8 h-8 text-primary" />
                                         <div>
                                             <p className="text-sm text-muted-foreground">{t.landing?.distance || "Distance"}</p>
-                                            <p className="text-lg font-semibold">{distanceKm} km</p>
+                                            <p className="text-lg font-semibold">{activeDistance} km</p>
                                         </div>
                                     </div>
 
@@ -138,7 +145,7 @@ const TransferLandingPage = ({
                                         <Euro className="w-8 h-8 text-primary" />
                                         <div>
                                             <p className="text-sm text-muted-foreground">{t.landing?.startingFrom || "Starting from"}</p>
-                                            <p className="text-lg font-semibold">€{price}</p>
+                                            <p className="text-lg font-semibold">€{activePrice}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -202,7 +209,7 @@ const TransferLandingPage = ({
                                             <Button
                                                 className="w-full"
                                                 size="lg"
-                                                onClick={() => navigate(`/${language}/get-quote?pickup=${encodeURIComponent(origin)}&dropoff=${encodeURIComponent(destination)}&vehicle=${encodeURIComponent(vehicle.type)}`)}
+                                                onClick={() => navigate(getLink('/get-quote') + `?pickup=${encodeURIComponent(origin)}&dropoff=${encodeURIComponent(destination)}&vehicle=${encodeURIComponent(vehicle.type)}`)}
                                             >
                                                 {t.landing?.getQuote || t.landing?.bookNow || "Get a Quote"}
                                             </Button>
@@ -276,7 +283,7 @@ const TransferLandingPage = ({
                             </p>
                             <Button
                                 variant="default"
-                                onClick={() => navigate(`/${language}/get-quote?pickup=${encodeURIComponent(origin)}&dropoff=${encodeURIComponent(destination)}`)}
+                                onClick={() => navigate(getLink('/get-quote') + `?pickup=${encodeURIComponent(origin)}&dropoff=${encodeURIComponent(destination)}`)}
                             >
                                 {t.landing?.getQuote || t.landing?.bookNow || "Get a Quote"}
                             </Button>

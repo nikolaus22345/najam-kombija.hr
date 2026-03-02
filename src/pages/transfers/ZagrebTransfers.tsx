@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { MapPin, Clock, Euro } from "lucide-react";
 
 const ZagrebTransfers = () => {
-  const { t, language } = useLanguage();
+  const { t, getLink } = useLanguage();
   const navigate = useNavigate();
 
   const destinations = [

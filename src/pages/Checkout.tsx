@@ -9,11 +9,13 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { useToast } from "@/hooks/use-toast";
 import { sendEmail } from "@/lib/email";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Checkout = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { getLink } = useLanguage();
 
   const pickup = searchParams.get("pickup") || "";
   const dropoff = searchParams.get("dropoff") || "";
@@ -133,7 +135,7 @@ const Checkout = () => {
     });
 
     setIsProcessing(false);
-    navigate("/?booking=success");
+    navigate(getLink('/') + "?booking=success");
   };
 
   const selectedOption = paymentOptions.find(opt => opt.id === paymentMethod);

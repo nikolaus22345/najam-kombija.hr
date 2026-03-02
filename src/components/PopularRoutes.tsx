@@ -3,9 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
 const PopularRoutes = () => {
-  const { t, language } = useLanguage();
-
-  const getTo = (url: string) => url === '/' ? `/${language}/` : `/${language}${url}`;
+  const { t, getLink } = useLanguage();
 
   const routes = [
     { name: "Zagreb - Split", url: "/transfers/zagreb-to-split" },
@@ -56,7 +54,7 @@ const PopularRoutes = () => {
           {routes.map((route, index) => (
             <Link
               key={index}
-              to={getTo(route.url)}
+              to={getLink(route.url)}
               className="px-4 py-2 bg-card border border-border rounded-lg text-sm text-foreground hover:border-primary hover:text-primary transition-colors"
             >
               {route.name}

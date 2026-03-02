@@ -3,9 +3,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const { t, language } = useLanguage();
-
-  const getLink = (path: string) => `/${language}${path === '/' ? '' : path}`;
+  const { t, getLink } = useLanguage();
 
   return (
     <footer className="bg-card/50 border-t border-border">

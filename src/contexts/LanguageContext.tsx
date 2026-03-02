@@ -2,50 +2,55 @@ import { createContext, useContext, useState, ReactNode } from "react";
 import { translations, Language } from "@/lib/translations";
 import { useLocation, useNavigate } from "react-router-dom";
 
+const DEFAULT_LANGUAGE: Language = "en";
+const VALID_LANGUAGES = Object.keys(translations) as Language[];
+
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  getLink: (path: string) => string;
   t: typeof translations.en;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguageState] = useState<Language>("en");
+  const [language, setLanguageState] = useState<Language>(DEFAULT_LANGUAGE);
   const navigate = useNavigate();
   const location = useLocation();
 
+  const getLink = (path: string) => {
+    const cleanPath = path.startsWith('/') ? path : `/${path}`;
+    if (language === DEFAULT_LANGUAGE) {
+      return cleanPath;
+    }
+    return `/${language}${cleanPath === '/' ? '' : cleanPath}`;
+  };
+
   const setLanguage = (lang: Language) => {
-    // Optimistically update state
     setLanguageState(lang);
 
-    // Update URL if needed
-    // Assuming URL structure is /:lang/rest/of/path
     const pathSegments = location.pathname.split('/').filter(Boolean);
-    const currentLangSegment = pathSegments[0]; // e.g., 'en', 'hr'
+    const firstSegment = pathSegments[0];
+    const isFirstSegmentLang = VALID_LANGUAGES.includes(firstSegment as Language);
 
-    // Check if the first segment is a known language code?
-    // We assume it is because of our routing structure /:lang
-    // But verify against valid languages just in case
-
-    // If we are at root /, create path /lang
-    if (pathSegments.length === 0) {
-      navigate(`/${lang}`);
-      return;
-    }
-
-    if (currentLangSegment !== lang) {
-      // Replace the language segment
-      // e.g. /hr/about -> /en/about
-      // pathSegments is ['hr', 'about'] -> replacement ['en', 'about']
-      pathSegments[0] = lang;
-      const newPath = '/' + pathSegments.join('/');
-      navigate(newPath + location.search + location.hash);
+    if (lang === DEFAULT_LANGUAGE) {
+      if (isFirstSegmentLang) {
+        const newPath = '/' + pathSegments.slice(1).join('/');
+        navigate((newPath || '/') + location.search + location.hash);
+      }
+    } else {
+      if (isFirstSegmentLang) {
+        pathSegments[0] = lang;
+        navigate('/' + pathSegments.join('/') + location.search + location.hash);
+      } else {
+        navigate(`/${lang}/${pathSegments.join('/')}` + location.search + location.hash);
+      }
     }
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t: translations[language] }}>
+    <LanguageContext.Provider value={{ language, setLanguage, getLink, t: translations[language] }}>
       {children}
     </LanguageContext.Provider>
   );

@@ -7,7 +7,7 @@ import { MapPin, Clock, Euro } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const ZagrebCityCenter = () => {
-  const { t, language } = useLanguage();
+  const { t, getLink } = useLanguage();
   const navigate = useNavigate();
 
   const destinations = [

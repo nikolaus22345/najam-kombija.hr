@@ -7,7 +7,7 @@ import { MapPin, Clock, Euro } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 const SplitAirport = () => {
-  const { t, language } = useLanguage();
+  const { t, getLink } = useLanguage();
   const navigate = useNavigate();
 
   const destinations = [
@@ -63,7 +63,7 @@ const SplitAirport = () => {
                     </div>
                     <Button
                       className="w-full"
-                      onClick={() => navigate(`/${language}/get-quote?pickup=Split%20Airport&dropoff=${encodeURIComponent(dest.name)}`)}
+                      onClick={() => navigate(getLink('/get-quote') + `?pickup=Split%20Airport&dropoff=${encodeURIComponent(dest.name)}`)}
                     >
                       {t.transfers.bookNow}
                     </Button>
@@ -73,7 +73,7 @@ const SplitAirport = () => {
             </div>
 
             <div className="mt-12 text-center">
-              <Link to={`/${language}/transfers/all-destinations`}>
+              <Link to={getLink('/transfers/all-destinations')}>
                 <Button variant="outline" size="lg">
                   {t.transfers.seeAllDestinations}
                 </Button>

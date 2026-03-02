@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const ProfessionalDrivers = () => {
-  const { language } = useLanguage();
+  const { language, getLink } = useLanguage();
 
   const content = {
     en: {
@@ -259,7 +259,7 @@ const ProfessionalDrivers = () => {
         {/* CTA */}
         <section className="py-12">
           <div className="container mx-auto px-4 lg:px-8 text-center">
-            <Link to={`/${language}/`}>
+            <Link to={getLink('/')}>
               <Button size="lg" className="text-lg px-8">
                 {t.cta}
               </Button>
