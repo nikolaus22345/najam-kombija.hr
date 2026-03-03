@@ -1,9 +1,10 @@
 import { Heart } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "../contexts/LanguageContext";
 import { Link } from "react-router-dom";
+import { getRouteButtonText } from "../lib/city-translations";
 
 const PopularRoutes = () => {
-  const { t, getLink } = useLanguage();
+  const { t, getLink, language } = useLanguage();
 
   const routes = [
     { name: "Zagreb - Split", url: "/transfers/zagreb-to-split" },
@@ -51,15 +52,19 @@ const PopularRoutes = () => {
           <h2 className="text-3xl font-bold text-foreground">{t.popularRoutes.title}</h2>
         </div>
         <div className="flex flex-wrap gap-3">
-          {routes.map((route, index) => (
-            <Link
-              key={index}
-              to={getLink(route.url)}
-              className="px-4 py-2 bg-card border border-border rounded-lg text-sm text-foreground hover:border-primary hover:text-primary transition-colors"
-            >
-              {route.name}
-            </Link>
-          ))}
+          {routes.map((route, index) => {
+            const [origin, dest] = route.name.split(" - ");
+            const buttonText = getRouteButtonText(origin, dest, language);
+            return (
+              <Link
+                key={index}
+                to={getLink(route.url)}
+                className="px-4 py-2 bg-card border border-border rounded-lg text-sm text-foreground hover:border-primary hover:text-primary transition-colors"
+              >
+                {buttonText}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
