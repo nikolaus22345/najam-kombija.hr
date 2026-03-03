@@ -24,7 +24,7 @@ const Contact = () => {
     setIsSubmitting(true);
 
     const templateParams = {
-      to_email: "info@zagreb-transfers.hr",
+      to_email: "zagrebtransfers.hr@gmail.com, nikolacvitanovic.hr@gmail.com",
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
@@ -81,8 +81,10 @@ const Contact = () => {
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Mail className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="text-lg font-bold text-foreground mb-2">{t.contact.email}</h3>
-              <p className="text-muted-foreground">info@zagreb-transfers.hr</p>
+              <div>
+                <h4 className="font-semibold text-foreground">Email Us</h4>
+                <p className="text-muted-foreground">zagrebtransfers.hr@gmail.com</p>
+              </div>
             </CardContent>
           </Card>
 

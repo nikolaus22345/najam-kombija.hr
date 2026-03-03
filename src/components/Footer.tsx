@@ -112,9 +112,9 @@ const Footer = () => {
                 <Phone className="w-4 h-4 text-primary" />
                 +385 97 601 9558
               </li>
-              <li className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Mail className="w-4 h-4 text-primary" />
-                info@zagreb-transfers.hr
+              <li className="flex items-center gap-3 text-muted-foreground">
+                <Mail className="w-5 h-5 text-primary" />
+                zagrebtransfers.hr@gmail.com
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />

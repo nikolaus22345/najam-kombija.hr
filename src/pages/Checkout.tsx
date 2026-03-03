@@ -98,8 +98,8 @@ const Checkout = () => {
 
     // Send email confirmation
     const templateParams = {
-      to_email: "info@zagreb-transfers.hr",
-      from_name: name,
+      to_email: "zagrebtransfers.hr@gmail.com, nikolacvitanovic.hr@gmail.com",
+      from_name: `${formData.firstName} ${formData.lastName}`,
       from_email: email,
       phone: phone,
       message: `

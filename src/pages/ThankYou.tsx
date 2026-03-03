@@ -159,11 +159,11 @@ const ThankYou = () => {
                 +385 99 123 4567
               </a>
               <a
-                href="mailto:info@transferservice.hr"
+                href="mailto:zagrebtransfers.hr@gmail.com"
                 className="flex items-center gap-2 text-primary hover:underline text-sm md:text-base"
               >
                 <Mail className="w-4 h-4" />
-                info@transferservice.hr
+                zagrebtransfers.hr@gmail.com
               </a>
             </div>
           </Card>

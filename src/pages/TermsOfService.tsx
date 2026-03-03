@@ -8,7 +8,7 @@ const TermsOfService = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="container mx-auto px-4 lg:px-8 py-16">
         <h1 className="text-4xl font-bold text-foreground mb-8">
           {language === "hr" ? "Uvjeti Korištenja" : "Terms of Service"}
@@ -257,7 +257,7 @@ const TermsOfService = () => {
             </p>
             <div className="bg-card p-4 rounded-lg border border-border mt-4">
               <p className="font-semibold text-foreground">Zagreb Transfers</p>
-              <p>Email: info@zagreb-transfers.hr</p>
+              <p>Email: zagrebtransfers.hr@gmail.com</p>
               <p>
                 {language === "hr" ? "Telefon: +385 1 234 5678" : "Phone: +385 1 234 5678"}
               </p>

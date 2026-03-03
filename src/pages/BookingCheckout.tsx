@@ -98,7 +98,7 @@ const BookingCheckout = () => {
     if (!selectedVehicle) return;
 
     const templateParams = {
-      to_email: "info@zagreb-transfers.hr", // Replace with actual recipient email if dynamic
+      to_email: "zagrebtransfers.hr@gmail.com, nikolacvitanovic.hr@gmail.com", // Replace with actual recipient email if dynamic
       from_name: contactData.name,
       from_email: contactData.email,
       phone: contactData.phone,
@@ -319,7 +319,7 @@ const BookingCheckout = () => {
               </Button>
               <Button size="lg" variant="outline" className="gap-2">
                 <Mail className="w-5 h-5" />
-                info@zagrebtransfers.com
+                zagrebtransfers.hr@gmail.com
               </Button>
             </div>
           </div>

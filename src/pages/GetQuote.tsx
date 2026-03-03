@@ -60,7 +60,7 @@ const GetQuote = () => {
         }
 
         const templateParams = {
-            to_email: "info@zagreb-transfers.hr",
+            to_email: "zagrebtransfers.hr@gmail.com, nikolacvitanovic.hr@gmail.com",
             from_name: formData.name,
             from_email: formData.email,
             phone: formData.phone,
@@ -353,7 +353,7 @@ const GetQuote = () => {
                                             <Mail className="w-5 h-5 text-primary" />
                                             <div>
                                                 <p className="text-sm text-muted-foreground">Email</p>
-                                                <p className="font-semibold">info@zagrebtransfers.com</p>
+                                                <p className="font-semibold">zagrebtransfers.hr@gmail.com</p>
                                             </div>
                                         </div>
                                     </div>

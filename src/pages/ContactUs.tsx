@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { z } from "zod";
+import { sendEmail } from "@/lib/email";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -37,7 +38,7 @@ const ContactUs = () => {
     {
       icon: Mail,
       title: t.contact.email,
-      value: "info@zagreb-transfers.hr",
+      value: "zagrebtransfers.hr@gmail.com",
     },
     {
       icon: MapPin,
@@ -48,21 +49,33 @@ const ContactUs = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       setIsSubmitting(true);
-      
+
       // Validate form data
       const validatedData = contactSchema.parse(formData);
-      
-      // Here you would typically send the data to your backend
-      console.log("Form submitted:", validatedData);
-      
+
+      const templateParams = {
+        to_email: "zagrebtransfers.hr@gmail.com, nikolacvitanovic.hr@gmail.com",
+        from_name: validatedData.name,
+        from_email: validatedData.email,
+        subject: validatedData.subject,
+        message: validatedData.message,
+        reply_to: validatedData.email,
+      };
+
+      const result = await sendEmail(templateParams);
+
+      if (!result.success) {
+        throw new Error("Failed to send email");
+      }
+
       toast({
         title: "Message sent!",
         description: "We'll get back to you as soon as possible.",
       });
-      
+
       // Reset form
       setFormData({
         name: "",
@@ -99,7 +112,7 @@ const ContactUs = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="pt-24">
         {/* Hero Section */}
         <section className="bg-gradient-to-b from-primary/5 to-background py-20">
@@ -183,8 +196,8 @@ const ContactUs = () => {
                     rows={6}
                   />
                 </div>
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full"
                   disabled={isSubmitting}
                 >
