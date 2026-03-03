@@ -58,10 +58,10 @@ export const getLocalizedPath = (enPath: string, targetLang: Language): string |
     if (routeMap[enPath]) {
         const mapped = routeMap[enPath][targetLang];
         if (mapped) return mapped;
-        // If the translation doesn't exist in map and we are strict, return null
-        return null; 
+        // If the translation doesn't exist in map and we are strict, return enPath so it doesn't break
+        return enPath;
     }
-    
+
     // Fallback: If no explicit mapping, we just use the enPath for all languages
     // This maintains compatibility with the existing 100+ routes
     return enPath;
