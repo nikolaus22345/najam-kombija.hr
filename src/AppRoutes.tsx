@@ -122,6 +122,7 @@ const RouteList = () => <>
     <Route path="transfers/all-destinations" element={<AllDestinations />} />
     <Route path="transfers/zagreb-to-plitvice-lakes" element={<ZagrebToPlitvice />} />
     <Route path="transfers/zagreb-to-split" element={<ZagrebToSplit />} />
+    <Route path="transfer-zagreb-split" element={<ZagrebToSplit />} />
     <Route path="transfers/split-to-dubrovnik" element={<SplitToDubrovnik />} />
     <Route path="transfers/zagreb-to-motovun" element={<ZagrebToMotovun />} />
     <Route path="transfers/zagreb-to-belgrade-airport" element={<ZagrebToBelgrade />} />
@@ -264,6 +265,10 @@ const RouteList = () => <>
     <Route path="transfers/dubrovnik" element={<DubrovnikTransfers />} />
     <Route path="airport-transfers/zagreb" element={<ZagrebAirportTransfers />} />
     <Route path="booking" element={<BookingCheckout />} />
+    <Route path="rezervacija" element={<BookingCheckout />} />
+    <Route path="buchung" element={<BookingCheckout />} />
+    <Route path="prenotazione" element={<BookingCheckout />} />
+    <Route path="reservation" element={<BookingCheckout />} />
     <Route path="reservation" element={<Reservation />} />
     <Route path="checkout" element={<Checkout />} />
     <Route path="thank-you" element={<ThankYou />} />
@@ -273,7 +278,13 @@ const RouteList = () => <>
     <Route path="features/24-7-service" element={<TwentyFourSeven />} />
     <Route path="features/fixed-prices" element={<FixedPrices />} />
     <Route path="about" element={<AboutUs />} />
+    <Route path="o-nama" element={<AboutUs />} />
+    <Route path="ueber-uns" element={<AboutUs />} />
+    <Route path="chi-siamo" element={<AboutUs />} />
+    <Route path="a-propos" element={<AboutUs />} />
     <Route path="contact" element={<ContactUs />} />
+    <Route path="kontakt" element={<ContactUs />} />
+    <Route path="contatto" element={<ContactUs />} />
     <Route path="blog" element={<Blog />} />
     <Route path="blog/beaches-in-dalmatia" element={<BeachesInDalmatia />} />
     <Route path="blog/plitvice-lakes-guide" element={<PlitviceLakesGuide />} />

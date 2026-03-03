@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useLanguage } from "../contexts/LanguageContext";
+import Seo from "./Seo";
 
 const DefaultLanguageWrapper = () => {
     const { setLanguage } = useLanguage();
@@ -9,7 +10,12 @@ const DefaultLanguageWrapper = () => {
         setLanguage("en");
     }, [setLanguage]);
 
-    return <Outlet />;
+    return (
+        <>
+            <Seo />
+            <Outlet />
+        </>
+    );
 };
 
 export default DefaultLanguageWrapper;

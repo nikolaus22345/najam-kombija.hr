@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
-import { translations, Language } from "@/lib/translations";
+import { translations, Language } from "../lib/translations";
 import { useLocation, useNavigate } from "react-router-dom";
+import { getEnBasePath, getLocalizedPath } from "../lib/route-mapping";
 
 const DEFAULT_LANGUAGE: Language = "en";
 const VALID_LANGUAGES = Object.keys(translations) as Language[];
@@ -21,10 +22,17 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
   const getLink = (path: string) => {
     const cleanPath = path.startsWith('/') ? path : `/${path}`;
+
+    // First find the EN equivalent if the path is already localized
+    const enBasePath = getEnBasePath(cleanPath, language);
+
+    // Then get the mapped path for the current language
+    const targetPath = getLocalizedPath(enBasePath, language) || enBasePath;
+
     if (language === DEFAULT_LANGUAGE) {
-      return cleanPath;
+      return targetPath === '/' ? '/' : `${targetPath}/`; // trailing slash
     }
-    return `/${language}${cleanPath === '/' ? '' : cleanPath}`;
+    return `/${language}${targetPath === '/' ? '' : targetPath}/`; // trailing slash
   };
 
   const setLanguage = (lang: Language) => {
@@ -34,22 +42,43 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     const firstSegment = pathSegments[0];
     const isFirstSegmentLang = VALID_LANGUAGES.includes(firstSegment as Language);
 
-    let newPath = location.pathname;
+    let currentPathWithoutLang = location.pathname.replace(/\/+$/, '') || '/';
+    if (isFirstSegmentLang && firstSegment !== 'en') {
+      currentPathWithoutLang = '/' + pathSegments.slice(1).join('/');
+    }
 
-    if (lang === DEFAULT_LANGUAGE) {
-      if (isFirstSegmentLang) {
-        newPath = '/' + pathSegments.slice(1).join('/');
-      }
+    // Normalize to prevent mismatch with routeMap
+    if (currentPathWithoutLang !== '/') {
+      currentPathWithoutLang = currentPathWithoutLang.replace(/\/+$/, '');
+    }
+
+    // Find what the EN base path is
+    const enBasePath = getEnBasePath(currentPathWithoutLang, isFirstSegmentLang ? (firstSegment as Language) : 'en');
+
+    // Get the localized equivalent for the new language
+    const newMappedPath = getLocalizedPath(enBasePath, lang);
+
+    let fullNewPath = '';
+
+    // If there is NO equivalent in that language, fallback to EN home or EN base
+    if (newMappedPath === null) {
+      // Fallback: stay on home page of that language (or keep english root)
+      fullNewPath = lang === 'en' ? '/' : `/${lang}/`;
     } else {
-      if (isFirstSegmentLang) {
-        pathSegments[0] = lang;
-        newPath = '/' + pathSegments.join('/');
+      if (lang === DEFAULT_LANGUAGE) {
+        fullNewPath = newMappedPath === '/' ? '/' : `${newMappedPath}/`;
       } else {
-        newPath = `/${lang}/${pathSegments.join('/')}`;
+        fullNewPath = `/${lang}${newMappedPath === '/' ? '' : newMappedPath}/`;
       }
     }
 
-    const fullNewPath = (newPath || '/') + location.search + location.hash;
+    // Preserve query string and hash
+    fullNewPath += location.search + location.hash;
+
+    // Fix double slashes and ensure exactly 1 trailing slash (unless hash/search exists)
+    // Wait, query params should be after the slash!
+    fullNewPath = fullNewPath.replace(/(?<!:)\/{2,}/g, '/');
+
     const currentPath = location.pathname + location.search + location.hash;
 
     if (fullNewPath !== currentPath) {

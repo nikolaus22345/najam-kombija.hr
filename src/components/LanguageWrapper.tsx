@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useParams, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { translations, Language } from "@/lib/translations";
-import NotFound from "@/pages/NotFound";
+import { useLanguage } from "../contexts/LanguageContext";
+import { translations, Language } from "../lib/translations";
+import NotFound from "../pages/NotFound";
+import Seo from "./Seo";
 
 const VALID_LANGUAGES = Object.keys(translations) as Language[];
 
@@ -35,7 +36,12 @@ const LanguageWrapper = () => {
         return <NotFound />;
     }
 
-    return <Outlet />;
+    return (
+        <>
+            <Seo />
+            <Outlet />
+        </>
+    );
 };
 
 export default LanguageWrapper;
