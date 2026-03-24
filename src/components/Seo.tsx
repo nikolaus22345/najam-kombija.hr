@@ -4,6 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { translations, Language } from '../lib/translations';
 import { getEnBasePath, getLocalizedPath } from '../lib/route-mapping';
+import { useQuery } from '@tanstack/react-query';
+import { client } from '../sanity/lib/client';
 
 interface SeoProps {
     title?: string;
@@ -66,8 +68,17 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
     const enAlternate = alternates.find(a => a.lang === 'en');
     const xDefaultUrl = enAlternate ? enAlternate.url : formatUrl(enBasePath);
 
-    const tTitle = title || "Zagreb Transfers - Premium Transportation in Croatia";
-    const tDesc = description || "Reliable transfers from Zagreb, Split, Zadar to destinations all over Croatia.";
+    const { data: sanitySeo } = useQuery({
+        queryKey: ['sanity-seo', language, canonicalUrl],
+        queryFn: async () => {
+            const query = `*[_type == "seo" && language == $lang && pageId == $pageId][0]`;
+            return await client.fetch(query, { lang: language, pageId: canonicalUrl });
+        },
+        staleTime: 1000 * 60 * 5, // Cache for 5 mins
+    });
+
+    const tTitle = sanitySeo?.title || title || "Zagreb Transfers - Premium Transportation in Croatia";
+    const tDesc = sanitySeo?.metaDescription || description || "Reliable transfers from Zagreb, Split, Zadar to destinations all over Croatia.";
 
     return (
         <Helmet htmlAttributes={{ lang: language }}>
