@@ -2,6 +2,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Crown, Shield, Clock, Star } from "lucide-react";
@@ -35,6 +36,7 @@ const ChauffeurService = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo />
       <Header />
       
       <section className="relative py-20 bg-gradient-to-br from-primary/10 via-background to-background">
@@ -94,3 +96,4 @@ const ChauffeurService = () => {
 };
 
 export default ChauffeurService;
+

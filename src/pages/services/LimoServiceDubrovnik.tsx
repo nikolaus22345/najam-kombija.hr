@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sparkles, Anchor, Star, Crown, Check, Heart, Camera } from "lucide-react";
@@ -33,6 +34,7 @@ const LimoServiceDubrovnik = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo />
       <Header />
       
       {/* Hero Section */}
@@ -199,3 +201,4 @@ const LimoServiceDubrovnik = () => {
 };
 
 export default LimoServiceDubrovnik;
+

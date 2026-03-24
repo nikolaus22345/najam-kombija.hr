@@ -2,6 +2,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Users, Shield, Clock } from "lucide-react";
@@ -30,6 +31,10 @@ const MinibusRental = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo 
+        title={t.servicesPage?.minibusRental?.title ? `${t.servicesPage.minibusRental.title} | Zagreb Transfers` : "Minibus Rental Croatia"} 
+        description={t.servicesPage?.minibusRental?.subtitle || "Comfortable minibus rentals for medium groups across Croatia."} 
+      />
       <Header />
 
       <section className="relative py-20 bg-gradient-to-br from-primary/10 via-background to-background">

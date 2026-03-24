@@ -2,6 +2,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Bus, Users, Shield, Clock } from "lucide-react";
@@ -30,6 +31,10 @@ const CoachRental = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo 
+        title={t("servicesPage.coachRental.title") || "Najam autobusa - Zagreb Transfers"} 
+        description={t("servicesPage.coachRental.subtitle") || "Premium najam autobusa za grupe širom Hrvatske."} 
+      />
       <Header />
       
       {/* Hero Section */}

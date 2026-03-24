@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Crown, Shield, Clock, Star, Briefcase, Wine, Users, Check } from "lucide-react";
@@ -51,6 +52,7 @@ const ChauffeurServiceZagreb = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo />
       <Header />
       
       {/* Hero Section */}
@@ -204,3 +206,4 @@ const ChauffeurServiceZagreb = () => {
 };
 
 export default ChauffeurServiceZagreb;
+

@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Heart, Sparkles, Camera, Crown, Check, Gift, Music, Flower2 } from "lucide-react";
@@ -76,6 +77,7 @@ const LimoHireForWedding = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo />
       <Header />
       
       {/* Hero Section */}
@@ -250,3 +252,4 @@ const LimoHireForWedding = () => {
 };
 
 export default LimoHireForWedding;
+

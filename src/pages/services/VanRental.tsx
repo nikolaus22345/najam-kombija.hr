@@ -2,12 +2,13 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Users, Shield, Luggage } from "lucide-react";
 
 const VanRental = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
 
   const features = [
@@ -30,6 +31,10 @@ const VanRental = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Seo 
+        title={language === 'hr' ? "Najam kombija u Hrvatskoj" : language === 'de' ? "Transporter mieten Kroatien" : "Van Rental Croatia"}
+        description={language === 'hr' ? "Premium usluga najma kombija za obitelji i manje grupe u Hrvatskoj." : "Premium van rental services for families and groups across Croatia."} 
+      />
       <Header />
       
       <section className="relative py-20 bg-gradient-to-br from-primary/10 via-background to-background">
