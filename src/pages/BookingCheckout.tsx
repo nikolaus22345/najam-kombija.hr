@@ -44,8 +44,7 @@ const BookingCheckout = () => {
     }
   }, [bookingData, navigate]);
 
-  if (!bookingData) return null;
-
+  // Ensure vehicles is declared here before use ...
   const vehicles = [
     {
       type: "Sedan",
@@ -83,6 +82,8 @@ const BookingCheckout = () => {
       return prev;
     });
   }, []);
+
+  if (!bookingData) return null;
 
   const handleBookVehicle = (vehicleType: string, baseVehiclePrice: number) => {
     setSelectedVehicle(vehicleType);

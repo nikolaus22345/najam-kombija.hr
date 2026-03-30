@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import { Navigation, Clock, Euro, Loader2 } from 'lucide-react';
 
 // Fix Leaflet icon issue
-delete (L.Icon.Default.prototype as any)._getIconUrl;
+delete (L.Icon.Default.prototype as unknown as { _getIconUrl?: string })._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
     iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
@@ -67,6 +67,7 @@ const MapResizer = ({ bounds }: { bounds: L.LatLngBoundsExpression }) => {
 };
 
 const RouteMap = ({ pickup, dropoff, onRouteCalculated }: RouteMapProps) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const [routeData, setRouteData] = useState<any>(null);
     const [isLoading, setIsLoading] = useState(false);
 
