@@ -9,7 +9,7 @@ const VALID_LANGUAGES = Object.keys(translations) as Language[];
 
 const LanguageWrapper = () => {
     const { lang } = useParams<{ lang: string }>();
-    const { setLanguage } = useLanguage();
+    const { language, setLanguage } = useLanguage();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -38,7 +38,6 @@ const LanguageWrapper = () => {
 
     // Prevent rendering children until the LanguageContext has updated to match the URL language.
     // This solves the issue where SEO tools capture the English/fallback metadata before the useEffect fires.
-    const { language } = useLanguage();
     if (lang && VALID_LANGUAGES.includes(lang as Language) && lang !== language) {
         return null;
     }
