@@ -6,6 +6,7 @@ import { translations, Language } from '../lib/translations';
 import { getEnBasePath, getLocalizedPath } from '../lib/route-mapping';
 import { useQuery } from '@tanstack/react-query';
 import { client } from '../sanity/lib/client';
+import { useSeoData } from '../hooks/useSeoData';
 
 interface SeoProps {
     title?: string;
@@ -63,44 +64,7 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
         };
     }).filter(Boolean) as { lang: string, url: string }[];
 
-    // Centralized fallback logic for static pages that don't pass their own title
-    const getFallbackMetadata = (path: string, lang: string) => {
-        const fallbacks: Record<string, any> = {
-            '/coach-rental': {
-                en: { t: 'Coach Rental Croatia | Zagreb Transfers', d: 'Premium coach rental services for groups throughout Croatia.' },
-                hr: { t: 'Najam autobusa Hrvatska | Zagreb Transfers', d: 'Premium usluga najma autobusa za grupe širom Hrvatske.' },
-                de: { t: 'Busvermietung Kroatien | Zagreb Transfers', d: 'Premium-Busvermietung für Gruppen in ganz Kroatien.' },
-            },
-            '/minibus-rental': {
-                en: { t: 'Minibus Rental Croatia | Zagreb Transfers', d: 'Comfortable minibus rentals for medium groups.' },
-                hr: { t: 'Najam minibusa Hrvatska | Zagreb Transfers', d: 'Udoban najam minibusa za srednje grupe širom Hrvatske.' },
-            },
-            '/van-rental': {
-                en: { t: 'Van Rental Croatia | Zagreb Transfers', d: 'Premium van rental services for families and groups.' },
-                hr: { t: 'Najam kombija Hrvatska | Zagreb Transfers', d: 'Premium usluga najma kombija za obitelji i manje grupe.' },
-            },
-            '/chauffeur-service': {
-                en: { t: 'Professional Chauffeur Service | Zagreb Transfers', d: 'Private driver and chauffeur services for VIP and business.' },
-                hr: { t: 'Profesionalni Chauffeur Service | Vozila s vozačem', d: 'Privatni vozač i profesionalna usluga prijevoza.' },
-                de: { t: 'Professioneller Chauffeurservice | Zagreb Transfers', d: 'Privatfahrer für VIP und Business.' }
-            },
-            '/limo-hire-for-wedding': {
-                en: { t: 'Limo Hire for Weddings Croatia | Zagreb Transfers', d: 'Luxury wedding transportation services in Croatia.' },
-                hr: { t: 'Najam limuzine za vjenčanja u Hrvatskoj | Zagreb Transfers', d: 'Luksuzne limuzine za vjenčanja s profesionalnim vozačem.' },
-            }
-        };
-
-        const pageFallback = fallbacks[path];
-        if (pageFallback) {
-            return pageFallback[lang] || pageFallback['en'];
-        }
-        return { 
-            t: "Zagreb Transfers - Premium Transportation in Croatia", 
-            d: "Reliable transfers from Zagreb, Split, Zadar to destinations all over Croatia." 
-        };
-    };
-
-    const fallback = getFallbackMetadata(enBasePath, language);
+    const seoDataHook = useSeoData();
 
     // x-default is always the English version
     const enAlternate = alternates.find(a => a.lang === 'en');
@@ -115,8 +79,8 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
         staleTime: 1000 * 60 * 5, // Cache for 5 mins
     });
 
-    const tTitle = sanitySeo?.title || title || fallback.t;
-    const tDesc = sanitySeo?.metaDescription || description || fallback.d;
+    const tTitle = sanitySeo?.title || title || seoDataHook.title;
+    const tDesc = sanitySeo?.metaDescription || description || seoDataHook.description;
 
     return (
         <Helmet htmlAttributes={{ lang: language }}>

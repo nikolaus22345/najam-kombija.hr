@@ -3,7 +3,7 @@ import { useParams, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations, Language } from "../lib/translations";
 import NotFound from "../pages/NotFound";
-import Seo from "./Seo";
+
 
 const VALID_LANGUAGES = Object.keys(translations) as Language[];
 
@@ -36,9 +36,15 @@ const LanguageWrapper = () => {
         return <NotFound />;
     }
 
+    // Prevent rendering children until the LanguageContext has updated to match the URL language.
+    // This solves the issue where SEO tools capture the English/fallback metadata before the useEffect fires.
+    const { language } = useLanguage();
+    if (lang && VALID_LANGUAGES.includes(lang as Language) && lang !== language) {
+        return null;
+    }
+
     return (
         <>
-            <Seo />
             <Outlet />
         </>
     );
