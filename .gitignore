@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .sanity/
+.env
+.env.local
+.env.*
