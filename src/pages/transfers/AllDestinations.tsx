@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin, Clock, Euro } from "lucide-react";
 import { Link } from "react-router-dom";
+import { calculateTransferPrice } from "@/lib/pricing";
 
 const AllDestinations = () => {
   const { t, getLink } = useLanguage();
@@ -94,6 +95,15 @@ const AllDestinations = () => {
     };
   };
 
+  const getDynamicPrice = (dest: Destination) => {
+    const parts = dest.name.split(" to ");
+    if (parts.length === 2) {
+       const distanceKm = parseInt(dest.distance.replace(/[^0-9]/g, ''), 10);
+       return `€${calculateTransferPrice(parts[0], parts[1], distanceKm).sedan}`;
+    }
+    return dest.price;
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -133,7 +143,7 @@ const AllDestinations = () => {
                       </div>
                       <div className="flex items-center gap-2 text-lg font-semibold text-primary">
                         <Euro className="w-5 h-5" />
-                        {dest.price}
+                        {getDynamicPrice(dest)}
                       </div>
                       <Link {...getLinkProps(dest)}>
                         <Button className="w-full">{t.transfers.bookNow}</Button>
