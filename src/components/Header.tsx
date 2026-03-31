@@ -89,46 +89,46 @@ const Header = () => {
                   </Link>
 
                   <div className="border-b border-border pb-2">
-                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">SERVICES</p>
+                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">{t.footer.services}</p>
                     <Link
                       to={getLink('/coach-rental')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
-                      Bus Rental
+                      {t.footer.busRental}
                     </Link>
                     <Link
                       to={getLink('/minibus-rental')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
-                      Minibus Rental
+                      {t.footer.minibusRental}
                     </Link>
                     <Link
                       to={getLink('/van-rental')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
-                      Van Rental
+                      {t.footer.vanRental}
                     </Link>
                     <Link
                       to={getLink('/chauffeur-service')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
-                      Chauffeur Service
+                      {t.footer.chauffeurService}
                     </Link>
                     <Link
                       to={getLink('/limo-hire-for-wedding')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
-                      Wedding Limo
+                      {t.footer.weddingLimo}
                     </Link>
                   </div>
 
                   <div className="border-b border-border pb-2 pt-4">
-                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">TRANSFERS</p>
+                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">{t.header.transfers}</p>
                     <Link
                       to={getLink('/transfers/zagreb')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
@@ -142,19 +142,19 @@ const Header = () => {
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
-                      Zagreb Airport
+                      {t.header.zagrebAirport}
                     </Link>
                     <Link
                       to={getLink('/transfers/all-destinations')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
                       onClick={() => setOpen(false)}
                     >
-                      All Destinations
+                      {t.header.allDestinations}
                     </Link>
                   </div>
 
                   <div className="border-b border-border pb-2 pt-4">
-                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">WHY CHOOSE US</p>
+                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">{t.features.subtitle}</p>
                     <Link
                       to={getLink('/features/safety-first')}
                       className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
@@ -197,7 +197,7 @@ const Header = () => {
                     className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 uppercase"
                     onClick={() => setOpen(false)}
                   >
-                    Blog
+                    {t.footer.blog}
                   </Link>
                   <Link
                     to={getLink('/contact')}
@@ -225,25 +225,25 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1 uppercase">
-                  Services
+                  {t.footer.services}
                   <ChevronDown className="w-4 h-4" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-background border border-border z-[100]">
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/coach-rental')} className="cursor-pointer uppercase">Bus Rental</Link>
+                  <Link to={getLink('/coach-rental')} className="cursor-pointer uppercase">{t.footer.busRental}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/minibus-rental')} className="cursor-pointer uppercase">Minibus Rental</Link>
+                  <Link to={getLink('/minibus-rental')} className="cursor-pointer uppercase">{t.footer.minibusRental}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/van-rental')} className="cursor-pointer uppercase">Van Rental</Link>
+                  <Link to={getLink('/van-rental')} className="cursor-pointer uppercase">{t.footer.vanRental}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/chauffeur-service')} className="cursor-pointer uppercase">Chauffeur Service</Link>
+                  <Link to={getLink('/chauffeur-service')} className="cursor-pointer uppercase">{t.footer.chauffeurService}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/limo-hire-for-wedding')} className="cursor-pointer uppercase">Wedding Limo</Link>
+                  <Link to={getLink('/limo-hire-for-wedding')} className="cursor-pointer uppercase">{t.footer.weddingLimo}</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -261,10 +261,10 @@ const Header = () => {
                 </DropdownMenuItem>
 
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/airport-transfers/zagreb')} className="cursor-pointer uppercase">Zagreb Airport</Link>
+                  <Link to={getLink('/airport-transfers/zagreb')} className="cursor-pointer uppercase">{t.header.zagrebAirport}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/transfers/all-destinations')} className="cursor-pointer uppercase">All Destinations</Link>
+                  <Link to={getLink('/transfers/all-destinations')} className="cursor-pointer uppercase">{t.header.allDestinations}</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -272,7 +272,7 @@ const Header = () => {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1 uppercase">
-                  Why Us
+                  {t.features.subtitle}
                   <ChevronDown className="w-4 h-4" />
                 </button>
               </DropdownMenuTrigger>
@@ -296,7 +296,7 @@ const Header = () => {
               {t.header.about}
             </Link>
             <Link to={getLink('/blog')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
-              Blog
+              {t.footer.blog}
             </Link>
             <Link to={getLink('/contact')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
               {t.header.contact}
