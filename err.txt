@@ -1,0 +1,17 @@
+[36mvite v5.4.21 [32mbuilding for production...[36m[39m
+transforming...
+[32m✓[39m 2106 modules transformed.
+[31mx[39m Build failed in 5.35s
+[31merror during build:
+[31m[vite]: Rollup failed to resolve import "@sanity/client" from "C:/Users/Korisnik/Desktop/Zagreb transfers zadnji i pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/src/sanity/lib/client.ts".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rollupOptions.external`[31m
+    at viteWarn (file:///C:/Users/Korisnik/Desktop/Zagreb%20transfers%20zadnji%20i%20pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:65855:17)
+    at onwarn (file:///C:/Users/Korisnik/Desktop/Zagreb%20transfers%20zadnji%20i%20pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/node_modules/@vitejs/plugin-react-swc/index.js:90:7)
+    at onRollupWarning (file:///C:/Users/Korisnik/Desktop/Zagreb%20transfers%20zadnji%20i%20pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:65885:5)
+    at onwarn (file:///C:/Users/Korisnik/Desktop/Zagreb%20transfers%20zadnji%20i%20pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:65550:7)
+    at file:///C:/Users/Korisnik/Desktop/Zagreb%20transfers%20zadnji%20i%20pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/node_modules/rollup/dist/es/shared/node-entry.js:20972:13
+    at Object.logger [as onLog] (file:///C:/Users/Korisnik/Desktop/Zagreb%20transfers%20zadnji%20i%20pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/node_modules/rollup/dist/es/shared/node-entry.js:22945:9)
+    at ModuleLoader.handleInvalidResolvedId (file:///C:/Users/Korisnik/Desktop/Zagreb%20transfers%20zadnji%20i%20pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/node_modules/rollup/dist/es/shared/node-entry.js:21689:26)
+    at file:///C:/Users/Korisnik/Desktop/Zagreb%20transfers%20zadnji%20i%20pravi/Najnovije/zagreb-transfer-hub-main/zagreb-transfer-hub-main/node_modules/rollup/dist/es/shared/node-entry.js:21647:26[39m
