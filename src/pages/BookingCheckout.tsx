@@ -10,6 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import BookingModal, { BookingContactData } from "@/components/BookingModal";
 import { sendEmail } from "@/lib/email";
+import { calculateTransferPrice } from "@/lib/pricing";
 
 const POPULAR_LOCATIONS = [
   "Zagreb Airport", "Zagreb City Center", "Split Airport", "Split City Center",
@@ -35,8 +36,17 @@ const BookingCheckout = () => {
 
   const [selectedVehicle, setSelectedVehicle] = useState<string | null>(null);
   const [basePrice, setBasePrice] = useState(150);
+  const [routeDistance, setRouteDistance] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingPrice, setBookingPrice] = useState(0);
+
+  const calculatedPricing = calculateTransferPrice(bookingData?.pickup, bookingData?.dropoff, routeDistance);
+  const getVehicleBasePrice = (type: string) => {
+    if (type === "Sedan") return calculatedPricing.sedan;
+    if (type === "Minivan") return calculatedPricing.minivan;
+    if (type === "Minibus") return calculatedPricing.minibus;
+    return calculatedPricing.sedan;
+  };
 
   useEffect(() => {
     if (!bookingData) {
@@ -74,9 +84,7 @@ const BookingCheckout = () => {
   ];
 
   const handleRouteCalculated = useCallback((distance: number, duration: number, price: number) => {
-    // Only update if price is significantly different to prevent loop? 
-    // Actually setBasePrice ensures update only if value changes if React optimizes, 
-    // but better to be safe.
+    setRouteDistance(distance);
     setBasePrice(prev => {
       if (prev !== price) return price;
       return prev;
@@ -254,7 +262,7 @@ const BookingCheckout = () => {
 
                     <div className="pt-4 border-t">
                       <div className="text-3xl font-bold text-primary">
-                        €{Math.round(basePrice * vehicle.priceMultiplier * (bookingData.transferType === "return" ? 2 : 1))}
+                        €{getVehicleBasePrice(vehicle.type) * (bookingData.transferType === "return" ? 2 : 1)}
                       </div>
                       <p className="text-sm text-muted-foreground">
                         Total price {bookingData.transferType === "return" && "(round trip)"}
@@ -263,7 +271,7 @@ const BookingCheckout = () => {
                       <Button
                         className="w-full"
                         size="lg"
-                        onClick={() => handleBookVehicle(vehicle.type, Math.round(basePrice * vehicle.priceMultiplier))}
+                        onClick={() => handleBookVehicle(vehicle.type, getVehicleBasePrice(vehicle.type))}
                       >
                         Book {vehicle.type}
                         <ArrowRight className="w-4 h-4 ml-2" />

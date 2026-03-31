@@ -19,8 +19,7 @@ interface RouteMapProps {
     onRouteCalculated?: (distance: number, duration: number, price: number) => void;
 }
 
-const PRICE_PER_KM = 1.5;
-const MIN_PRICE = 25;
+import { calculateTransferPrice } from '@/lib/pricing';
 
 // Helper to fetch coordinates and route
 const fetchRoute = async (startName: string, endName: string) => {
@@ -79,7 +78,7 @@ const RouteMap = ({ pickup, dropoff, onRouteCalculated }: RouteMapProps) => {
             const data = await fetchRoute(pickup, dropoff);
             if (data) {
                 setRouteData(data);
-                const price = Math.max(MIN_PRICE, Math.ceil(data.distanceKm * PRICE_PER_KM));
+                const price = calculateTransferPrice(pickup, dropoff, data.distanceKm).sedan;
                 if (onRouteCalculated) {
                     onRouteCalculated(Math.round(data.distanceKm), data.durationMin, price);
                 }
@@ -122,7 +121,7 @@ const RouteMap = ({ pickup, dropoff, onRouteCalculated }: RouteMapProps) => {
                             <Euro className="w-4 h-4 md:w-5 md:h-5 text-primary" />
                             <div>
                                 <p className="text-[10px] uppercase text-gray-500 font-bold">Price</p>
-                                <p className="text-sm md:text-lg font-bold">€{Math.max(MIN_PRICE, Math.ceil(routeData.distanceKm * PRICE_PER_KM))}</p>
+                                <p className="text-sm md:text-lg font-bold">€{calculateTransferPrice(pickup, dropoff, routeData.distanceKm).sedan}</p>
                             </div>
                         </div>
                     </Card>

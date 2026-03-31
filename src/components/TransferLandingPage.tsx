@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRouteData } from "@/hooks/useRouteData";
+import { calculateTransferPrice } from "@/lib/pricing";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -98,32 +99,33 @@ const TransferLandingPage = ({
         return text.replace("{origin}", displayOrigin).replace("{destination}", displayDestination);
     };
 
-    const { price: dynamicPrice, distanceKm: dynamicDistance, durationMin: dynamicDuration, loading } = useRouteData(origin, destination);
+    const { distanceKm: dynamicDistance, durationMin: dynamicDuration, loading } = useRouteData(origin, destination);
 
-    const activePrice = (!loading && dynamicPrice > 0) ? dynamicPrice : price;
     const activeDistance = (!loading && dynamicDistance > 0) ? dynamicDistance : distanceKm;
     const activeDuration = (!loading && dynamicDuration > 0) ? dynamicDuration : durationMin;
+    const currentPricing = calculateTransferPrice(origin, destination, activeDistance);
+    const activePrice = currentPricing.sedan;
 
     const defaultVehicles: Vehicle[] = [
         {
             type: "Standard",
             capacity: "1-3",
             luggage: "2-3",
-            price: `€${activePrice}`,
+            price: `€${currentPricing.sedan}`,
             features: ["Free WiFi", "Air Conditioning", "Professional Driver"]
         },
         {
             type: "Minivan",
             capacity: "4-8",
             luggage: "6-8",
-            price: `€${Math.round(activePrice * 1.3)}`, // Approx multiplier
+            price: `€${currentPricing.minivan}`,
             features: ["Free WiFi", "Air Conditioning", "Professional Driver", "Extra Space"]
         },
         {
             type: "Minibus",
             capacity: "9-16",
             luggage: "12-16",
-            price: `€${Math.round(activePrice * 1.8)}`,
+            price: `€${currentPricing.minibus}`,
             features: ["Free WiFi", "Air Conditioning", "Professional Driver", "Group Travel"]
         }
     ];

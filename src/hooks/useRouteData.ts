@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const PRICE_PER_KM = 1.5;
-const MIN_PRICE = 25;
+import { calculateTransferPrice } from '@/lib/pricing';
 
 export interface RouteData {
     distanceKm: number;
@@ -86,8 +85,7 @@ export const useRouteData = (origin: string, destination: string): RouteData => 
                     const distanceKm = route.distance / 1000;
                     const durationMin = Math.round(route.duration / 60);
 
-                    let price = distanceKm * PRICE_PER_KM;
-                    price = Math.max(MIN_PRICE, Math.ceil(price));
+                    const price = calculateTransferPrice(origin, destination, distanceKm).sedan;
 
                     setData({
                         distanceKm: Math.round(distanceKm),
