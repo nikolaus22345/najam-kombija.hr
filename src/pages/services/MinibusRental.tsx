@@ -14,18 +14,18 @@ const MinibusRental = () => {
   const features = [
     {
       icon: Users,
-      title: "8-20 Passengers",
-      description: "Perfect for medium-sized groups"
+      title: t.servicesPage?.minibusRental?.features?.capacity?.title || "8-20 Passengers",
+      description: t.servicesPage?.minibusRental?.features?.capacity?.desc || "Perfect for medium-sized groups"
     },
     {
       icon: Shield,
-      title: "Professional Service",
-      description: "Experienced and reliable drivers"
+      title: t.servicesPage?.minibusRental?.features?.service?.title || "Professional Service",
+      description: t.servicesPage?.minibusRental?.features?.service?.desc || "Experienced and reliable drivers"
     },
     {
       icon: Clock,
-      title: "Flexible Options",
-      description: "Hourly or daily rentals available"
+      title: t.servicesPage?.minibusRental?.features?.flexible?.title || "Flexible Options",
+      description: t.servicesPage?.minibusRental?.features?.flexible?.desc || "Hourly or daily rentals available"
     }
   ];
 
@@ -41,17 +41,17 @@ const MinibusRental = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              {t.servicesPage.minibusRental.title}
+              {t.servicesPage?.minibusRental?.title || "Minibus Rental Croatia"}
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              {t.servicesPage.minibusRental.subtitle}
+              {t.servicesPage?.minibusRental?.subtitle || "Comfortable minibus rentals for small to medium groups across Croatia. Modern vehicles and professional drivers."}
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" onClick={() => navigate(`/${t.servicesPage?.minibusRental ? language : 'en'}/get-quote`)}>
-                {t.servicesPage.minibusRental.getQuote}
+              <Button size="lg" onClick={() => navigate(`/${language}/get-quote`)}>
+                {t.servicesPage?.minibusRental?.getQuote || "Get a Quote"}
               </Button>
-              <Button size="lg" variant="outline" onClick={() => navigate(`/${t.servicesPage?.minibusRental ? language : 'en'}/contact`)}>
-                {t.servicesPage.minibusRental.contactUs}
+              <Button size="lg" variant="outline" onClick={() => navigate(`/${language}/contact`)}>
+                {t.servicesPage?.minibusRental?.contactUs || "Contact Us"}
               </Button>
             </div>
           </div>
@@ -61,21 +61,15 @@ const MinibusRental = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-6 text-center">
-              <Users className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{t.servicesPage.minibusRental.features.capacity.title}</h3>
-              <p className="text-muted-foreground">{t.servicesPage.minibusRental.features.capacity.desc}</p>
-            </Card>
-            <Card className="p-6 text-center">
-              <Shield className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{t.servicesPage.minibusRental.features.service.title}</h3>
-              <p className="text-muted-foreground">{t.servicesPage.minibusRental.features.service.desc}</p>
-            </Card>
-            <Card className="p-6 text-center">
-              <Clock className="w-12 h-12 text-primary mx-auto mb-4" />
-              <h3 className="text-xl font-semibold mb-2">{t.servicesPage.minibusRental.features.flexible.title}</h3>
-              <p className="text-muted-foreground">{t.servicesPage.minibusRental.features.flexible.desc}</p>
-            </Card>
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+              <Card key={index} className="p-6 text-center">
+                <Icon className="w-12 h-12 text-primary mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
+              </Card>
+            )})}
           </div>
         </div>
       </section>

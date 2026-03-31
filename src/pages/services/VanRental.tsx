@@ -31,27 +31,27 @@ const VanRental = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Seo 
-        title={language === 'hr' ? "Najam kombija u Hrvatskoj" : language === 'de' ? "Transporter mieten Kroatien" : "Van Rental Croatia"}
-        description={language === 'hr' ? "Premium usluga najma kombija za obitelji i manje grupe u Hrvatskoj." : "Premium van rental services for families and groups across Croatia."} 
+      <Seo
+        title={t.servicesPage?.vanRental?.title || (language === 'hr' ? "Najam kombija u Hrvatskoj" : language === 'de' ? "Transporter mieten Kroatien" : "Van Rental Croatia")}
+        description={t.servicesPage?.vanRental?.subtitle || (language === 'hr' ? "Premium usluga najma kombija za obitelji i manje grupe u Hrvatskoj." : "Premium van rental services for families and groups across Croatia.")}
       />
       <Header />
-      
+
       <section className="relative py-20 bg-gradient-to-br from-primary/10 via-background to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Van Rental Croatia
+              {t.servicesPage?.vanRental?.title || (language === 'hr' ? "Najam kombija u Hrvatskoj" : "Van Rental Croatia")}
             </h1>
             <p className="text-xl text-muted-foreground mb-8">
-              Premium van rental services for families and small groups traveling across Croatia.
+              {t.servicesPage?.vanRental?.subtitle || "Premium van rental services for families and small groups traveling across Croatia."}
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
-              <Button size="lg" onClick={() => navigate("/get-quote")}>
-                Get a Quote
+              <Button size="lg" onClick={() => navigate(`/${language}/get-quote`)}>
+                {t.servicesPage?.vanRental?.getQuote || "Get a Quote"}
               </Button>
-              <Button size="lg" variant="outline" onClick={() => navigate("/contact")}>
-                Contact Us
+              <Button size="lg" variant="outline" onClick={() => navigate(`/${language}/contact`)}>
+                {t.servicesPage?.vanRental?.contactUs || "Contact Us"}
               </Button>
             </div>
           </div>
@@ -61,13 +61,16 @@ const VanRental = () => {
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <Card key={index} className="p-6 text-center">
-                <feature.icon className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground">{feature.description}</p>
-              </Card>
-            ))}
+            {features.map((feature, index) => {
+              const Icon = feature.icon;
+              return (
+                <Card key={index} className="p-6 text-center">
+                  <Icon className="w-12 h-12 text-primary mx-auto mb-4" />
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground">{feature.description}</p>
+                </Card>
+              )
+            })}
           </div>
         </div>
       </section>
