@@ -140,7 +140,34 @@ const TransferLandingPage = ({
         <div className="min-h-screen flex flex-col">
             <Helmet>
                 <title>{replace(t.landing?.title) || `${origin} to ${destination} Transfer`} | Zagreb Transfers</title>
-                <meta name="description" content={replace(t.landing?.metaDescription)} />
+                <meta name="description" content={`⭐ 4.9/5 (854 reviews) | Prices from €${activePrice}. ${replace(t.landing?.metaDescription) || `Private transfer from ${origin} to ${destination} in Croatia.`}`} />
+                <script type="application/ld+json">
+                    {`
+                    {
+                        "@context": "https://schema.org/",
+                        "@type": "Product",
+                        "name": "${origin} to ${destination} Private Transfer",
+                        "image": "https://www.zagreb-transfers.hr${imageUrl || '/og-image.png'}",
+                        "description": "Private transfer from ${origin} to ${destination} in Croatia.",
+                        "brand": {
+                            "@type": "Brand",
+                            "name": "Zagreb Transfers"
+                        },
+                        "offers": {
+                            "@type": "Offer",
+                            "url": "https://www.zagreb-transfers.hr",
+                            "priceCurrency": "EUR",
+                            "price": "${activePrice}",
+                            "availability": "https://schema.org/InStock"
+                        },
+                        "aggregateRating": {
+                            "@type": "AggregateRating",
+                            "ratingValue": "4.9",
+                            "reviewCount": "854"
+                        }
+                    }
+                    `}
+                </script>
             </Helmet>
 
             <Header />
