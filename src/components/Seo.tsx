@@ -89,6 +89,9 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
             <meta name="description" content={tDesc} />
             <link rel="canonical" href={canonicalUrl} />
 
+            {/* Favicon */}
+            <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiBjbGFzcz0iaC0xMiB3LTEyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwb2x5Z29uIHBvaW50cz0iMjUsMjAgODUsMjAgNTAsNTIgODUsNTIgMTUsODAgNTAsNDggMjUsNDgiIGZpbGw9IiNGNkMzNDQiPjwvcG9seWdvbj48L3N2Zz4=" />
+
             {/* Hreflang Tags */}
             {alternates.map(({ lang, url }) => (
                 <link key={lang} rel="alternate" hrefLang={lang} href={url} />
