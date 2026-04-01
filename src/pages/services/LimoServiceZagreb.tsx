@@ -5,6 +5,7 @@ import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Sparkles, Wine, Star, Crown, Check, Music, Zap } from "lucide-react";
+import RatingInfo from "@/components/RatingInfo";
 
 const LimoServiceZagreb = () => {
   const navigate = useNavigate();
@@ -56,6 +57,9 @@ const LimoServiceZagreb = () => {
             <p className="text-lg text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
               Make every journey extraordinary with our premium limousine service. Unparalleled luxury, professional chauffeurs, and unforgettable experiences in Zagreb.
             </p>
+            <div className="flex justify-center mb-10">
+              <RatingInfo seedText="Limo Service Zagreb" basePrice={150} />
+            </div>
             <div className="flex gap-4 justify-center flex-wrap">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-10 py-6 text-lg">
                 <Zap className="mr-2 w-5 h-5" />

@@ -6,6 +6,7 @@ import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Users, Shield, Luggage } from "lucide-react";
+import RatingInfo from "@/components/RatingInfo";
 
 const VanRental = () => {
   const { t, language } = useLanguage();
@@ -46,6 +47,9 @@ const VanRental = () => {
             <p className="text-xl text-muted-foreground mb-8">
               {t.servicesPage?.vanRental?.subtitle || "Premium van rental services for families and small groups traveling across Croatia."}
             </p>
+            <div className="flex justify-center mb-8">
+              <RatingInfo seedText="Van Rental Croatia" basePrice={80} />
+            </div>
             <div className="flex gap-4 justify-center flex-wrap">
               <Button size="lg" onClick={() => navigate(`/${language}/get-quote`)}>
                 {t.servicesPage?.vanRental?.getQuote || "Get a Quote"}

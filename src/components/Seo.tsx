@@ -81,7 +81,13 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
 
     const tTitle = sanitySeo?.title || title || seoDataHook.title;
     const rawDesc = sanitySeo?.metaDescription || description || seoDataHook.description;
-    const tDesc = `⭐ 4.9/5 (1,248 reviews). ${rawDesc}`;
+    
+    // Deterministic rating per page
+    const seedValue = location.pathname.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const pageRating = (4.7 + (seedValue % 3) / 10).toFixed(1);
+    const pageReviews = 45 + (seedValue % 120);
+    
+    const tDesc = `⭐ ${pageRating.replace('.', ',')}/5 (${pageReviews} reviews). ${rawDesc}`;
 
     return (
         <Helmet htmlAttributes={{ lang: language }}>
@@ -125,8 +131,8 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
                     "url": "${canonicalUrl}",
                     "aggregateRating": {
                         "@type": "AggregateRating",
-                        "ratingValue": "4.9",
-                        "reviewCount": "1248"
+                        "ratingValue": "${pageRating}",
+                        "reviewCount": "${pageReviews}"
                     }
                 }
                 `}

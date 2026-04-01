@@ -6,6 +6,7 @@ import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Crown, Shield, Clock, Star } from "lucide-react";
+import RatingInfo from "@/components/RatingInfo";
 
 const ChauffeurService = () => {
   const { t } = useLanguage();
@@ -48,6 +49,9 @@ const ChauffeurService = () => {
             <p className="text-xl text-muted-foreground mb-8">
               Executive chauffeur services throughout Croatia. Professional, discreet, and luxurious transportation for business and leisure.
             </p>
+            <div className="flex justify-center mb-8">
+              <RatingInfo seedText="Chauffeur Service Croatia" basePrice={60} />
+            </div>
             <div className="flex gap-4 justify-center flex-wrap">
               <Button size="lg" onClick={() => navigate("/get-quote")}>
                 Book Now

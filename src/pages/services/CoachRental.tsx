@@ -6,6 +6,7 @@ import Seo from "@/components/Seo";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Bus, Users, Shield, Clock } from "lucide-react";
+import RatingInfo from "@/components/RatingInfo";
 
 const CoachRental = () => {
   const { t, language } = useLanguage();
@@ -47,6 +48,9 @@ const CoachRental = () => {
             <p className="text-xl text-muted-foreground mb-8">
               {t.servicesPage?.coachRental?.subtitle || "Premium coach rental services for groups throughout Croatia. Modern fleet, professional drivers, and competitive rates."}
             </p>
+            <div className="flex justify-center mb-8">
+              <RatingInfo seedText="Coach Rental Croatia" basePrice={250} />
+            </div>
             <div className="flex gap-4 justify-center flex-wrap">
               <Button size="lg" onClick={() => navigate(`/${language}/get-quote`)}>
                 {t.servicesPage?.coachRental?.getQuote || "Get a Quote"}

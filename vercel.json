@@ -7,6 +7,17 @@
     ],
     "redirects": [
         {
+            "source": "/:path*",
+            "has": [
+                {
+                    "type": "host",
+                    "value": "zagreb-transfers.hr"
+                }
+            ],
+            "destination": "https://www.zagreb-transfers.hr/:path*",
+            "permanent": true
+        },
+        {
             "source": "/en",
             "destination": "/",
             "permanent": true
