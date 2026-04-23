@@ -112,9 +112,20 @@ import MobileMenu from "./pages/MobileMenu";
 import Services from "./pages/Services";
 import Reservation from "./pages/Reservation";
 import ThankYou from "./pages/ThankYou";
+import NajamKombijaCity from "./pages/NajamKombijaCity";
+import Kategorija from "./pages/Kategorija";
 
 const RouteList = () => <>
     <Route index element={<Index />} />
+    {[
+      "zagreb", "split", "rijeka", "osijek", "zadar", 
+      "pula", "varazdin", "karlovac", "slavonski-brod", 
+      "dubrovnik", "sibenik", "sisak", "velika-gorica", 
+      "cakovec", "bjelovar", "samobor"
+    ].map(city => (
+      <Route key={city} path={`najam-kombija-${city}`} element={<NajamKombijaCity citySlug={city} />} />
+    ))}
+    <Route path="kategorije/:kategorija" element={<Kategorija />} />
     <Route path="transfers/zagreb-airport" element={<ZagrebAirport />} />
     <Route path="transfers/split-airport" element={<SplitAirport />} />
     <Route path="transfers/zadar-airport" element={<ZadarAirport />} />
@@ -330,9 +341,6 @@ export const AppRoutes = () => {
     return (
         <Routes>
             <Route element={<DefaultLanguageWrapper />}>
-                {RouteList()}
-            </Route>
-            <Route path="/:lang" element={<LanguageWrapper />}>
                 {RouteList()}
             </Route>
             <Route path="*" element={<NotFound />} />

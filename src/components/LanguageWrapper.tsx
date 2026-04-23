@@ -14,9 +14,9 @@ const LanguageWrapper = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Redirect /en/* → /* (canonical URL without /en prefix)
-        if (lang === "en") {
-            const restOfPath = location.pathname.replace(/^\/en/, '') || '/';
+        // Redirect /hr/* → /* (canonical URL without /hr prefix)
+        if (lang === "hr") {
+            const restOfPath = location.pathname.replace(/^\/hr/, '') || '/';
             navigate(restOfPath + location.search + location.hash, { replace: true });
             return;
         }
@@ -26,8 +26,8 @@ const LanguageWrapper = () => {
         }
     }, [lang, setLanguage, location.pathname, location.search, location.hash, navigate]);
 
-    // /en/* - while redirect is happening, render nothing
-    if (lang === "en") {
+    // /hr/* - while redirect is happening, render nothing
+    if (lang === "hr") {
         return null;
     }
 

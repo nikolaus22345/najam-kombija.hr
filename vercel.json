@@ -28,6 +28,16 @@
             "permanent": true
         },
         {
+            "source": "/de",
+            "destination": "/",
+            "permanent": true
+        },
+        {
+            "source": "/de/:path*",
+            "destination": "/:path*",
+            "permanent": true
+        },
+        {
             "source": "/rezervacija",
             "destination": "/booking",
             "permanent": true

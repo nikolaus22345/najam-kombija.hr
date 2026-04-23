@@ -14,7 +14,7 @@ interface SeoProps {
     image?: string;
 }
 
-const BASE_URL = 'https://www.zagreb-transfers.hr';
+const BASE_URL = 'https://www.najam-kombija.hr';
 const VALID_LANGUAGES = Object.keys(translations) as Language[];
 
 const formatUrl = (path: string) => {
@@ -28,47 +28,11 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
     const location = useLocation();
     const { language } = useLanguage();
 
-    // 1) Find the "English Base Path" equivalent of the current URL
-    let currentPathWithoutLang = location.pathname.replace(/\/+$/, '') || '/';
-    if (language !== 'en' && currentPathWithoutLang.startsWith(`/${language}`)) {
-        currentPathWithoutLang = currentPathWithoutLang.replace(new RegExp(`^/${language}(/|$)`), '/') || '/';
-    }
-
-    // Normalize to prevent mismatch with routeMap which uses paths without trailing slashes except for '/'
-    if (currentPathWithoutLang !== '/') {
-        currentPathWithoutLang = currentPathWithoutLang.replace(/\/+$/, '');
-    }
-
-    // Find the master EN path using our mapping
-    const enBasePath = getEnBasePath(currentPathWithoutLang, language);
-
-    // 2) Generate the canonical URL for the CURRENT view
-    const currentMappedPath = getLocalizedPath(enBasePath, language) || enBasePath;
-    const currentFullPath = language === 'en'
-        ? currentMappedPath
-        : `/${language}${currentMappedPath === '/' ? '' : currentMappedPath}`;
-    const canonicalUrl = formatUrl(currentFullPath);
-
-    // 3) Generate alternative URLs for all languages
-    const alternates = VALID_LANGUAGES.map((lang) => {
-        const mappedPath = getLocalizedPath(enBasePath, lang);
-        if (mappedPath === null) return null;
-
-        const fullPath = lang === 'en'
-            ? mappedPath
-            : `/${lang}${mappedPath === '/' ? '' : mappedPath}`;
-
-        return {
-            lang,
-            url: formatUrl(fullPath)
-        };
-    }).filter(Boolean) as { lang: string, url: string }[];
-
+    // Set Croatian as the only definitive canonical language
+    const currentPathWithoutLang = location.pathname.replace(/\/+$/, '') || '/';
+    const canonicalUrl = formatUrl(currentPathWithoutLang);
     const seoDataHook = useSeoData();
-
-    // x-default is always the English version
-    const enAlternate = alternates.find(a => a.lang === 'en');
-    const xDefaultUrl = enAlternate ? enAlternate.url : formatUrl(enBasePath);
+    const xDefaultUrl = canonicalUrl;
 
     const { data: sanitySeo } = useQuery({
         queryKey: ['sanity-seo', language, canonicalUrl],
@@ -100,9 +64,7 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
             <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
             {/* Hreflang Tags */}
-            {alternates.map(({ lang, url }) => (
-                <link key={lang} rel="alternate" hrefLang={lang} href={url} />
-            ))}
+            <link rel="alternate" hrefLang="hr" href={canonicalUrl} />
             <link rel="alternate" hrefLang="x-default" href={xDefaultUrl} />
 
             {/* Open Graph / Facebook */}
@@ -124,10 +86,10 @@ const Seo = ({ title, description, image = '/og-image.png' }: SeoProps) => {
                 {`
                 {
                     "@context": "https://schema.org",
-                    "@type": "TravelAgency",
-                    "name": "Zagreb Transfers",
+                    "@type": "AutoRental",
+                    "name": "Najam Kombija",
                     "image": "${BASE_URL}${image}",
-                    "description": "Private airport and city transfer service in Croatia.",
+                    "description": "Najam putničkih i teretnih kombi vozila u Hrvatskoj.",
                     "url": "${canonicalUrl}",
                     "aggregateRating": {
                         "@type": "AggregateRating",

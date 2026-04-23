@@ -3,37 +3,16 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
-import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
-import { z } from "zod";
-import { sendEmail } from "@/lib/email";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100),
-  email: z.string().trim().email("Invalid email address").max(255),
-  subject: z.string().trim().min(1, "Subject is required").max(200),
-  message: z.string().trim().min(1, "Message is required").max(1000),
-});
+import BookingForm from "@/components/BookingForm";
 
 const ContactUs = () => {
   const { t } = useLanguage();
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const contactInfo = [
     {
       icon: Phone,
       title: t.contact.phone,
-      value: "+385 1 234 5678",
+      value: "+385 97 601 9558",
     },
     {
       icon: Mail,
@@ -46,68 +25,6 @@ const ContactUs = () => {
       value: t.contact.locationValue,
     },
   ];
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-      setIsSubmitting(true);
-
-      // Validate form data
-      const validatedData = contactSchema.parse(formData);
-
-      const templateParams = {
-        to_email: "zagrebtransfers.hr@gmail.com, nikolacvitanovic.hr@gmail.com",
-        from_name: validatedData.name,
-        from_email: validatedData.email,
-        subject: validatedData.subject,
-        message: validatedData.message,
-        reply_to: validatedData.email,
-      };
-
-      const result = await sendEmail(templateParams);
-
-      if (!result.success) {
-        throw new Error("Failed to send email");
-      }
-
-      toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
-      });
-
-      // Reset form
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        toast({
-          title: "Validation error",
-          description: error.errors[0].message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Error",
-          description: "Failed to send message. Please try again.",
-          variant: "destructive",
-        });
-      }
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -149,62 +66,9 @@ const ContactUs = () => {
             </div>
 
             {/* Contact Form */}
-            <Card className="max-w-2xl mx-auto p-8">
-              <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
-                {t.contact.send}
-              </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder={t.contact.namePlaceholder}
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    maxLength={100}
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder={t.contact.emailPlaceholder}
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    maxLength={255}
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="subject"
-                    placeholder={t.contact.subjectPlaceholder}
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    maxLength={200}
-                  />
-                </div>
-                <div>
-                  <Textarea
-                    name="message"
-                    placeholder={t.contact.messagePlaceholder}
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    maxLength={1000}
-                    rows={6}
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? "Sending..." : t.contact.send}
-                </Button>
-              </form>
-            </Card>
+            <div className="flex justify-center">
+              <BookingForm />
+            </div>
           </div>
         </section>
       </main>

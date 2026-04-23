@@ -38,12 +38,12 @@ export const translations = {
       seeAllDestinations: "See All Destinations",
     },
     hero: {
-      subtitle: "ZAGREB TRANSFERS",
-      title: "Zagreb City and Airport Transfers",
-      description: "Find the Perfect Private Transfer For Your Journey in Croatia",
-      feature1: "Professional Drivers",
-      feature2: "24/7 Service",
-      feature3: "Fixed Prices",
+      subtitle: "NAJAM KOMBIJA",
+      title: "Najam Kombija Zagreb Hrvatska & EU",
+      description: "Pronađite savršeno putničko ili teretno vozilo za vaše potrebe diljem Hrvatske i Europe.",
+      feature1: "Sigurna Vozila",
+      feature2: "24/7 Podrška",
+      feature3: "Fiksne Cijene",
     },
     bookingForm: {
       title: "Book Your Transfer",
@@ -81,7 +81,7 @@ export const translations = {
     },
     fleet: {
       subtitle: "OUR VEHICLES",
-      title: "Zagreb Transfers Fleet",
+      title: "Najam Kombija Fleet",
       standard: {
         name: "Standard",
         capacity: "Up to 3 people",
@@ -135,7 +135,7 @@ export const translations = {
     about: {
       subtitle: "ABOUT US",
       title: "Experience Croatia with Confidence",
-      paragraph1: "Zagreb Transfers has been providing premium transportation services across Croatia for years. We specialize in airport transfers, city transportation, and long-distance journeys throughout the country.",
+      paragraph1: "Najam Kombija has been providing premium transportation services across Croatia for years. We specialize in airport transfers, city transportation, and long-distance journeys throughout the country.",
       paragraph2: "Our professional drivers are carefully selected and trained to provide you with the highest level of service. They are not just drivers - they are your guides to discovering the beauty of Croatia.",
       paragraph3: "With modern, comfortable vehicles and a commitment to punctuality and safety, we ensure every journey with us is smooth, comfortable, and memorable.",
       stat1: "Monthly Transfers",
@@ -264,7 +264,7 @@ export const translations = {
       longDistance: "Long Distance",
       groupTransport: "Group Transport",
       contactInfo: "Contact Info",
-      copyright: "© 2024 Zagreb Transfers. All rights reserved.",
+      copyright: "© 2024 Najam Kombija. All rights reserved.",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
       busRental: "Bus Rental",
@@ -275,7 +275,7 @@ export const translations = {
     },
     landing: {
       title: "{origin} to {destination} Transfer",
-      subtitle: "Private Taxi & Bus | Zagreb Transfers",
+      subtitle: "Private Taxi & Bus | Najam Kombija",
       metaDescription: "Book a private transfer from {origin} to {destination}. Enjoy a comfortable ride with professional drivers, free WiFi, and door-to-door service.",
       duration: "Duration",
       distance: "Distance",
@@ -338,11 +338,11 @@ export const translations = {
       seeAllDestinations: "Vidi Sve Destinacije",
     },
     hero: {
-      subtitle: "ZAGREB TRANSFERS",
-      title: "Zagreb Gradski i Aerodromski Transferi",
-      description: "Pronađite Savršen Privatni Transfer za Vaše Putovanje u Hrvatskoj",
-      feature1: "Profesionalni Vozači",
-      feature2: "24/7 Usluga",
+      subtitle: "NAJAM KOMBIJA",
+      title: "Najam Kombija Zagreb Hrvatska & EU",
+      description: "Pronađite savršeno putničko ili teretno vozilo za vaše potrebe diljem Hrvatske i Europe.",
+      feature1: "Sigurna Vozila",
+      feature2: "24/7 Podrška",
       feature3: "Fiksne Cijene",
     },
     bookingForm: {
@@ -381,7 +381,7 @@ export const translations = {
     },
     fleet: {
       subtitle: "NAŠA VOZILA",
-      title: "Zagreb Transfers Flota",
+      title: "Najam Kombija Flota",
       standard: {
         name: "Standard",
         capacity: "Do 3 osobe",
@@ -435,7 +435,7 @@ export const translations = {
     about: {
       subtitle: "O NAMA",
       title: "Iskusite Hrvatsku s Povjerenjem",
-      paragraph1: "Zagreb Transfers godinama pruža premium usluge prijevoza širom Hrvatske. Specijalizirani smo za aerodromske transfere, gradski prijevoz i putovanja na duge udaljenosti diljem zemlje.",
+      paragraph1: "Najam Kombija godinama pruža premium usluge prijevoza širom Hrvatske. Specijalizirani smo za aerodromske transfere, gradski prijevoz i putovanja na duge udaljenosti diljem zemlje.",
       paragraph2: "Naši profesionalni vozači pažljivo su odabrani i obučeni kako bi vam pružili najvišu razinu usluge. Oni nisu samo vozači - oni su vaši vodiči u otkrivanju ljepote Hrvatske.",
       paragraph3: "S modernim, udobnim vozilima i predanošću točnosti i sigurnosti, osiguravamo da je svako putovanje s nama glatko, udobno i nezaboravno.",
       stat1: "Mjesečnih Transfera",
@@ -564,7 +564,7 @@ export const translations = {
       longDistance: "Duge Udaljenosti",
       groupTransport: "Grupni Prijevoz",
       contactInfo: "Kontakt Info",
-      copyright: "© 2024 Zagreb Transfers. Sva prava pridržana.",
+      copyright: "© 2024 Najam Kombija. Sva prava pridržana.",
       privacy: "Politika Privatnosti",
       terms: "Uvjeti Korištenja",
       busRental: "Najam Autobusa",
@@ -575,7 +575,7 @@ export const translations = {
     },
     landing: {
       title: "Transfer {origin} do {destination}",
-      subtitle: "Privatni Taksi i Bus | Zagreb Transfers",
+      subtitle: "Privatni Taksi i Bus | Najam Kombija",
       metaDescription: "Rezervirajte privatni transfer od {origin} do {destination}. Uživajte u udobnoj vožnji s profesionalnim vozačima, besplatnim WiFi-jem i uslugom od vrata do vrata.",
       duration: "Trajanje",
       distance: "Udaljenost",
@@ -638,7 +638,7 @@ export const translations = {
       seeAllDestinations: "Alle Ziele Anzeigen",
     },
     hero: {
-      subtitle: "ZAGREB TRANSFERS",
+      subtitle: "Najam Kombija",
       title: "Zagreb Stadt- und Flughafentransfers",
       description: "Finden Sie den perfekten privaten Transfer für Ihre Reise in Kroatien",
       feature1: "Professionelle Fahrer",
@@ -681,7 +681,7 @@ export const translations = {
     },
     fleet: {
       subtitle: "UNSERE FAHRZEUGE",
-      title: "Zagreb Transfers Flotte",
+      title: "Najam Kombija Flotte",
       standard: {
         name: "Standard",
         capacity: "Bis zu 3 Personen",
@@ -735,7 +735,7 @@ export const translations = {
     about: {
       subtitle: "ÜBER UNS",
       title: "Erleben Sie Kroatien mit Vertrauen",
-      paragraph1: "Zagreb Transfers bietet seit Jahren Premium-Transportservices in ganz Kroatien. Wir sind spezialisiert auf Flughafentransfers, Stadttransport und Langstreckenfahrten im ganzen Land.",
+      paragraph1: "Najam Kombija bietet seit Jahren Premium-Transportservices in ganz Kroatien. Wir sind spezialisiert auf Flughafentransfers, Stadttransport und Langstreckenfahrten im ganzen Land.",
       paragraph2: "Unsere professionellen Fahrer werden sorgfältig ausgewählt und geschult, um Ihnen den höchsten Service zu bieten. Sie sind nicht nur Fahrer - sie sind Ihre Führer zur Entdeckung der Schönheit Kroatiens.",
       paragraph3: "Mit modernen, komfortablen Fahrzeugen und einem Engagement für Pünktlichkeit und Sicherheit sorgen wir dafür, dass jede Reise mit uns reibungslos, komfortabel und unvergesslich ist.",
       stat1: "Zufriedene Kunden",
@@ -864,7 +864,7 @@ export const translations = {
       longDistance: "Langstrecke",
       groupTransport: "Gruppentransport",
       contactInfo: "Kontaktinfo",
-      copyright: "© 2024 Zagreb Transfers. Alle Rechte vorbehalten.",
+      copyright: "© 2024 Najam Kombija. Alle Rechte vorbehalten.",
       privacy: "Datenschutz",
       terms: "Nutzungsbedingungen",
       busRental: "Busvermietung",
@@ -875,7 +875,7 @@ export const translations = {
     },
     landing: {
       title: "Transfer {origin} nach {destination}",
-      subtitle: "Privates Taxi & Bus | Zagreb Transfers",
+      subtitle: "Privates Taxi & Bus | Najam Kombija",
       metaDescription: "Buchen Sie einen privaten Transfer von {origin} nach {destination}. Genießen Sie eine komfortable Fahrt mit professionellen Fahrern.",
       duration: "Dauer",
       distance: "Entfernung",
@@ -938,7 +938,7 @@ export const translations = {
       seeAllDestinations: "Vedi Tutte le Destinazioni",
     },
     hero: {
-      subtitle: "ZAGREB TRANSFERS",
+      subtitle: "Najam Kombija",
       title: "Transfer Città e Aeroporto di Zagabria",
       description: "Trova il Transfer Privato Perfetto per il Tuo Viaggio in Croazia",
       feature1: "Autisti Professionali",
@@ -981,7 +981,7 @@ export const translations = {
     },
     fleet: {
       subtitle: "I NOSTRI VEICOLI",
-      title: "Flotta Zagreb Transfers",
+      title: "Flotta Najam Kombija",
       standard: {
         name: "Standard",
         capacity: "Fino a 3 persone",
@@ -1035,7 +1035,7 @@ export const translations = {
     about: {
       subtitle: "CHI SIAMO",
       title: "Scopri la Croazia con Fiducia",
-      paragraph1: "Zagreb Transfers fornisce servizi di trasporto premium in tutta la Croazia da anni. Siamo specializzati in transfer aeroportuali, trasporto cittadino e viaggi a lunga distanza nel paese.",
+      paragraph1: "Najam Kombija fornisce servizi di trasporto premium in tutta la Croazia da anni. Siamo specializzati in transfer aeroportuali, trasporto cittadino e viaggi a lunga distanza nel paese.",
       paragraph2: "I nostri autisti professionali sono accuratamente selezionati e formati per fornirti il massimo livello di servizio. Non sono solo autisti - sono le tue guide alla scoperta della bellezza della Croazia.",
       paragraph3: "Con veicoli moderni e confortevoli e un impegno per la puntualità e la sicurezza, garantiamo che ogni viaggio con noi sia fluido, confortevole e memorabile.",
       stat1: "Clienti Soddisfatti",
@@ -1156,7 +1156,7 @@ export const translations = {
     },
     landing: {
       title: "Transfer da {origin} a {destination}",
-      subtitle: "Taxi Privato e Bus | Zagreb Transfers",
+      subtitle: "Taxi Privato e Bus | Najam Kombija",
       metaDescription: "Prenota un transfer privato da {origin} a {destination}. Goditi un viaggio confortevole con autisti professionisti.",
       duration: "Durata",
       distance: "Distanza",
@@ -1193,7 +1193,7 @@ export const translations = {
       longDistance: "Lunghe Distanze",
       groupTransport: "Trasporto di Gruppo",
       contactInfo: "Info Contatto",
-      copyright: "© 2024 Zagreb Transfers. Tutti i diritti riservati.",
+      copyright: "© 2024 Najam Kombija. Tutti i diritti riservati.",
       privacy: "Informativa sulla Privacy",
       terms: "Termini di Servizio",
       busRental: "Noleggio Autobus",
@@ -1242,7 +1242,7 @@ export const translations = {
       seeAllDestinations: "Voir Toutes les Destinations",
     },
     hero: {
-      subtitle: "ZAGREB TRANSFERS",
+      subtitle: "Najam Kombija",
       title: "Transferts Ville et Aéroport de Zagreb",
       description: "Trouvez le Transfer Privé Parfait pour Votre Voyage en Croatie",
       feature1: "Chauffeurs Professionnels",
@@ -1285,7 +1285,7 @@ export const translations = {
     },
     fleet: {
       subtitle: "NOS VÉHICULES",
-      title: "Flotte Zagreb Transfers",
+      title: "Flotte Najam Kombija",
       standard: {
         name: "Standard",
         capacity: "Jusqu'à 3 personnes",
@@ -1339,7 +1339,7 @@ export const translations = {
     about: {
       subtitle: "À PROPOS",
       title: "Découvrez la Croatie en Toute Confiance",
-      paragraph1: "Zagreb Transfers fournit des services de transport premium à travers la Croatie depuis des années. Nous sommes spécialisés dans les transferts aéroport, le transport urbain et les voyages longue distance dans tout le pays.",
+      paragraph1: "Najam Kombija fournit des services de transport premium à travers la Croatie depuis des années. Nous sommes spécialisés dans les transferts aéroport, le transport urbain et les voyages longue distance dans tout le pays.",
       paragraph2: "Nos chauffeurs professionnels sont soigneusement sélectionnés et formés pour vous offrir le plus haut niveau de service. Ils ne sont pas seulement des chauffeurs - ils sont vos guides pour découvrir la beauté de la Croatie.",
       paragraph3: "Avec des véhicules modernes et confortables et un engagement envers la ponctualité et la sécurité, nous garantissons que chaque voyage avec nous est fluide, confortable et mémorable.",
       stat1: "Clients Satisfaits",
@@ -1460,7 +1460,7 @@ export const translations = {
     },
     landing: {
       title: "Transfert de {origin} à {destination}",
-      subtitle: "Taxi Privé et Bus | Zagreb Transfers",
+      subtitle: "Taxi Privé et Bus | Najam Kombija",
       metaDescription: "Réservez un transfert privé de {origin} à {destination}. Profitez d'un voyage confortable avec des chauffeurs professionnels, WiFi gratuit et service porte-à-porte.",
       duration: "Durée",
       distance: "Distance",
@@ -1497,7 +1497,7 @@ export const translations = {
       longDistance: "Longue Distance",
       groupTransport: "Transport de Groupe",
       contactInfo: "Info Contact",
-      copyright: "© 2024 Zagreb Transfers. Tous droits réservés.",
+      copyright: "© 2024 Najam Kombija. Tous droits réservés.",
       privacy: "Politique de Confidentialité",
       terms: "Conditions de Service",
       busRental: "Location de Bus",

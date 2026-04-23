@@ -9,7 +9,7 @@ export const useSeoData = () => {
     
     // Normalizacija putanje za pronalaženje u mapi
     let currentPathWithoutLang = location.pathname.replace(/\/+$/, '') || '/';
-    if (language !== 'en' && currentPathWithoutLang.startsWith(`/${language}`)) {
+    if (language !== 'hr' && currentPathWithoutLang.startsWith(`/${language}`)) {
         currentPathWithoutLang = currentPathWithoutLang.replace(new RegExp(`^/${language}(/|$)`), '/') || '/';
     }
     if (currentPathWithoutLang !== '/') {
@@ -25,7 +25,7 @@ export const useSeoData = () => {
 
     return {
         h1: localizedData?.h1 || '',  // Ukoliko nema, vratiti će prazno (tad slobodno koristite standardni H1 iz komponente)
-        title: localizedData?.title || "Zagreb Transfers - Premium Transportation in Croatia",
-        description: localizedData?.description || "Reliable transfers from Zagreb, Split, Zadar to destinations all over Croatia."
+        title: localizedData?.title || "Najam Kombija - Putnička i Teretna Vozila",
+        description: localizedData?.description || "Pronađite savršeno putničko ili teretno kombi vozilo za vaše potrebe diljem Hrvatske. Sigurna vozila, 24/7 podrška."
     };
 };

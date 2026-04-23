@@ -7,7 +7,7 @@ const DefaultLanguageWrapper = () => {
     const { setLanguage } = useLanguage();
 
     useEffect(() => {
-        setLanguage("en");
+        setLanguage("hr");
     }, [setLanguage]);
 
     return (

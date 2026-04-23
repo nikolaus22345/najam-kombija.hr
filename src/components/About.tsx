@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Plane } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 import aboutImage from "@/assets/hero-highway.jpg";
@@ -30,6 +31,23 @@ const About = () => {
                 <div className="text-3xl font-bold text-primary mb-2">100%</div>
                 <div className="text-sm text-muted-foreground">{t.about.stat3}</div>
               </div>
+            </div>
+
+            {/* Backlink Container to Zagreb Transfers */}
+            <div className="mt-8 bg-card/80 border border-primary/20 rounded-xl p-5 flex flex-col sm:flex-row items-center gap-5 transition-colors hover:border-primary/50 relative overflow-hidden group shadow-lg">
+               <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent z-0"></div>
+               <div className="bg-primary/20 p-3 rounded-full relative z-10 shrink-0 group-hover:scale-110 transition-transform">
+                  <Plane className="w-7 h-7 text-primary" />
+               </div>
+               <div className="relative z-10 flex-grow text-center sm:text-left">
+                  <h4 className="font-bold text-foreground text-lg mb-0.5">Trebate privatni transfer s vozačem?</h4>
+                  <p className="text-sm text-muted-foreground">Posjetite našu specijaliziranu agenciju <strong className="text-foreground/80">Zagreb Transfers</strong> za premium aerodromske i gradske vožnje.</p>
+               </div>
+               <a href="https://www.zagreb-transfers.hr" target="_blank" rel="noopener noreferrer" className="relative z-10 shrink-0 mt-2 sm:mt-0">
+                  <Button variant="outline" className="border-primary/50 text-foreground hover:bg-primary hover:text-black hover:border-primary transition-all">
+                     Posjeti stranicu
+                  </Button>
+               </a>
             </div>
           </div>
           <div className="relative">

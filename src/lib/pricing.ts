@@ -22,6 +22,53 @@ export const calculateTransferPrice = (origin: string, destination: string, dist
         return { sedan: 310, minivan: 368, minibus: 500 };
     }
     
+    // Vodice routes (+15% added to spreadsheet values)
+    if (isRoute('vodice', 'zagreb')) {
+        return { sedan: 610, minivan: 730, minibus: 990 };
+    }
+    if (isRoute('vodice', 'dubrovnik')) {
+        return { sedan: 610, minivan: 730, minibus: 990 };
+    }
+    if (isRoute('vodice', 'split')) {
+        return { sedan: 160, minivan: 195, minibus: 280 };
+    }
+    if (isRoute('vodice', 'zadar')) {
+        return { sedan: 160, minivan: 195, minibus: 280 };
+    }
+    if (isRoute('vodice', 'plitvi')) {
+        return { sedan: 380, minivan: 450, minibus: 620 };
+    }
+    if (isRoute('vodice', 'makarska')) {
+        return { sedan: 380, minivan: 450, minibus: 620 };
+    }
+    if (isRoute('vodice', 'šibenik') || isRoute('vodice', 'sibenik')) {
+        return { sedan: 35, minivan: 45, minibus: 65 };
+    }
+    if (isRoute('vodice', 'primošten') || isRoute('vodice', 'primosten')) {
+        return { sedan: 95, minivan: 115, minibus: 165 };
+    }
+    if (isRoute('vodice', 'rogoznica')) {
+        return { sedan: 100, minivan: 125, minibus: 175 };
+    }
+    if (isRoute('vodice', 'skradin')) {
+        return { sedan: 60, minivan: 75, minibus: 110 };
+    }
+    if (isRoute('vodice', 'murter')) {
+        return { sedan: 60, minivan: 75, minibus: 110 };
+    }
+    if (isRoute('vodice', 'trogir')) {
+        return { sedan: 140, minivan: 175, minibus: 250 };
+    }
+    if (isRoute('vodice', 'sukošan') || isRoute('vodice', 'sukosan')) {
+        return { sedan: 140, minivan: 175, minibus: 250 };
+    }
+    if (isRoute('vodice', 'biograd')) {
+        return { sedan: 95, minivan: 115, minibus: 165 };
+    }
+    if (isRoute('vodice', 'krka')) {
+        return { sedan: 50, minivan: 65, minibus: 95 };
+    }
+    
     // Only match Zagreb Airport (not other airports)
     if (isRoute('zagreb airport', 'zagreb') || 
         isRoute('franjo tuđman', 'zagreb') ||

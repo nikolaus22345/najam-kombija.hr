@@ -1,19 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Languages, ChevronDown, Menu } from "lucide-react";
+import { ChevronDown, Menu } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+
 import {
   Sheet,
   SheetContent,
@@ -46,29 +40,13 @@ const Header = () => {
               />
             </svg>
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-primary">ZAGREB</span>
-              <span className="text-sm text-foreground tracking-wider">TRANSFERS</span>
+              <span className="text-xl font-bold text-primary">NAJAM</span>
+              <span className="text-sm text-foreground tracking-wider">KOMBIJA</span>
             </div>
           </div>
 
           {/* Mobile Menu */}
           <div className="md:hidden flex items-center gap-2">
-            <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-[70px] h-9">
-                <Languages className="w-4 h-4" />
-              </SelectTrigger>
-              <SelectContent className="bg-background border border-border z-50">
-                <SelectItem value="en">EN</SelectItem>
-                <SelectItem value="hr">HR</SelectItem>
-                <SelectItem value="de">DE</SelectItem>
-                <SelectItem value="it">IT</SelectItem>
-                <SelectItem value="fr">FR</SelectItem>
-                <SelectItem value="ko">KO</SelectItem>
-                <SelectItem value="zh">ZH</SelectItem>
-                <SelectItem value="ja">JA</SelectItem>
-              </SelectContent>
-            </Select>
-
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
@@ -85,130 +63,58 @@ const Header = () => {
                     className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 uppercase"
                     onClick={() => setOpen(false)}
                   >
-                    {t.header.home}
+                    {t.header?.home || (language === 'en' ? 'HOME' : (language === 'de' ? 'STARTSEITE' : 'POČETNA'))}
                   </Link>
 
-                  <div className="border-b border-border pb-2">
-                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">{t.footer.services}</p>
+                  <div className="border-b border-border pb-2 pt-2">
+                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">{language === 'en' ? 'VEHICLE CATEGORIES' : (language === 'de' ? 'FAHRZEUGKATEGORIEN' : 'KATEGORIJE VOZILA')}</p>
                     <Link
-                      to={getLink('/coach-rental')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      to={getLink('/kategorije/putnicki-kombi')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase pl-2"
                       onClick={() => setOpen(false)}
                     >
-                      {t.footer.busRental}
+                      {language === 'en' ? 'PASSENGER VANS' : (language === 'de' ? 'KLEINBUSSE' : 'PUTNIČKA KOMBI VOZILA')}
                     </Link>
                     <Link
-                      to={getLink('/minibus-rental')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      to={getLink('/kategorije/teretni-kombi')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase pl-2"
                       onClick={() => setOpen(false)}
                     >
-                      {t.footer.minibusRental}
+                      {language === 'en' ? 'CARGO VANS' : (language === 'de' ? 'TRANSPORTER' : 'TERETNA KOMBI VOZILA')}
                     </Link>
                     <Link
-                      to={getLink('/van-rental')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      to={getLink('/kategorije/mala-dostavna-vozila')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase pl-2"
                       onClick={() => setOpen(false)}
                     >
-                      {t.footer.vanRental}
+                      {language === 'en' ? 'SMALL DELIVERY VANS' : (language === 'de' ? 'KLEINE LIEFERWAGEN' : 'MALA DOSTAVNA VOZILA')}
                     </Link>
                     <Link
-                      to={getLink('/chauffeur-service')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      to={getLink('/kategorije/vozilo-za-5-osoba-n1')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase pl-2"
                       onClick={() => setOpen(false)}
                     >
-                      {t.footer.chauffeurService}
+                      {language === 'en' ? 'N1 VEHICLES 5 SEATS' : (language === 'de' ? 'N1 FAHRZEUGE 5 SITZE' : 'VOZILA ZA 5 OSOBA N1')}
                     </Link>
                     <Link
-                      to={getLink('/limo-hire-for-wedding')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
+                      to={getLink('/kategorije/najam-kombija-s-vozacem')}
+                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase pl-2"
                       onClick={() => setOpen(false)}
                     >
-                      {t.footer.weddingLimo}
+                      {language === 'en' ? 'VAN RENTAL WITH DRIVER' : (language === 'de' ? 'KLEINBUS MIETEN MIT FAHRER' : 'NAJAM KOMBIJA S VOZAČEM')}
                     </Link>
                   </div>
 
-                  <div className="border-b border-border pb-2 pt-4">
-                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">{t.header.transfers}</p>
-                    <Link
-                      to={getLink('/transfers/zagreb')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
-                      onClick={() => setOpen(false)}
-                    >
-                      Zagreb Transfers
-                    </Link>
-
-                    <Link
-                      to={getLink('/airport-transfers/zagreb')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
-                      onClick={() => setOpen(false)}
-                    >
-                      {t.header.zagrebAirport}
-                    </Link>
-                    <Link
-                      to={getLink('/transfers/all-destinations')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
-                      onClick={() => setOpen(false)}
-                    >
-                      {t.header.allDestinations}
-                    </Link>
-                  </div>
-
-                  <div className="border-b border-border pb-2 pt-4">
-                    <p className="text-xs font-semibold text-muted-foreground mb-2 uppercase">{t.features.subtitle}</p>
-                    <Link
-                      to={getLink('/features/safety-first')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
-                      onClick={() => setOpen(false)}
-                    >
-                      {t.features.licensed.title}
-                    </Link>
-                    <Link
-                      to={getLink('/features/professional-drivers')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
-                      onClick={() => setOpen(false)}
-                    >
-                      {t.features.drivers.title}
-                    </Link>
-                    <Link
-                      to={getLink('/features/24-7-service')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
-                      onClick={() => setOpen(false)}
-                    >
-                      {t.features.availability.title}
-                    </Link>
-                    <Link
-                      to={getLink('/features/fixed-prices')}
-                      className="text-sm text-foreground hover:text-primary transition-colors block py-2 uppercase"
-                      onClick={() => setOpen(false)}
-                    >
-                      {t.features.fixedPrices.title}
-                    </Link>
-                  </div>
-
-                  <Link
-                    to={getLink('/about')}
-                    className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 pt-4 uppercase"
-                    onClick={() => setOpen(false)}
-                  >
-                    {t.header.about}
-                  </Link>
-                  <Link
-                    to={getLink('/blog')}
-                    className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 uppercase"
-                    onClick={() => setOpen(false)}
-                  >
-                    {t.footer.blog}
-                  </Link>
                   <Link
                     to={getLink('/contact')}
                     className="text-base font-medium text-foreground hover:text-primary transition-colors py-2 uppercase"
                     onClick={() => setOpen(false)}
                   >
-                    {t.header.contact}
+                    {t.header?.contact || (language === 'en' ? 'CONTACT' : (language === 'de' ? 'KONTAKT' : 'KONTAKT'))}
                   </Link>
-                  <Link to={getLink('/get-quote')} onClick={() => setOpen(false)}>
+                  <Link to={getLink('/#booking')} onClick={() => setOpen(false)}>
                     <Button variant="default" size="sm" className="mt-4 w-full uppercase">
-                      {t.header.getQuote}
+                      {t.header?.getQuote || (language === 'en' ? 'GET A QUOTE' : (language === 'de' ? 'ANGEBOT ANFORDERN' : 'ZATRAŽITE PONUDU'))}
                     </Button>
                   </Link>
                 </nav>
@@ -219,110 +125,40 @@ const Header = () => {
           {/* Desktop Menu */}
           <nav className="hidden md:flex items-center gap-6">
             <Link to={getLink('/')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
-              {t.header.home}
+              {t.header?.home || (language === 'en' ? 'HOME' : (language === 'de' ? 'STARTSEITE' : 'POČETNA'))}
             </Link>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1 uppercase">
-                  {t.footer.services}
+                  {language === 'en' ? 'VEHICLE CATEGORIES' : (language === 'de' ? 'FAHRZEUGKATEGORIEN' : 'KATEGORIJE VOZILA')}
                   <ChevronDown className="w-4 h-4" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-background border border-border z-[100]">
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/coach-rental')} className="cursor-pointer uppercase">{t.footer.busRental}</Link>
+                  <Link to={getLink('/kategorije/putnicki-kombi')} className="cursor-pointer uppercase">{language === 'en' ? 'PASSENGER VANS' : (language === 'de' ? 'KLEINBUSSE' : 'PUTNIČKA KOMBI VOZILA')}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/minibus-rental')} className="cursor-pointer uppercase">{t.footer.minibusRental}</Link>
+                  <Link to={getLink('/kategorije/teretni-kombi')} className="cursor-pointer uppercase">{language === 'en' ? 'CARGO VANS' : (language === 'de' ? 'TRANSPORTER' : 'TERETNA KOMBI VOZILA')}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/van-rental')} className="cursor-pointer uppercase">{t.footer.vanRental}</Link>
+                  <Link to={getLink('/kategorije/mala-dostavna-vozila')} className="cursor-pointer uppercase">{language === 'en' ? 'SMALL DELIVERY VANS' : (language === 'de' ? 'KLEINE LIEFERWAGEN' : 'MALA DOSTAVNA VOZILA')}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/chauffeur-service')} className="cursor-pointer uppercase">{t.footer.chauffeurService}</Link>
+                  <Link to={getLink('/kategorije/vozilo-za-5-osoba-n1')} className="cursor-pointer uppercase">{language === 'en' ? 'N1 VEHICLES 5 SEATS' : (language === 'de' ? 'N1 FAHRZEUGE 5 SITZE' : 'VOZILA ZA 5 OSOBA N1')}</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getLink('/limo-hire-for-wedding')} className="cursor-pointer uppercase">{t.footer.weddingLimo}</Link>
+                  <Link to={getLink('/kategorije/najam-kombija-s-vozacem')} className="cursor-pointer uppercase">{language === 'en' ? 'VAN RENTAL WITH DRIVER' : (language === 'de' ? 'KLEINBUS MIETEN MIT FAHRER' : 'NAJAM KOMBIJA S VOZAČEM')}</Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1 uppercase">
-                  {t.header.transfers}
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background border border-border z-[100]">
-                <DropdownMenuItem asChild>
-                  <Link to={getLink('/transfers/zagreb')} className="cursor-pointer uppercase">Zagreb Transfers</Link>
-                </DropdownMenuItem>
-
-                <DropdownMenuItem asChild>
-                  <Link to={getLink('/airport-transfers/zagreb')} className="cursor-pointer uppercase">{t.header.zagrebAirport}</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to={getLink('/transfers/all-destinations')} className="cursor-pointer uppercase">{t.header.allDestinations}</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="text-sm font-medium text-foreground hover:text-primary transition-colors flex items-center gap-1 uppercase">
-                  {t.features.subtitle}
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background border border-border z-[100]">
-                <DropdownMenuItem asChild>
-                  <Link to={getLink('/features/safety-first')} className="cursor-pointer uppercase">{t.features.licensed.title}</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to={getLink('/features/professional-drivers')} className="cursor-pointer uppercase">{t.features.drivers.title}</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to={getLink('/features/24-7-service')} className="cursor-pointer uppercase">{t.features.availability.title}</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link to={getLink('/features/fixed-prices')} className="cursor-pointer uppercase">{t.features.fixedPrices.title}</Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-
-            <Link to={getLink('/about')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
-              {t.header.about}
-            </Link>
-            <Link to={getLink('/blog')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
-              {t.footer.blog}
-            </Link>
             <Link to={getLink('/contact')} className="text-sm font-medium text-foreground hover:text-primary transition-colors uppercase">
-              {t.header.contact}
+              {t.header?.contact || (language === 'en' ? 'CONTACT' : (language === 'de' ? 'KONTAKT' : 'KONTAKT'))}
             </Link>
-            <Link to={getLink('/get-quote')}>
-              <Button variant="default" size="sm" className="ml-4 uppercase">
-                {t.header.getQuote}
-              </Button>
-            </Link>
+            
 
-            <Select value={language} onValueChange={setLanguage}>
-              <SelectTrigger className="w-[100px] h-9 uppercase">
-                <Languages className="w-4 h-4 mr-2" />
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="bg-background border border-border z-50">
-                <SelectItem value="en">EN</SelectItem>
-                <SelectItem value="hr">HR</SelectItem>
-                <SelectItem value="de">DE</SelectItem>
-                <SelectItem value="it">IT</SelectItem>
-                <SelectItem value="fr">FR</SelectItem>
-                <SelectItem value="ko">KO</SelectItem>
-                <SelectItem value="zh">ZH</SelectItem>
-                <SelectItem value="ja">JA</SelectItem>
-              </SelectContent>
-            </Select>
           </nav>
         </div>
       </div>
