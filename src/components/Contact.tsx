@@ -1,55 +1,9 @@
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { sendEmail } from "@/lib/email";
-import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const { t } = useLanguage();
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    const templateParams = {
-      to_email: "zagrebtransfers.hr@gmail.com, nikolacvitanovic.hr@gmail.com",
-      from_name: formData.name,
-      from_email: formData.email,
-      subject: formData.subject,
-      message: formData.message,
-      reply_to: formData.email,
-    };
-
-    const result = await sendEmail(templateParams);
-
-    if (result.success) {
-      toast({
-        title: "Message Sent!",
-        description: "Thank you for contacting us. We will get back to you soon.",
-      });
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    } else {
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again later.",
-        variant: "destructive",
-      });
-    }
-    setIsSubmitting(false);
-  };
-
   return (
     <section id="contact" className="py-20 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
@@ -98,56 +52,6 @@ const Contact = () => {
             </CardContent>
           </Card>
         </div>
-
-        <Card className="bg-card border-border max-w-2xl mx-auto">
-          <CardContent className="p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Input
-                    placeholder={t.contact.namePlaceholder}
-                    className="bg-background"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="email"
-                    placeholder={t.contact.emailPlaceholder}
-                    className="bg-background"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    required
-                  />
-                </div>
-              </div>
-              <div>
-                <Input
-                  placeholder={t.contact.subjectPlaceholder}
-                  className="bg-background"
-                  value={formData.subject}
-                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Textarea
-                  placeholder={t.contact.messagePlaceholder}
-                  rows={5}
-                  className="bg-background"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  required
-                />
-              </div>
-              <Button className="w-full" size="lg" type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Sending..." : t.contact.send}
-              </Button>
-            </form>
-          </CardContent>
-        </Card>
       </div>
     </section>
   );
