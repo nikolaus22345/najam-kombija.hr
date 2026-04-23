@@ -23,10 +23,11 @@ const BookingForm = ({ pickup }: BookingFormProps) => {
   const [message, setMessage] = useState("");
   const [consent1, setConsent1] = useState(false);
   const [consent2, setConsent2] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!consent1 || !consent2) {
@@ -38,19 +39,55 @@ const BookingForm = ({ pickup }: BookingFormProps) => {
       return;
     }
 
-    toast({
-      title: "Upit poslan!",
-      description: "Hvala Vam. Odgovorit ćemo u najkraćem mogućem roku.",
-    });
-    
-    // Reset form
-    setName("");
-    setEmail("");
-    setService("");
-    setSubject("");
-    setMessage("");
-    setConsent1(false);
-    setConsent2(false);
+    setIsSubmitting(true);
+
+    try {
+      const formData = new FormData();
+      formData.append("access_key", "e261a1fe-c874-42ce-88bf-5e9812a5880f");
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("service", service || "Nije odabrano");
+      formData.append("subject", subject || "Novi upit s web stranice");
+      formData.append("message", message);
+      formData.append("from_name", "Najam Kombija (Web Upit)");
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast({
+          title: "Upit uspješno poslan!",
+          description: "Hvala Vam. Odgovorit ćemo u najkraćem mogućem roku.",
+        });
+        
+        // Reset form
+        setName("");
+        setEmail("");
+        setService("");
+        setSubject("");
+        setMessage("");
+        setConsent1(false);
+        setConsent2(false);
+      } else {
+        toast({
+          title: "Greška",
+          description: "Došlo je do greške prilikom slanja upita. Molimo pokušajte ponovno.",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      toast({
+        title: "Greška na mreži",
+        description: "Provjerite internetsku vezu i pokušajte ponovno.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -152,8 +189,8 @@ const BookingForm = ({ pickup }: BookingFormProps) => {
           </div>
         </div>
 
-        <Button type="submit" className="w-full h-12 text-base font-bold uppercase mt-4 bg-primary text-black hover:bg-primary/90">
-          POŠALJI
+        <Button type="submit" disabled={isSubmitting} className="w-full h-12 text-base font-bold uppercase mt-4 bg-primary text-black hover:bg-primary/90">
+          {isSubmitting ? "SLANJE U TIJEKU..." : "POŠALJI"}
         </Button>
       </form>
     </div>
